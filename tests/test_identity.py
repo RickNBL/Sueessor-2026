@@ -5,9 +5,13 @@ root = Path(__file__).resolve().parents[1]
 def test_design_has_history_without_numbered_cards_or_top_bar():
     home = (root/'templates/home.html').read_text()
     base = (root/'templates/base.html').read_text()
-    assert '12 de abril de 2002' in home
-    assert 'data-heritage-track' in home
-    assert 'data-heritage-next' in home
+    about = (root/'templates/about.html').read_text()
+    assert 'data-heritage-track' not in home
+    assert 'id="trajetoria"' not in home
+    assert 'data-heritage-track' in about
+    assert 'data-heritage-next' in about
+    assert 'hero-video-player' in home
+    assert 'Agora o <span>Sueessor</span> tem aplicativo' in home
     assert 'service-index' not in home
     assert '<div class="utility">' not in base
     assert 'Portal experimental de redesign' not in base

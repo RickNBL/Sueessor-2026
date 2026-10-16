@@ -165,3 +165,91 @@ body{background:#fff;color:var(--ink)}
   .app-banner-copy p{font-size:14px;line-height:1.7}
   .app-banner-device{width:min(100%,250px)}
 }
+
+/* ================================================================
+   2026 · Hero editorial + banner do aplicativo + trajetória em /sobre
+   ================================================================ */
+.hero-editorial{min-height:0;background:radial-gradient(circle at 5% 10%,#8d1925 0%,#4e0f1a 48%,#27070d 100%);isolation:isolate}
+.hero-editorial:after{width:580px;height:580px;right:auto;left:-400px;top:-380px}
+.hero-editorial .hero-grid{z-index:0;opacity:.075}
+.hero-editorial .hero-layout{min-height:718px;display:block;position:relative;isolation:isolate}
+.hero-editorial .hero-copy{width:50%;padding:132px 16px 112px 0;z-index:4;position:relative}
+.hero-editorial .hero-copy h1{font-size:clamp(53px,5.3vw,77px);line-height:1.06;max-width:600px;letter-spacing:-.055em;margin-top:24px}
+.hero-editorial .hero-copy>p{max-width:510px;line-height:1.8;font-size:16px;color:#f2dfe0;margin-bottom:34px}
+.hero-editorial .hero-copy .eyebrow{line-height:1.8;max-width:475px}
+.hero-editorial .hero-video-art{position:absolute;inset:28px 0 16px auto;width:57%;height:auto;min-height:0;align-self:auto;z-index:1;transform:none}
+.hero-editorial .hero-video-shell{position:absolute;inset:0;width:100%;height:100%;clip-path:none;border-radius:3px 4px 4px 3px;overflow:hidden;background:#41131b;box-shadow:none}
+.hero-editorial .hero-video-player{height:100%;width:100%;object-fit:cover;object-position:center;filter:saturate(.84) brightness(.92)}
+.hero-editorial .hero-video-overlay{background:linear-gradient(90deg,rgba(70,13,25,.78) 0%,rgba(70,13,25,.3) 20%,rgba(70,13,25,.02) 50%),linear-gradient(0deg,rgba(35,5,12,.29),transparent 38%),linear-gradient(180deg,rgba(35,5,12,.12),transparent 25%)}
+.hero-editorial .hero-bottom{padding-bottom:26px}
+.hero-editorial .hero-actions{max-width:550px}
+.hero-editorial .hero-actions .btn{white-space:nowrap}
+
+/* Banner: editorial com celular flutuante e informações úteis */
+.app-banner-section{position:relative;background:#fff;padding:92px 0 86px;overflow:hidden}
+.app-banner-outer{position:relative}
+.app-banner-section .app-banner-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,.76fr);min-height:480px;position:relative;isolation:isolate;align-items:center;gap:20px;border-radius:25px;overflow:hidden;padding:64px clamp(32px,5.4vw,80px);background:linear-gradient(116deg,#920a16 0%,#b70920 49%,#770713 100%);box-shadow:0 24px 60px -40px rgba(83,5,17,.48)}
+.app-banner-section .app-banner-card:before{content:'';position:absolute;left:-190px;top:-140px;width:580px;height:580px;border-radius:50%;border:1px solid #ffffff1c;pointer-events:none}
+.app-banner-section .app-banner-card:after{content:'';position:absolute;left:55%;bottom:-280px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,#e947633c 0%,#db1b3b0a 56%,transparent 70%);pointer-events:none}
+.app-banner-accent{position:absolute;pointer-events:none;width:105px;height:105px;border:1px solid #ffffff2a;border-radius:50%;z-index:0}
+.app-banner-accent-one{right:25%;top:-85px}
+.app-banner-accent-two{left:32%;bottom:-88px;width:190px;height:190px}
+.app-banner-section .app-banner-copy{max-width:645px;z-index:2;position:relative;color:white}
+.app-banner-kicker{display:flex;gap:16px;align-items:center;color:#ffe1e5;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.app-banner-kicker-rule{display:inline-block;width:31px;height:1px;background:#ffd7db;flex:none}
+.app-banner-section .app-banner-copy h2{font-family:var(--display);font-size:clamp(40px,4.7vw,65px);font-weight:800;line-height:1.08;letter-spacing:-.061em;margin:26px 0 22px;color:#fff;max-width:610px}
+.app-banner-section .app-banner-copy h2 span{font-style:italic;font-weight:600;font-family:Georgia,serif;letter-spacing:-.075em}
+.app-banner-section .app-banner-copy p{font-size:17px;line-height:1.78;color:#ffe3e7;max-width:505px}
+.app-banner-features{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.app-banner-features span{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:99px;background:#ffffff16;border:1px solid #ffffff45;color:#fff;font-size:12px;font-weight:700;letter-spacing:.01em}
+.app-banner-features .icon{width:14px;height:14px}
+.app-banner-visual{position:absolute;inset:0 0 0 auto;width:43%;display:grid;place-items:center;z-index:2;pointer-events:none}
+.app-banner-rings{position:absolute;width:530px;height:530px;border:1px solid #ffffff30;border-radius:50%;top:50%;left:55%;transform:translate(-50%,-50%);box-shadow:0 0 0 66px #ffffff08,0 0 0 142px #ffffff05}
+.app-banner-section .app-banner-device{position:relative;z-index:2;justify-self:center;width:min(310px,71%);padding:0;transform-origin:center center;animation:appDeviceFloat 6s ease-in-out infinite}
+.app-banner-section .app-device-image{width:100%;max-height:510px;height:auto;object-fit:contain;filter:drop-shadow(0 32px 29px rgba(23,0,6,.48))}
+@keyframes appDeviceFloat{0%,100%{transform:translateY(4px) rotate(-5deg)}50%{transform:translateY(-12px) rotate(-2deg)}}
+
+@media(max-width:1080px) and (min-width:911px){
+ .hero-editorial .hero-copy{width:54%;padding-top:115px}
+ .hero-editorial .hero-copy h1{font-size:clamp(49px,5.3vw,64px)}
+ .hero-editorial .hero-video-art{width:54%}
+ .app-banner-section .app-banner-copy h2{font-size:clamp(40px,4.4vw,55px)}
+}
+@media(max-width:910px){
+ .hero-editorial .hero-layout{min-height:0;display:flex;flex-direction:column;gap:0}
+ .hero-editorial .hero-copy{width:100%;padding:70px 0 32px}
+ .hero-editorial .hero-copy h1{font-size:clamp(45px,7vw,66px);max-width:730px}
+ .hero-editorial .hero-copy>p{max-width:680px}
+ .hero-editorial .hero-video-art{position:relative;inset:auto;width:100%;height:clamp(370px,58vw,600px);margin:0 0 18px}
+ .hero-editorial .hero-video-shell{inset:0;width:100%;height:100%;border-radius:12px}
+ .hero-editorial .hero-video-overlay{background:linear-gradient(0deg,rgba(37,5,12,.22),transparent 53%)}
+ .hero-editorial .hero-bottom{padding:0 28px 25px}
+ .app-banner-section{padding:60px 0}
+ .app-banner-section .app-banner-card{grid-template-columns:1fr;min-height:640px;align-items:start;padding:46px 42px 0}
+ .app-banner-section .app-banner-copy{max-width:740px}
+ .app-banner-section .app-banner-copy h2{font-size:clamp(42px,6.6vw,60px)}
+ .app-banner-visual{position:relative;inset:auto;width:100%;height:370px;margin:12px 0 -42px}
+ .app-banner-section .app-banner-device{width:min(260px,64%)}
+ .app-banner-section .app-device-image{max-height:410px}
+}
+@media(max-width:650px){
+ .hero-editorial .hero-copy{padding:58px 0 27px}
+ .hero-editorial .hero-copy h1{font-size:clamp(39px,10.8vw,54px);margin-top:19px}
+ .hero-editorial .hero-copy>p{font-size:14px;line-height:1.7}
+ .hero-editorial .hero-video-art{height:clamp(350px,105vw,490px);margin:0 0 16px}
+ .hero-editorial .hero-video-shell{border-radius:8px}
+ .hero-editorial .hero-bottom{display:flex;gap:12px;padding:0 19px 24px}
+ .hero-editorial .hero-bottom>a{display:none}
+ .app-banner-section{padding:44px 0}
+ .app-banner-section .app-banner-card{min-height:0;border-radius:22px;padding:35px 25px 0;gap:0}
+ .app-banner-kicker{font-size:10px;gap:10px}
+ .app-banner-kicker-rule{width:20px}
+ .app-banner-section .app-banner-copy h2{font-size:clamp(34px,9.6vw,46px);margin:19px 0 13px}
+ .app-banner-section .app-banner-copy p{font-size:14px;line-height:1.7}
+ .app-banner-features{gap:7px;margin-top:21px}
+ .app-banner-features span{padding:8px 10px;font-size:11px}
+ .app-banner-visual{height:340px;margin:8px 0 -14px}
+ .app-banner-rings{width:370px;height:370px}
+ .app-banner-section .app-banner-device{width:min(240px,70%)}
+}
+@media(prefers-reduced-motion:reduce){.app-banner-section .app-banner-device{animation:none;transform:none}}

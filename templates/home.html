@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="hero hero-video" id="inicio">
+<section class="hero hero-video hero-editorial" id="inicio">
  <div class="hero-grid" aria-hidden="true"></div>
  <div class="shell hero-layout">
   <div class="hero-copy reveal">
@@ -12,7 +12,7 @@
     <a class="btn btn-outline-white" href="/convencoes">Consulte seus direitos <svg class="icon sm"><use href="#i-arrow"/></svg></a>
    </div>
   </div>
-  <div class="hero-art reveal">
+  <div class="hero-art hero-video-art reveal">
    <div class="hero-video-shell" data-restart-video-wrap>
     <video class="hero-video-player" data-restart-video autoplay muted playsinline preload="metadata" aria-label="Vídeo institucional do SUEESSOR">
       <source src="/static/hero-video.mp4" type="video/mp4">
@@ -24,39 +24,31 @@
  <div class="shell hero-bottom"><span>União, presença e defesa dos direitos</span><a href="#app-banner">Conheça a novidade <span>↓</span></a></div>
 </section>
 
-<section class="section app-banner-section" id="app-banner" aria-labelledby="app-banner-heading">
-  <div class="shell">
+<section class="app-banner-section" id="app-banner" aria-labelledby="app-banner-heading">
+  <div class="shell app-banner-outer">
     <div class="app-banner-card reveal">
+      <div class="app-banner-accent app-banner-accent-one" aria-hidden="true"></div>
+      <div class="app-banner-accent app-banner-accent-two" aria-hidden="true"></div>
       <div class="app-banner-copy">
-        <span class="eyebrow eyebrow-on-red">Temos novidade por aqui</span>
-        <h2 id="app-banner-heading">Agora o Sueessor tem aplicativo</h2>
+        <span class="app-banner-kicker"><span class="app-banner-kicker-rule" aria-hidden="true"></span>Temos novidade por aqui</span>
+        <h2 id="app-banner-heading">Agora o <span>Sueessor</span> tem aplicativo</h2>
         <p>Baixe e tenha acesso a diversas funcionalidades e informações da entidade para a categoria.</p>
+        <div class="app-banner-features" aria-label="Funcionalidades do aplicativo">
+          <span><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg> Notícias</span>
+          <span><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg> Benefícios</span>
+          <span><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg> Convenções</span>
+        </div>
       </div>
-      <div class="app-banner-device" aria-hidden="true">
-        <div class="app-banner-device-glow"></div>
-        <img src="/static/app-mobile-template.png" alt="" class="app-device-image" loading="lazy">
+      <div class="app-banner-visual" aria-label="Visualização do aplicativo SUEESSOR no celular">
+        <div class="app-banner-rings" aria-hidden="true"></div>
+        <div class="app-banner-device">
+          <img src="/static/app-mobile-template.png" alt="Tela do aplicativo SUEESSOR com acesso a notícias, benefícios, convenções e serviços" class="app-device-image" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="heritage" id="trajetoria" aria-labelledby="heritage-heading">
- <div class="shell"><div class="row gy-5 align-items-center heritage-layout">
-  <div class="col-lg-5"><div class="heritage-intro"><span class="eyebrow">NOSSA TRAJETÓRIA</span><h2 id="heritage-heading">A luta começou em <em>2002.</em><br>O compromisso segue hoje.</h2><p>São décadas de atuação junto aos profissionais que mantêm a saúde de Osasco e região em movimento. Percorra momentos importantes dessa história.</p><a href="/sobre" class="text-link">Leia nossa história completa <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></div>
-  <div class="col-lg-7"><div class="heritage-panel" data-timeline>
-   <div class="heritage-panel-top"><span>12 DE ABRIL DE 2002 — HOJE</span><span class="heritage-progress-label" aria-live="polite" data-heritage-current>Fundação</span></div>
-   <div class="heritage-track" role="group" aria-label="Momentos da história do SUEESSOR" data-heritage-track>
-    <span class="heritage-track-fill" aria-hidden="true" data-heritage-progress></span>
-    <button class="heritage-milestone active" type="button" data-heritage-index="0" aria-pressed="true"><span class="milestone-dot"></span><span>2002</span></button>
-    <button class="heritage-milestone" type="button" data-heritage-index="1" aria-pressed="false"><span class="milestone-dot"></span><span>2005</span></button>
-    <button class="heritage-milestone" type="button" data-heritage-index="2" aria-pressed="false"><span class="milestone-dot"></span><span>2007</span></button>
-    <button class="heritage-milestone" type="button" data-heritage-index="3" aria-pressed="false"><span class="milestone-dot"></span><span>Hoje</span></button>
-   </div>
-   <div class="heritage-story" aria-live="polite"><div class="heritage-date" data-heritage-year>2002</div><div><h3 data-heritage-title>O início de uma história coletiva</h3><p data-heritage-description>O SUEESSOR é fundado em 12 de abril e começa a prestar atendimento odontológico aos associados.</p></div></div>
-   <div class="heritage-controls"><button type="button" class="history-nav" aria-label="Momento anterior" data-heritage-prev><svg class="icon sm"><use href="#i-arrow"/></svg></button><button type="button" class="history-nav" aria-label="Próximo momento" data-heritage-next><svg class="icon sm"><use href="#i-arrow"/></svg></button><span class="heritage-hint">Explore os marcos</span></div>
-  </div></div>
- </div></div>
-</section>
 <section class="section services-section" id="servicos"><div class="shell"><div class="section-intro"><div><span class="eyebrow">NOSSOS SERVIÇOS</span><h2>Presença que orienta.<br><span class="muted-heading">Atuação que protege.</span></h2></div><div class="intro-side"><p>Informação, orientação e apoio para você exercer seus direitos e conhecer os benefícios oferecidos pela entidade.</p><a class="text-link" href="/servicos/beneficios">Conheça os serviços <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></div><div class="service-grid">{% for service in services %}<a href="{{ service.link }}" class="service-card reveal"><span class="service-icon"><svg class="icon lg"><use href="#i-{{ service.icon }}"/></svg></span><h3>{{ service.name }}</h3><p>{{ service.summary }}</p><span class="service-arrow"><svg class="icon"><use href="#i-arrow-up"/></svg></span></a>{% endfor %}</div></div></section>
 <section class="section story-section" id="historia"><div class="shell story-layout"><div class="story-visual reveal"><div class="story-photo"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1100&q=85" loading="lazy" alt="Atendimento em um serviço de saúde" onerror="this.classList.add('hidden-img')"></div></div><div class="story-content reveal"><span class="eyebrow">UMA HISTÓRIA DE ORGANIZAÇÃO</span><h2>Direitos se constroem <em>com união.</em></h2><p>Fundado em 12 de abril de 2002, o Sindicato Único dos Empregados em Estabelecimentos de Serviços de Saúde de Osasco e Região nasceu para fortalecer a categoria e defender direitos.</p><p>Ao longo da sua história, ampliou serviços, fortaleceu o apoio jurídico e conquistou sede própria.</p><div class="mission-inline"><span class="mission-symbol"><svg class="icon"><use href="#i-check"/></svg></span><div><strong>Nossa missão</strong><span>Unir os trabalhadores, defender seus interesses e promover consciência sobre direitos e deveres.</span></div></div><a class="btn btn-dark" href="/sobre">Nossa história <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></div></section>
 <section class="news-section section" id="ultimas-noticias"><div class="shell"><div class="section-intro"><div><span class="eyebrow">NOTÍCIAS DO SINDICATO</span><h2>Informação para <span class="muted-heading">seguir em frente.</span></h2></div><div class="intro-side"><p>Mobilizações, ações e informações sobre direitos para quem trabalha na saúde.</p><a class="text-link" href="/noticias">Acompanhe as notícias <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></div><div class="news-grid">{% for post in news %}<article class="news-card reveal"><a class="news-img-wrap" href="/noticias/{{ post.slug }}"><img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy"></a><div class="news-body"><span class="news-date">{{ post.date[:10].split('-')|reverse|join('.') }}</span><h3><a href="/noticias/{{ post.slug }}">{{ post.title }}</a></h3><p>{{ post.excerpt }}</p><a class="read-link" href="/noticias/{{ post.slug }}">Ler notícia <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></article>{% endfor %}</div><div class="mobile-center"><a href="/noticias" class="btn btn-dark">Todas as notícias <svg class="icon sm"><use href="#i-arrow"/></svg></a></div></div></section>
