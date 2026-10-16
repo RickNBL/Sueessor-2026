@@ -1,19 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="hero" id="inicio">
+<section class="hero hero-video" id="inicio">
  <div class="hero-grid" aria-hidden="true"></div>
  <div class="shell hero-layout">
   <div class="hero-copy reveal">
    <span class="eyebrow eyebrow-light"><span class="dot-white"></span> SINDICATO DOS TRABALHADORES DA SAÚDE DE OSASCO E REGIÃO</span>
-   <h1>A luta por quem cuida da saúde <span class="lime-text">não para.</span></h1>
-   <p>Desde 12 de abril de 2002, o SUEESSOR está ao lado de trabalhadores da saúde na defesa de direitos, na organização coletiva e na valorização da categoria.</p>
-   <div class="hero-actions"><a class="btn btn-lime" href="/sobre">Conheça nossa história <svg class="icon sm"><use href="#i-arrow-up"/></svg></a><a class="btn btn-outline-white" href="/convencoes">Consulte seus direitos <svg class="icon sm"><use href="#i-arrow"/></svg></a></div>
-   <a href="#trajetoria" class="hero-legacy" aria-label="Explore a trajetória do SUEESSOR desde 2002"><span class="legacy-year">2002</span><span class="legacy-line"><span></span></span><span>Uma história de luta que continua <svg class="icon sm"><use href="#i-arrow"/></svg></span></a>
+   <h1>A luta por quem cuida da saúde <span class="lime-text">segue firme.</span></h1>
+   <p>O SUEESSOR está ao lado dos trabalhadores da saúde na defesa de direitos, na organização coletiva e na valorização da categoria em Osasco e região.</p>
+   <div class="hero-actions">
+    <a class="btn btn-lime" href="/sobre">Conheça nossa história <svg class="icon sm"><use href="#i-arrow-up"/></svg></a>
+    <a class="btn btn-outline-white" href="/convencoes">Consulte seus direitos <svg class="icon sm"><use href="#i-arrow"/></svg></a>
+   </div>
   </div>
-  <div class="hero-art reveal"><div class="hero-photo"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1300&q=85" alt="Profissional da área da saúde" onerror="this.classList.add('hidden-img')"><div class="hero-photo-fallback" aria-hidden="true"><svg viewBox="0 0 400 520"><circle cx="215" cy="190" r="74" fill="#9F4C55"/><path d="M100 460V336c0-70 48-112 115-112s115 42 115 112v124" fill="#E4B5BA"/><path d="m144 259 70 90 73-90v201H144Z" fill="#fff"/><path d="M186 308h58v150h-58z" fill="#8C101D"/><path d="M180 177c0-44 65-69 93-23 10 16 7 59-20 79-30 24-73-6-73-56Z" fill="#d6a789"/><path d="M173 178c-9-61 31-101 84-76 21 10 24 38 22 57-22-4-40-20-51-35-10 27-30 42-55 54Z" fill="#432027"/></svg></div></div><span class="hero-outline-year" aria-hidden="true">2002</span></div>
+  <div class="hero-art reveal">
+   <div class="hero-video-shell" data-restart-video-wrap>
+    <video class="hero-video-player" data-restart-video autoplay muted playsinline preload="metadata" aria-label="Vídeo institucional do SUEESSOR">
+      <source src="/static/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" aria-hidden="true"></div>
+   </div>
+  </div>
  </div>
- <div class="shell hero-bottom"><span>União, presença e defesa dos direitos</span><a href="#trajetoria">Nossa trajetória <span>↓</span></a></div>
+ <div class="shell hero-bottom"><span>União, presença e defesa dos direitos</span><a href="#app-banner">Conheça a novidade <span>↓</span></a></div>
 </section>
+
+<section class="section app-banner-section" id="app-banner" aria-labelledby="app-banner-heading">
+  <div class="shell">
+    <div class="app-banner-card reveal">
+      <div class="app-banner-copy">
+        <span class="eyebrow eyebrow-on-red">Temos novidade por aqui</span>
+        <h2 id="app-banner-heading">Agora o Sueessor tem aplicativo</h2>
+        <p>Baixe e tenha acesso a diversas funcionalidades e informações da entidade para a categoria.</p>
+      </div>
+      <div class="app-banner-device" aria-hidden="true">
+        <div class="app-banner-device-glow"></div>
+        <img src="/static/app-mobile-template.png" alt="" class="app-device-image" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="heritage" id="trajetoria" aria-labelledby="heritage-heading">
  <div class="shell"><div class="row gy-5 align-items-center heritage-layout">
   <div class="col-lg-5"><div class="heritage-intro"><span class="eyebrow">NOSSA TRAJETÓRIA</span><h2 id="heritage-heading">A luta começou em <em>2002.</em><br>O compromisso segue hoje.</h2><p>São décadas de atuação junto aos profissionais que mantêm a saúde de Osasco e região em movimento. Percorra momentos importantes dessa história.</p><a href="/sobre" class="text-link">Leia nossa história completa <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div></div>

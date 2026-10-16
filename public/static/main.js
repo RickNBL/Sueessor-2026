@@ -9,6 +9,29 @@
   document.documentElement.classList.add('js-ready');
   if ('IntersectionObserver' in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target)}}),{threshold:.08});$$('.reveal').forEach(e=>obs.observe(e))}else{$$('.reveal').forEach(e=>e.classList.add('in-view'))}
   const header=$('#header');if(header){window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});const toggle=$('.menu-toggle');const mobile=$('#mobile-nav');toggle?.addEventListener('click',()=>{const open=mobile.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');toggle.innerHTML=icon(open?'x':'menu')});$$('.nav-group>button').forEach(b=>b.addEventListener('click',()=>{const parent=b.parentElement;const open=parent.classList.toggle('open');b.setAttribute('aria-expanded',String(open))}));document.addEventListener('click',e=>{if(!e.target.closest('.nav-group'))$$('.nav-group.open').forEach(e=>e.classList.remove('open'))});}
+
+  // Vídeo da home: sem controles, reinicia toda vez que entra em cena.
+  const heroVideo=$('[data-restart-video]');
+  if(heroVideo){
+    heroVideo.controls=false;
+    heroVideo.muted=true;
+    heroVideo.defaultMuted=true;
+    heroVideo.autoplay=true;
+    heroVideo.setAttribute('disablepictureinpicture','');
+    heroVideo.setAttribute('controlslist','nodownload nofullscreen noplaybackrate');
+    const safePlay=()=>heroVideo.play().catch(()=>{});
+    const restart=()=>{try{heroVideo.currentTime=0}catch(_e){} safePlay();};
+    if('IntersectionObserver' in window){
+      const videoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+        if(entry.isIntersecting){restart();}
+        else {heroVideo.pause();}
+      }),{threshold:.55});
+      videoObserver.observe(heroVideo);
+    } else {
+      safePlay();
+    }
+  }
+
   // Pesquisa universal com atalho Ctrl/Cmd+K.
   const overlay=$('#search-overlay'),search=$('#global-search'),results=$('#search-results');
   const pages=[['Nossa história','/sobre'],['Abrangência territorial','/abrangencia'],['Diretoria','/diretoria'],['Convenções coletivas','/convencoes'],['Editais','/documentos/editais'],['Benefícios','/servicos/beneficios'],['Fique sócio','/associe-se'],['Parcerias','/servicos/parcerias'],['Jurídico','/servicos/juridico'],['Modelos de acordo','/documentos/acordos'],['Modelo de oposição','/documentos/oposicao'],['Emissão de boleto','/documentos/financeiro'],['Notícias','/noticias'],['Contato','/contato'],['Denuncie','/denuncie']];
