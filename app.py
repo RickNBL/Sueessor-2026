@@ -26,13 +26,19 @@ from pydantic import BaseModel, Field
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 BASE = Path(__file__).resolve().parent
-DATA = Path(os.getenv('DATA_DIR', str(BASE / 'data'))).resolve()
-UPLOADS = Path(os.getenv('UPLOAD_DIR', str(BASE / 'uploads'))).resolve()
+IS_VERCEL = bool(os.getenv('VERCEL'))
+# The Vercel function bundle is read-only; only /tmp is writable.
+DATA = Path('/tmp/sueessor-data' if IS_VERCEL else os.getenv('DATA_DIR', str(BASE / 'data'))).resolve()
+UPLOADS = Path('/tmp/sueessor-uploads' if IS_VERCEL else os.getenv('UPLOAD_DIR', str(BASE / 'uploads'))).resolve()
+# Persistent data on Vercel requires a managed Postgres database.
+DATABASE_URL = os.getenv('DATABASE_URL', '') or os.getenv('POSTGRES_URL', '')
+USE_POSTGRES = DATABASE_URL.startswith(('postgresql://','postgres://'))
+PERSISTENT = (not IS_VERCEL) or USE_POSTGRES
 DATA.mkdir(parents=True, exist_ok=True)
 UPLOADS.mkdir(parents=True, exist_ok=True)
 DB = DATA / 'portal.db'
 ADMIN_ROUTE = '/central-restrita/entrar'
-COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'false').lower() == 'true'
+COOKIE_SECURE = IS_VERCEL or os.getenv('SESSION_COOKIE_SECURE', 'false').lower() == 'true'
 MAX_IMAGE = 10 * 1024 * 1024
 MAX_VIDEO = 80 * 1024 * 1024
 
@@ -60,7 +66,32 @@ NEWS_SEED = [
 ]
 
 
+class PostgresDB:
+    """Small compatibility wrapper for this project's SQLite-style placeholders."""
+    def __init__(self, url):
+        import psycopg
+        from psycopg.rows import dict_row
+        self.connection = psycopg.connect(url, row_factory=dict_row, connect_timeout=8)
+
+    def __enter__(self):
+        self.connection.__enter__()
+        return self
+
+    def __exit__(self, typ, value, traceback):
+        return self.connection.__exit__(typ, value, traceback)
+
+    def execute(self, query, params=()):
+        return self.connection.execute(query.replace('?', '%s'), params)
+
+    def executescript(self, sql):
+        for statement in sql.split(';'):
+            if statement.strip():
+                self.execute(statement)
+
+
 def db():
+    if USE_POSTGRES:
+        return PostgresDB(DATABASE_URL)
     conn = sqlite3.connect(DB, timeout=10)
     conn.row_factory = sqlite3.Row
     conn.execute('PRAGMA foreign_keys=ON')
@@ -85,23 +116,46 @@ def verify_pass(password, stored):
 
 
 def init_db():
-    with db() as c:
-        c.executescript('''
+    # PostgreSQL is persistent on Vercel; local development continues to use SQLite.
+    schema = '''
         CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS sessions(token_hash TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id), csrf TEXT NOT NULL, expires INTEGER NOT NULL);
         CREATE TABLE IF NOT EXISTS posts(id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT UNIQUE NOT NULL, title TEXT NOT NULL, excerpt TEXT NOT NULL, body TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL DEFAULT '', images TEXT NOT NULL DEFAULT '[]', video TEXT NOT NULL DEFAULT '', place TEXT NOT NULL DEFAULT '', published INTEGER NOT NULL DEFAULT 0, source TEXT NOT NULL DEFAULT '', date TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
         CREATE TABLE IF NOT EXISTS inquiries(id INTEGER PRIMARY KEY AUTOINCREMENT, kind TEXT NOT NULL, name TEXT NOT NULL DEFAULT '', contact TEXT NOT NULL DEFAULT '', company TEXT NOT NULL DEFAULT '', subject TEXT NOT NULL DEFAULT '', message TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
-        ''')
+    '''
+    if USE_POSTGRES:
+        schema = schema.replace('id INTEGER PRIMARY KEY AUTOINCREMENT', 'id SERIAL PRIMARY KEY').replace('id INTEGER PRIMARY KEY,', 'id SERIAL PRIMARY KEY,')
+    with db() as c:
+        c.executescript(schema)
         user = os.getenv('ADMIN_USERNAME','').strip()
         password = os.getenv('ADMIN_PASSWORD','')
         if user and len(password) >= 14 and not password.upper().startswith(('SUBSTITUA', 'CHANGE_ME', 'TROQUE_A_SENHA')) and not c.execute('SELECT id FROM users LIMIT 1').fetchone():
-            c.execute('INSERT INTO users(username,password_hash) VALUES (?,?)', (user,hash_pass(password)))
-        if c.execute('SELECT count(*) FROM posts').fetchone()[0] == 0:
+            c.execute('INSERT INTO users(username,password_hash) VALUES (?,?) ON CONFLICT (username) DO NOTHING', (user,hash_pass(password)))
+        if c.execute('SELECT count(*) AS total FROM posts').fetchone()['total'] == 0:
             for n in NEWS_SEED:
                 c.execute('''INSERT INTO posts (slug,title,excerpt,body,category,image,images,video,place,published,source,date)
-                  VALUES (?,?,?,?,?,?,?,?,?,1,?,?)''', (n['slug'],n['title'],n['excerpt'],n['body'],n['category'],n['image'],'[]','',n['place'],n['source'],n['date']))
+                  VALUES (?,?,?,?,?,?,?,?,?,1,?,?) ON CONFLICT (slug) DO NOTHING''', (n['slug'],n['title'],n['excerpt'],n['body'],n['category'],n['image'],'[]','',n['place'],n['source'],n['date']))
 
 init_db()
+
+@app.middleware('http')
+async def require_persistent_backend_for_writes(request: Request, call_next):
+    # Never silently accept private reports, news or login into volatile /tmp storage.
+    if IS_VERCEL and not PERSISTENT:
+        if request.url.path.startswith('/central-restrita/'):
+            return HTMLResponse(
+                '<!doctype html><html lang="pt-BR"><meta charset="utf-8">'
+                '<meta name="viewport" content="width=device-width,initial-scale=1">'
+                '<title>Painel indisponível • SUEESSOR</title>'
+                '<body style="font:17px system-ui;max-width:650px;margin:12vh auto;padding:24px;line-height:1.55">'
+                '<h1>Central editorial aguardando configuração</h1>'
+                '<p>O site público já pode ser visualizado. Para publicar notícias e receber formulários, '
+                'adicione um banco PostgreSQL persistente nas configurações da Vercel e defina suas credenciais administrativas.</p>'
+                '<p><a href="/">Voltar para o site</a></p></body></html>', status_code=503,
+                headers={'Cache-Control':'no-store','X-Robots-Tag':'noindex'})
+        if request.url.path.startswith('/api/admin/') or (request.method not in ('GET','HEAD','OPTIONS') and request.url.path.startswith('/api/')):
+            return JSONResponse({'detail':'Configure DATABASE_URL (PostgreSQL) para habilitar publicações e formulários com persistência.'}, status_code=503)
+    return await call_next(request)
 
 
 def rows(sql, params=()):
@@ -369,8 +423,9 @@ async def save_post(request:Request,data:NewsInput):
     if data.video and not (video_embed(data.video) or (safe_url(data.video) and urlparse(data.video).path.lower().endswith(('.mp4','.webm')))):
         raise HTTPException(400,'Vídeo inválido. Use YouTube, Vimeo ou MP4/WebM HTTPS.')
     with db() as c:
-        cur=c.execute('''INSERT INTO posts(slug,title,excerpt,body,category,image,images,video,place,published,date)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
+        insert_sql='''INSERT INTO posts(slug,title,excerpt,body,category,image,images,video,place,published,date)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?)'''
+        cur=c.execute(insert_sql + (' RETURNING id' if USE_POSTGRES else ''),
         ('tmp-'+secrets.token_hex(8),data.title.strip(),data.excerpt.strip(),data.body.strip(),data.category.strip(),data.image,json.dumps(data.images),data.video,data.place.strip(),int(data.published),datetime.now(timezone.utc).isoformat()))
         ident=cur.lastrowid
         c.execute('UPDATE posts SET slug=? WHERE id=?',(slugify(data.title)+'-'+str(ident),ident))
@@ -428,6 +483,10 @@ async def upload(request:Request, file:UploadFile=File(...)):
         data.extend(chunk)
         if len(data)>maxsize: raise HTTPException(413, 'Arquivo excede tamanho máximo')
     if not data: raise HTTPException(400,'Arquivo vazio')
+    if IS_VERCEL and len(data) > 4 * 1024 * 1024:
+        raise HTTPException(413,'Na Vercel, o upload direto aceita até aproximadamente 4 MB. Use um link HTTPS para vídeos maiores.')
+    if IS_VERCEL and not os.getenv('BLOB_READ_WRITE_TOKEN'):
+        raise HTTPException(503,'Configure Vercel Blob para salvar arquivos. Links HTTPS de mídia já podem ser usados.')
     key=secrets.token_urlsafe(20).replace('-','a').replace('_','b').lower()
     if is_video:
         ext='mp4' if name.endswith('.mp4') else 'webm'
@@ -435,7 +494,11 @@ async def upload(request:Request, file:UploadFile=File(...)):
         if not good: raise HTTPException(400,'Formato de vídeo inválido')
         # extensão, assinatura e content-type controlados; nunca serve HTML como upload
         out=UPLOADS / (key+'.'+ext)
-        out.write_bytes(data)
+        if IS_VERCEL:
+            processed=bytes(data)
+            mime='video/'+ext
+        else:
+            out.write_bytes(data)
     else:
         try:
             with Image.open(io.BytesIO(data)) as img:
@@ -445,9 +508,22 @@ async def upload(request:Request, file:UploadFile=File(...)):
                 clean=ImageOps.exif_transpose(img).convert('RGB')
                 clean.thumbnail((2400,2400),Image.Resampling.LANCZOS)
                 out=UPLOADS/(key+'.jpg')
-                clean.save(out,'JPEG',quality=87,optimize=True)
+                if IS_VERCEL:
+                    buf=io.BytesIO()
+                    clean.save(buf,'JPEG',quality=87,optimize=True)
+                    processed=buf.getvalue()
+                    mime='image/jpeg'
+                else:
+                    clean.save(out,'JPEG',quality=87,optimize=True)
         except (UnidentifiedImageError,OSError,ValueError):
             raise HTTPException(400,'Envie uma imagem válida')
+    if IS_VERCEL:
+        from vercel.blob import AsyncBlobClient
+        try:
+            blob = await AsyncBlobClient().put('noticias/'+out.name, processed, access='public', content_type=mime)
+            return {'ok':True,'url':blob.url}
+        except Exception as exc:
+            raise HTTPException(502,'Não foi possível enviar a mídia ao Vercel Blob; verifique a conexão do armazenamento.') from exc
     return {'ok':True,'url':'/uploads/'+out.name}
 
 @app.get('/robots.txt')
