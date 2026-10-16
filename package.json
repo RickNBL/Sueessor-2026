@@ -1,0 +1,13 @@
+{
+  "name": "sueessor-portal",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Interações em TypeScript para o portal institucional",
+  "scripts": {
+    "build:ts": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}
