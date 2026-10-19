@@ -13,7 +13,7 @@ if (carousel) {
   const zoomImage = lightbox?.querySelector<HTMLImageElement>('[data-promo-zoom-image]');
   const closeZoom = lightbox?.querySelector<HTMLButtonElement>('[data-promo-close]');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const intervalMs = 7500;
+  const intervalMs = 10000; // 10 segundos entre os destaques quando o carrossel estiver ativo.
   let active = 0;
   let auto = !prefersReducedMotion;
   let inView = false;

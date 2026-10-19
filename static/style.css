@@ -335,3 +335,85 @@ body{background:#fff;color:var(--ink)}
   .partner-campaign{padding:18px}
 }
 @media(prefers-reduced-motion:reduce){.promo-slide{transition:none!important}.promo-arrow{transition:none!important}}
+
+/* Assessoria jurídica — informação clara e atendimento presencial */
+.legal-service h2{margin:15px 0 23px}
+.legal-intro{display:grid;gap:16px;margin-bottom:46px}
+.legal-intro p{font-size:15px;line-height:1.9;color:#556171;margin:0}
+.legal-section-heading h3{font:800 clamp(24px,3vw,32px)/1.2 var(--display);letter-spacing:-.04em;margin:12px 0 25px;color:#25202a}
+.legal-hours-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.legal-hours-card{background:#fcf8f9;border:1px solid #ecdadd;border-radius:22px;padding:25px 24px;transition:transform .2s,border-color .2s}
+.legal-hours-card:hover{transform:translateY(-3px);border-color:#cf9299}
+.legal-hours-top{display:flex;align-items:center;gap:11px;color:#a70c17;font-size:12px;font-weight:800;margin-bottom:21px}
+.legal-hours-top .icon{height:19px;width:19px}
+.legal-hours-card h4{font:800 18px/1.3 var(--display);letter-spacing:-.025em;margin:0 0 18px;color:#2d2027}
+.legal-hours-time{font:800 27px/1.2 var(--display);letter-spacing:-.045em;color:#ba0a0a!important;margin:0 0 12px!important}
+.legal-hours-card p:not(.legal-hours-time){font-size:13px;line-height:1.65;color:#645d62;margin:0}
+.legal-contact{margin-top:34px;background:linear-gradient(135deg,#fff,#fcf2f3);padding:34px;border:1px solid #eddddf;border-radius:24px}
+.legal-contact h3{font:800 27px/1.22 var(--display);letter-spacing:-.03em;margin:10px 0 17px;color:#2c2028}
+.legal-contact p{line-height:1.82;color:#59535a;margin:0 0 15px;font-size:14px}
+.legal-contact strong{color:#3b212c}
+.legal-contact p a{color:#a20b17;text-decoration:underline;text-underline-offset:3px}
+.legal-contact p a:hover{color:#71080f}
+.legal-contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.legal-contact-actions .btn{font-size:12px}
+@media(max-width:650px){.legal-intro p{font-size:14px}.legal-hours-grid{grid-template-columns:1fr}.legal-hours-card{padding:22px}.legal-contact{padding:24px 20px}.legal-contact-actions{flex-direction:column}.legal-contact-actions .btn{width:100%}}
+
+/* Convenções coletivas — logos institucionais e cards responsivos */
+.convention-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:30px 0 58px}
+.convention-card{display:flex;flex-direction:column;min-width:0;min-height:306px;padding:19px;background:#fff;border:1px solid #eadfe1;border-radius:19px;color:var(--ink);overflow:hidden;box-shadow:0 14px 40px -36px rgba(75,5,16,.32);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.convention-card:hover{transform:translateY(-5px);border-color:#ba0a0a;box-shadow:0 23px 45px -35px rgba(96,10,22,.42)}
+.convention-card:focus-visible{outline:3px solid #ba0a0a;outline-offset:4px}
+.convention-logo-area{width:100%;height:124px;display:grid;place-items:center;padding:18px;background:#f9f6f7;border-radius:12px}
+.convention-logo{display:block;object-fit:contain;object-position:center;width:auto;height:auto;max-width:min(100%,190px);max-height:84px}
+.convention-content{display:flex;flex-direction:column;flex:1;padding:18px 6px 3px}
+.convention-content h3{font-size:19px;line-height:1.2;letter-spacing:-.025em;margin:0 0 8px;color:#2d1f25}
+.convention-content p{font-size:12px;line-height:1.6;color:#6c6370;margin:0 0 18px}
+.convention-link{display:flex;gap:8px;align-items:center;margin-top:auto;color:#a60818;font-size:12px;font-weight:800}
+.convention-link .icon{transition:transform .25s ease}
+.convention-card:hover .convention-link .icon{transform:translate(3px,-3px)}
+@media(max-width:620px){.convention-grid{grid-template-columns:1fr;gap:13px;margin-top:26px}.convention-card{min-height:0;padding:15px}.convention-logo-area{height:112px}.convention-content{padding:16px 5px 5px}.convention-content h3{font-size:18px}.convention-content p{margin-bottom:16px}}
+@media(prefers-reduced-motion:reduce){.convention-card,.convention-link .icon{transition:none}.convention-card:hover{transform:none}}
+
+/* Convenções coletivas: acervo real por entidade e ano */
+.convention-grid{align-items:start}
+.conventions-section .convention-card{display:block;min-height:0;padding:0;transition:border-color .2s ease,box-shadow .2s ease}
+.conventions-section .convention-card:hover{transform:none;box-shadow:0 22px 48px -41px rgba(90,6,17,.42)}
+.convention-card-summary{display:block;padding:19px;cursor:pointer;list-style:none;user-select:none}
+.convention-card-summary::-webkit-details-marker,.convention-year-summary::-webkit-details-marker{display:none}
+.convention-card-summary::marker,.convention-year-summary::marker{content:''}
+.convention-card-summary:focus-visible,.convention-year-summary:focus-visible{outline:3px solid #ba0a0a;outline-offset:-3px;border-radius:12px}
+.convention-card-summary .convention-content{padding-bottom:0}
+.convention-expander{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;font-weight:800;color:#a60818;padding-top:11px;margin-top:auto;border-top:1px solid #f0e6e8}
+.convention-expander .icon,.convention-year-summary>.icon{transition:transform .25s ease;flex:none}
+.convention-card[open]>.convention-card-summary .convention-expander>.icon,.convention-year[open]>.convention-year-summary>.icon{transform:rotate(180deg)}
+.convention-card[open]{border-color:#db9ba5}
+.convention-card[open] .convention-card-summary{padding-bottom:13px}
+.convention-years{border-top:1px solid #f1e3e6;padding:14px 18px 20px;background:#fff}
+.convention-years-label{font-size:10px!important;letter-spacing:.10em;text-transform:uppercase;color:#89757d!important;font-weight:800;margin:0 0 13px!important}
+.convention-year{border:1px solid #f0e4e7;border-radius:12px;overflow:hidden;margin-bottom:8px;background:#fcfafb}
+.convention-year:last-child{margin-bottom:0}
+.convention-year[open]{border-color:#e4c1c7;background:#fff}
+.convention-year-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:49px;padding:12px 13px;color:#402630;font-size:14px}
+.convention-year-summary:hover{background:#fdf1f3}
+.convention-year-main{display:flex;align-items:center;gap:12px;min-width:0}
+.convention-year-value{font:800 15px/1 var(--display);color:#51131c}
+.convention-year-count{font-size:10px;font-weight:600;color:#99848d;white-space:nowrap}
+.convention-year-summary>.icon{color:#971624}
+.convention-year-files{display:grid;gap:10px;padding:12px;border-top:1px solid #f0e4e7}
+.convention-file{padding:11px 12px;background:#fff;border:1px solid #f0e5e8;border-radius:10px;display:grid;gap:11px}
+.convention-file-header{display:flex;gap:10px;align-items:center;min-width:0}
+.convention-file-icon{flex:none;width:36px;height:36px;display:grid;place-items:center;background:#faedf0;border-radius:10px;color:#ba0a0a}
+.convention-file-icon .icon{width:18px;height:18px}
+.convention-file-meta{display:grid;gap:5px;min-width:0}
+.convention-file-meta strong{font-size:11px;color:#3c2630;line-height:1.4}
+.convention-file-meta>span{font-size:10px;color:#8e7b82}
+.convention-file-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.convention-file-actions a{padding:9px 6px;min-height:37px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:10px;font-weight:800;white-space:nowrap;border:1px solid #efd5d9;transition:background .2s,border-color .2s,color .2s}
+.convention-view{background:#fff;color:#94111f}
+.convention-view:hover{border-color:#a40a1a;background:#fff2f4}
+.convention-download{background:#ba0a0a;color:#fff;border-color:#ba0a0a!important}
+.convention-download:hover{background:#920912;color:#fff}
+.convention-file-actions a:focus-visible{outline:3px solid #ba0a0a;outline-offset:2px}
+@media(max-width:650px){.convention-card-summary{padding:16px}.convention-years{padding:12px}.convention-file{padding:10px}.convention-year-count{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.convention-expander .icon,.convention-year-summary>.icon{transition:none}}

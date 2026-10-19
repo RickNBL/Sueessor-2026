@@ -45,7 +45,12 @@ MAX_VIDEO = 80 * 1024 * 1024
 app = FastAPI(title='SUEESSOR — Portal', docs_url=None, redoc_url=None, openapi_url=None)
 app.mount('/static', StaticFiles(directory=str(BASE / 'static')), name='static')
 app.mount('/uploads', StaticFiles(directory=str(UPLOADS)), name='uploads')
+# PDFs públicos em public/: na Vercel são servidos como assets estáticos; localmente, pelo FastAPI.
+if not IS_VERCEL:
+    app.mount('/convencoes/arquivos', StaticFiles(directory=str(BASE / 'public' / 'convencoes' / 'arquivos')), name='convencoes-arquivos')
 templates = Jinja2Templates(directory=str(BASE / 'templates'))
+CONVENTION_DOCS = json.loads((BASE / 'static' / 'convention_index.json').read_text(encoding='utf-8'))
+CONVENTION_COUNTS = {key:sum(len(year['documents']) for year in years) for key,years in CONVENTION_DOCS.items()}
 
 AREAS = ['Barueri', 'Carapicuíba', 'Cotia', 'Embu', 'Embu-Guaçu', 'Ibiúna', 'Itapecerica da Serra', 'Itapevi', 'Jandira', 'Osasco', 'Santana de Parnaíba', 'Taboão da Serra', 'Vargem Grande Paulista']
 DIRECTORY = [
@@ -292,7 +297,7 @@ def director(request:Request):
 
 @app.get('/convencoes', response_class=HTMLResponse)
 def conventions(request:Request):
-    return render(request,'conventions.html',page='convencoes')
+    return render(request,'conventions.html',page='convencoes',docs_by_entity=CONVENTION_DOCS,doc_counts=CONVENTION_COUNTS)
 
 @app.get('/servicos/{kind}', response_class=HTMLResponse)
 def services(request:Request,kind:str):
