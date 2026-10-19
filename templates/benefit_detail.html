@@ -21,13 +21,12 @@
          {% if image.caption and slug != 'espaco-para-eventos' %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
        </figure>
        {% endfor %}
-       <div class="clinic-gallery-wash" aria-hidden="true"></div>
      </div>
      <div class="clinic-gallery-controls">
        <button type="button" class="clinic-gallery-btn" data-clinic-prev aria-label="Foto anterior">‹</button>
-       <div class="clinic-gallery-dots" role="tablist" aria-label="Selecionar foto">
+       <div class="clinic-gallery-dots" role="group" aria-label="Selecionar foto">
          {% for image in detail.gallery %}
-         <button type="button" class="clinic-gallery-dot {% if loop.first %}is-active{% endif %}" data-clinic-dot data-index="{{ loop.index0 }}" aria-label="Ir para a foto {{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}"></button>
+         <button type="button" class="clinic-gallery-dot {% if loop.first %}is-active{% endif %}" data-clinic-dot data-index="{{ loop.index0 }}" aria-label="Ir para a foto {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>
          {% endfor %}
        </div>
        <button type="button" class="clinic-gallery-btn" data-clinic-next aria-label="Próxima foto">›</button>
@@ -112,4 +111,4 @@
 </section>
 <section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outros benefícios</h2><a class="text-link" href="/servicos/beneficios">Ver todos <svg class="icon sm"><use href="#i-arrow"/></svg></a></div><div class="benefit-more-list">{% for item in benefits if item.slug != slug %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>{% endfor %}</div></div></section>
 {% endblock %}
-{% block scripts %}<script src="/static/benefits.js" defer></script>{% endblock %}
+{% block scripts %}<script src="/static/benefits.js?v=fix-carrossel-20261019" defer></script>{% endblock %}

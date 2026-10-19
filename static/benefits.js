@@ -1,99 +1,94 @@
-/* Benefícios: feedback de clique e carrossel da clínica. */
+/* Carrosséis dos benefícios: sem dependências e com ciclo de 5 s.
+   A mesma versão está em static/ e public/static/ para funcionar na Vercel. */
 (() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  'use strict';
+  function init() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  document.querySelectorAll('[data-benefit-card]').forEach((card) => {
-    card.addEventListener('click', (event) => {
-      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      if (reduceMotion.matches) return;
-      if (card.dataset.navigating === 'true') { event.preventDefault(); return; }
-      event.preventDefault();
-      card.dataset.navigating = 'true';
-      card.classList.add('benefit-card-clicked');
-      const target = card.href;
-      window.setTimeout(() => { window.location.assign(target); }, 370);
-    });
-  });
-
-  document.querySelectorAll('[data-clinic-carousel]').forEach((carousel) => {
-    const slides = Array.from(carousel.querySelectorAll('[data-clinic-slide]'));
-    const dots = Array.from(carousel.querySelectorAll('[data-clinic-dot]'));
-    const nextBtn = carousel.querySelector('[data-clinic-next]');
-    const prevBtn = carousel.querySelector('[data-clinic-prev]');
-    const interval = Number(carousel.dataset.interval || 5000);
-    if (!slides.length) return;
-
-    let active = 0;
-    let timer = null;
-    let paused = false;
-
-    const update = (index) => {
-      active = (index + slides.length) % slides.length;
-      slides.forEach((slide, slideIndex) => {
-        const isActive = slideIndex === active;
-        slide.classList.toggle('is-active', isActive);
-        slide.setAttribute('aria-hidden', String(!isActive));
+    document.querySelectorAll('[data-benefit-card]').forEach((card) => {
+      card.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        if (reducedMotion.matches) return;
+        if (card.dataset.navigating === 'true') { event.preventDefault(); return; }
+        event.preventDefault();
+        card.dataset.navigating = 'true';
+        card.classList.add('benefit-card-clicked');
+        const target = card.href;
+        window.setTimeout(() => window.location.assign(target), 370);
       });
-      dots.forEach((dot, dotIndex) => {
-        const isActive = dotIndex === active;
-        dot.classList.toggle('is-active', isActive);
-        dot.setAttribute('aria-selected', String(isActive));
-      });
-    };
-
-    const start = () => {
-      if (reduceMotion.matches || paused || slides.length < 2) return;
-      stop();
-      timer = window.setInterval(() => update(active + 1), interval);
-    };
-
-    const stop = () => {
-      if (timer) window.clearInterval(timer);
-      timer = null;
-    };
-
-    const pause = () => { paused = true; stop(); };
-    const resume = () => { paused = false; start(); };
-
-    nextBtn?.addEventListener('click', () => { update(active + 1); start(); });
-    prevBtn?.addEventListener('click', () => { update(active - 1); start(); });
-    dots.forEach((dot, index) => dot.addEventListener('click', () => { update(index); start(); }));
-    carousel.addEventListener('mouseenter', pause);
-    carousel.addEventListener('mouseleave', resume);
-    carousel.addEventListener('focusin', pause);
-    carousel.addEventListener('focusout', () => {
-      const focusedInside = carousel.contains(document.activeElement);
-      if (!focusedInside) resume();
     });
 
-    let touchStartX = 0;
-    let touchDeltaX = 0;
-    carousel.addEventListener('touchstart', (event) => {
-      touchStartX = event.changedTouches[0]?.clientX || 0;
-      touchDeltaX = 0;
-    }, {passive: true});
-    carousel.addEventListener('touchmove', (event) => {
-      touchDeltaX = (event.changedTouches[0]?.clientX || 0) - touchStartX;
-    }, {passive: true});
-    carousel.addEventListener('touchend', () => {
-      if (Math.abs(touchDeltaX) > 45) {
-        update(active + (touchDeltaX < 0 ? 1 : -1));
-        start();
+    document.querySelectorAll('[data-clinic-carousel]').forEach((root) => {
+      const slides = [...root.querySelectorAll('[data-clinic-slide]')];
+      const dots = [...root.querySelectorAll('[data-clinic-dot]')];
+      if (!slides.length) return;
+
+      const delay = Math.max(1500, Number(root.dataset.interval) || 5000);
+      const prev = root.querySelector('[data-clinic-prev]');
+      const next = root.querySelector('[data-clinic-next]');
+      let active = 0;
+      let timer = null;
+      let hovered = false;
+      let focused = false;
+      let inView = !('IntersectionObserver' in window);
+
+      const render = (index) => {
+        active = (index + slides.length) % slides.length;
+        slides.forEach((slide, n) => {
+          const current = n === active;
+          slide.classList.toggle('is-active', current);
+          slide.setAttribute('aria-hidden', String(!current));
+        });
+        dots.forEach((dot, n) => {
+          const current = n === active;
+          dot.classList.toggle('is-active', current);
+          dot.setAttribute('aria-pressed', String(current));
+        });
+      };
+
+      const stop = () => {
+        if (timer !== null) window.clearInterval(timer);
+        timer = null;
+      };
+      const canPlay = () => slides.length > 1 && inView && !document.hidden && !reducedMotion.matches && !hovered && !focused;
+      const start = () => {
+        stop();
+        if (canPlay()) timer = window.setInterval(() => render(active + 1), delay);
+      };
+      const move = (delta) => { render(active + delta); start(); };
+
+      prev?.addEventListener('click', () => move(-1));
+      next?.addEventListener('click', () => move(1));
+      dots.forEach((dot, n) => dot.addEventListener('click', () => { render(n); start(); }));
+
+      root.addEventListener('mouseenter', () => { hovered = true; stop(); });
+      root.addEventListener('mouseleave', () => { hovered = false; start(); });
+      root.addEventListener('focusin', () => { focused = true; stop(); });
+      root.addEventListener('focusout', () => {
+        window.setTimeout(() => { focused = root.contains(document.activeElement); start(); }, 0);
+      });
+      document.addEventListener('visibilitychange', start);
+      reducedMotion.addEventListener?.('change', start);
+
+      let touchX = null;
+      root.addEventListener('touchstart', (event) => { touchX = event.changedTouches[0]?.clientX ?? null; }, {passive:true});
+      root.addEventListener('touchend', (event) => {
+        if (touchX === null) return;
+        const distance = (event.changedTouches[0]?.clientX ?? touchX) - touchX;
+        touchX = null;
+        if (Math.abs(distance) >= 40) move(distance < 0 ? 1 : -1);
+      }, {passive:true});
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          inView = entries.some(e => e.isIntersecting);
+          start();
+        }, { threshold: 0.15 }).observe(root);
       }
+      render(0);
+      start();
     });
-
-    const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!paused) start();
-        } else {
-          stop();
-        }
-      });
-    }, {threshold: 0.45}) : null;
-
-    if (observer) observer.observe(carousel);
-    update(0);
-    start();
-  });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
+  else init();
 })();
