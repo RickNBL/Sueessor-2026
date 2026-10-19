@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Benefícios | SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-hero">
+  <div class="shell benefit-hero-inner">
+    <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><span>Benefícios</span></nav>
+    <span class="eyebrow eyebrow-light">BENEFÍCIOS PARA ASSOCIADOS</span>
+    <h1>Mais benefícios.<br><em>Mais cuidado com você.</em></h1>
+    <p>Descubra os serviços, espaços e oportunidades que fazem parte do SUEESSOR. Escolha um benefício para conhecer os detalhes.</p>
+  </div>
+</section>
+<section class="benefit-index" aria-labelledby="benefit-index-heading">
+  <div class="shell">
+    <div class="benefit-index-heading"><div><span class="eyebrow">DESCUBRA SEUS BENEFÍCIOS</span><h2 id="benefit-index-heading">Tudo o que você precisa, <em>em um só lugar.</em></h2></div><p>Passe o mouse para explorar ou toque em um card para saber mais.</p></div>
+    <div class="benefit-grid">
+    {% for benefit in benefits %}
+      <a class="benefit-card" href="{{ benefit.href }}" data-benefit-card aria-label="Saiba mais sobre {{ benefit.title }}">
+        <div class="benefit-card-inner">
+          <span class="benefit-card-top"><span class="benefit-icon"><svg class="icon lg" aria-hidden="true"><use href="#i-{{ benefit.icon }}"/></svg></span><svg class="icon benefit-diagonal" aria-hidden="true"><use href="#i-arrow-up"/></svg></span>
+          <span class="benefit-tag">{{ benefit.tag }}</span>
+          <h3>{{ benefit.title }}</h3>
+          <p>{{ benefit.summary }}</p>
+          <span class="benefit-discover">Conhecer benefício <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+    {% endfor %}
+    </div>
+    <div class="benefit-bottom"><div><strong>Tem dúvidas sobre como utilizar os benefícios?</strong><p>A equipe do sindicato pode orientar você sobre agendamentos e condições de acesso.</p></div><a class="btn btn-dark" href="/contato">Fale com o SUEESSOR <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div>
+    <a class="benefit-secondary-link" href="/convencoes">Acordos e convenções coletivas <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/benefits.js" defer></script>{% endblock %}

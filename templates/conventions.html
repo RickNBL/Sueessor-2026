@@ -38,6 +38,9 @@
             </div>
           </summary>
           <div class="convention-years">
+            {% if key == 'sinog' %}
+            <p class="convention-archive-notice"><strong>Arquivo SINOG completo:</strong> reunimos todos os 15 PDFs recebidos em <code>sinog.rar</code>. Entre eles há 11 arquivos identificados como <strong>SINBFIR</strong> e uma cópia repetida de 2019/2020. Mantivemos os nomes originais e indicamos esses casos para evitar confusão entre as entidades.</p>
+            {% endif %}
             <p class="convention-years-label">Documentos por ano</p>
             {% for group in docs_by_entity[key] %}
             <details class="convention-year">
@@ -52,6 +55,8 @@
                     <span class="convention-file-icon" aria-hidden="true"><svg class="icon"><use href="#i-file"/></svg></span>
                     <div class="convention-file-meta">
                       <strong>{{ pdf.label }}{% if pdf.period != group.year|string %} — {{ pdf.period }}{% endif %}</strong>
+                      {% if pdf.note %}<span class="convention-file-note">{{ pdf.note }}</span>{% endif %}
+                      <span class="convention-original-filename">{{ pdf.filename }}</span>
                       <span>PDF · {{ pdf.pages }} {% if pdf.pages == 1 %}página{% else %}páginas{% endif %} · {{ pdf.size_mb }} MB</span>
                     </div>
                   </div>

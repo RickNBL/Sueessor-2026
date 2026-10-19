@@ -10,7 +10,7 @@ ENTITIES=('sindihclor','sindhosp','sindhosfil','sinamge','sinog','sinbfir')
 
 def test_every_legal_document_attached_to_correct_card_and_year():
     assert tuple(INDEX)==ENTITIES
-    assert sum(len(g['documents']) for sections in INDEX.values() for g in sections)==94
+    assert sum(len(g['documents']) for sections in INDEX.values() for g in sections)==106
     for entity, groups in INDEX.items():
         assert groups
         assert [g['year'] for g in groups]==sorted((g['year'] for g in groups),reverse=True)
@@ -30,7 +30,17 @@ def test_every_legal_document_attached_to_correct_card_and_year():
 def test_corrected_metadata_and_no_misassigned_sinog_docs():
     sinamge={g['year']:[d['filename'] for d in g['documents']] for g in INDEX['sinamge']}
     assert '2-sinamge-2013.pdf' in sinamge[2023]  # capa do PDF: 2023/2024
-    assert all('sinbfir' not in d['filename'].lower() for y in INDEX['sinog'] for d in y['documents'])
+    # Todos os 15 membros originais do RAR aparecem, incluindo 11 nomes SINBFIR.
+    filenames={d['filename'] for y in INDEX['sinog'] for d in y['documents']}
+    assert len(filenames)==15
+    assert sum('sinbfir' in f for f in filenames)==11
+    assert '3-sinog_2019_2020.pdf' in filenames
+    for group in INDEX['sinog']:
+        for pdf in group['documents']:
+            if 'sinbfir' in pdf['filename']:
+                assert 'SINBFIR' in pdf['label']
+                assert pdf['note']
+    assert any(d.get('note') for group in INDEX['sinog'] for d in group['documents'])
     assert not any(g['year']==2009 for g in INDEX['sindihclor'])  # PDF arquivado era do SINDHOSP
 
 
@@ -41,8 +51,8 @@ def test_cards_expand_and_pdf_links_work():
     assert res.status_code==200
     assert res.text.count('class="convention-card"')==6
     assert res.text.count('class="convention-year"')>=60
-    assert res.text.count('class="convention-download"')==94
-    assert res.text.count('class="convention-view"')==94
+    assert res.text.count('class="convention-download"')==106
+    assert res.text.count('class="convention-view"')==106
     assert 'download="' in res.text
     for entity in ENTITIES:
         link=INDEX[entity][0]['documents'][0]['url']

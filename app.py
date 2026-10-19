@@ -60,10 +60,122 @@ DIRECTORY = [
 ]
 SERVICE_CARDS = [
   {'icon':'scale','name':'Assessoria jurídica','summary':'Orientação e defesa dos direitos trabalhistas da categoria.','link':'/servicos/juridico'},
-  {'icon':'heart','name':'Clínica e odontologia','summary':'Saúde, acompanhamento clínico e atendimento odontológico aos associados.','link':'/servicos/beneficios'},
+  {'icon':'heart','name':'Clínica e odontologia','summary':'Saúde, acompanhamento clínico e atendimento odontológico aos associados.','link':'/servicos/clinica-medica'},
   {'icon':'file','name':'Convenções coletivas','summary':'Acesse acordos, instrumentos coletivos e documentos da sua categoria.','link':'/convencoes'},
   {'icon':'users','name':'Benefícios e parcerias','summary':'Mais possibilidades de cuidado, lazer e economia para você e sua família.','link':'/servicos/beneficios'},
 ]
+# Serviço de benefícios: informações institucionais e links de referência.
+# Valores, disponibilidade e regras devem ser confirmados com o SUEESSOR.
+BENEFIT_CARDS = [
+    {'title':'Assessoria Jurídica','slug':'juridico','icon':'scale','tag':'Direitos e orientação',
+     'summary':'Orientações e acompanhamento nas áreas trabalhista, familiar e previdenciária.',
+     'href':'/servicos/juridico'},
+    {'title':'Clínica Médica','slug':'clinica-medica','icon':'stethoscope','tag':'Saúde e prevenção',
+     'summary':'Consultas e acesso facilitado a cuidados de saúde para associados e dependentes.',
+     'href':'/servicos/clinica-medica'},
+    {'title':'Espaço para Eventos','slug':'espaco-para-eventos','icon':'calendar','tag':'Convivência',
+     'summary':'Ambiente para encontros e comemorações de associados e familiares.',
+     'href':'/servicos/espaco-para-eventos'},
+    {'title':'Espaço Gourmet','slug':'espaco-gourmet','icon':'utensils','tag':'Lazer e encontros',
+     'summary':'Espaço com churrasqueira e estrutura para confraternizações.',
+     'href':'/servicos/espaco-gourmet'},
+    {'title':'Excursões','slug':'excursoes','icon':'bus','tag':'Viagens e lazer',
+     'summary':'Passeios organizados pelo sindicato para momentos de descanso e lazer.',
+     'href':'/servicos/excursoes'},
+    {'title':'Salão de Beleza','slug':'salao-de-beleza','icon':'scissors','tag':'Bem-estar',
+     'summary':'Cuidados pessoais e condições especiais para a categoria.',
+     'href':'/servicos/salao-de-beleza'},
+    {'title':'Tratamento Odontológico','slug':'tratamento-odontologico','icon':'smile','tag':'Saúde bucal',
+     'summary':'Atendimento odontológico básico em Osasco e Itapevi.',
+     'href':'/servicos/tratamento-odontologico'},
+]
+BENEFIT_DETAILS = {
+    'clinica-medica': {
+        'title':'Clínica Médica', 'tag':'Saúde e prevenção', 'icon':'stethoscope',
+        'heading':'Cuidado para quem também precisa ser cuidado.',
+        'intro':'O Ambulatório Médico SUEESSOR Cuidando de Quem Cuida oferece consultas nas especialidades disponíveis para associados e seus dependentes legais, além de acesso a condições diferenciadas para exames.',
+        'highlights':[
+            ('Atendimentos','Consultas nas especialidades disponíveis estão incluídas na mensalidade associativa, conforme as regras do benefício. Psicologia possui condição própria.'),
+            ('Especialidades','Entre as especialidades divulgadas estão clínica geral, cardiologia, dermatologia, ginecologia, ortopedia, pediatria, neurologia, endocrinologia, urologia, psicologia e psiquiatria.'),
+            ('Exames','O sindicato informa descontos em exames laboratoriais e de imagem por meio de parceiros. Consulte condições e necessidade de encaminhamento.'),
+        ],
+        'address':'Rua General Bittencourt, 622 – Centro – Osasco/SP',
+        'hours':'Segunda a sexta, das 08h às 17h',
+        'phone_display':'(11) 4557-7240', 'phone_href':'tel:+551145577240',
+        'source':'https://sueessor.org.br/clinica-medica/',
+    },
+    'espaco-para-eventos': {
+        'title':'Espaço para Eventos', 'tag':'Convivência', 'icon':'calendar',
+        'heading':'Seu momento especial merece um bom espaço.',
+        'intro':'O salão de festas do SUEESSOR está destinado a eventos de associados e seus dependentes. A reserva e as condições de utilização devem ser confirmadas diretamente com a entidade.',
+        'highlights':[
+            ('Estrutura','Mesas, cadeiras, ar-condicionado, iluminação e aparelhos sonoros.'),
+            ('Apoio','Cozinha e freezer para auxiliar na organização de encontros.'),
+            ('Reservas','Consulte disponibilidade, requisitos e eventuais taxas de utilização com a equipe do sindicato.'),
+        ],
+        'address':'Rua General Bittencourt, 582 – Centro – Osasco/SP',
+        'hours':'Reservas mediante consulta',
+        'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'source':'https://sueessor.org.br/espaco-para-eventos/',
+    },
+    'espaco-gourmet': {
+        'title':'Espaço Gourmet', 'tag':'Lazer e encontros', 'icon':'utensils',
+        'heading':'Um lugar para celebrar e compartilhar.',
+        'intro':'O Espaço Gourmet do SUEESSOR é voltado à realização de eventos de associados e dependentes, com uma estrutura voltada à convivência.',
+        'highlights':[
+            ('Área gastronômica','Churrasqueira e forno de pizza.'),
+            ('Lazer','Mesas de pebolim e pingue-pongue divulgadas entre os equipamentos do espaço.'),
+            ('Reservas','Entre em contato com a equipe do sindicato para condições e disponibilidade.'),
+        ],
+        'address':'Rua General Bittencourt, 582 – Centro – Osasco/SP',
+        'hours':'Reservas mediante consulta',
+        'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'source':'https://sueessor.org.br/espaco-gourmet/',
+    },
+    'excursoes': {
+        'title':'Excursões', 'tag':'Viagens e lazer', 'icon':'bus',
+        'heading':'Tempo de descanso, novas experiências.',
+        'intro':'O SUEESSOR divulga excursões e atividades de lazer para os trabalhadores. Os destinos e pacotes dependem da programação vigente.',
+        'highlights':[
+            ('Destinos divulgados','O histórico de excursões no portal oficial inclui Lambari (MG) e Ilha Morena.'),
+            ('Programação','As datas disponíveis são divulgadas pelo sindicato. Não há viagem confirmada nesta página.'),
+            ('Inscrições','Consulte vagas, transporte, hospedagem, valores e condições antes de reservar.'),
+        ],
+        'address':'Informações na sede: Rua General Bittencourt, 582 – Centro – Osasco/SP',
+        'hours':'Datas a confirmar',
+        'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'source':'https://sueessor.org.br/excursoes/',
+    },
+    'salao-de-beleza': {
+        'title':'Salão de Beleza', 'tag':'Bem-estar', 'icon':'scissors',
+        'heading':'Um cuidado especial com você.',
+        'intro':'O SUEESSOR divulga benefícios de beleza e condições especiais para associados, incluindo serviços vinculados à sede e a parceiros credenciados.',
+        'highlights':[
+            ('Serviços','A rede de beleza divulgada pela entidade inclui opções como corte, escova, manicure e pedicure, conforme o estabelecimento.'),
+            ('Vantagens','Descontos para associados em serviços de beleza, sujeitos às regras vigentes.'),
+            ('Orientação','Consulte os parceiros, preços, horários e disponibilidade diretamente com o sindicato antes do atendimento.'),
+        ],
+        'address':'Informações na sede: Rua General Bittencourt, 582 – Centro – Osasco/SP',
+        'hours':'Horários conforme estabelecimento',
+        'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'source':'https://sueessor.org.br/beleza/',
+    },
+    'tratamento-odontologico': {
+        'title':'Tratamento Odontológico', 'tag':'Saúde bucal', 'icon':'smile',
+        'heading':'Sorrir também faz parte do cuidado.',
+        'intro':'Desde a fundação, o SUEESSOR oferece atendimento odontológico básico aos trabalhadores, estendido aos dependentes legais dos associados conforme critérios de acesso.',
+        'highlights':[
+            ('Atendimento básico','Tratamento odontológico básico gratuito, conforme as regras do benefício.'),
+            ('Unidade Osasco','Ambulatório Médico SUEESSOR: Rua General Bittencourt, 622 – Centro – Osasco/SP.'),
+            ('Unidade Itapevi','Consultório Odontológico Dr. Maurício R. Rodrigues: Avenida Cesário de Abreu, 60 – Centro – Itapevi/SP.'),
+        ],
+        'address':'Osasco e Itapevi — consulte os endereços acima',
+        'hours':'Agendamento prévio',
+        'phone_display':'(11) 4557-7240', 'phone_href':'tel:+551145577240',
+        'source':'https://sueessor.org.br/tratamento-odontologico/',
+    },
+}
+
 NEWS_SEED = [
   {'slug':'mobilizacao-hospital-ibiuna','title':'Sindicato reforça presença no Hospital Municipal de Ibiúna','excerpt':'Assembleias dos dias 13 e 14 de outubro abordaram direitos previstos na Convenção Coletiva 2026/2027 e mobilizaram profissionais da saúde.', 'body':'Nos dias 13 e 14 de outubro, dirigentes do SUEESSOR estiveram no Hospital Municipal de Ibiúna para conversar com profissionais sobre a aplicação da Convenção Coletiva de Trabalho 2026/2027. Entre os temas debatidos estiveram reajuste salarial, pisos, jornada 12×36 e benefícios sociais. Leia o relato integral no portal oficial.', 'category':'Mobilização','date':'2026-10-14T14:32:00','image':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/10/14132122/Sindicato-mobiliza-trabalhadores-em-Ibiuna.png','source':'https://sueessor.org.br/2026/10/14/sindicato-reforca-presenca-no-hospital-municipal-de-ibiuna-e-mobiliza-trabalhadores-pela-garantia-dos-direitos-coletivos/','place':'Hospital Municipal de Ibiúna, Ibiúna, SP'},
   {'slug':'conquista-folga-feriado-hgc','title':'Mobilização garante retorno da folga feriado aos trabalhadores 12×36 do HGC','excerpt':'Após negociações com a Fundação do ABC, foram anunciados a recuperação da folga feriado, reajuste e pagamento de retroativos.', 'body':'A negociação entre representantes dos trabalhadores do Hospital Geral de Carapicuíba e a Fundação do ABC terminou com o retorno da folga feriado para profissionais da escala 12×36. A reportagem oficial também registra reajuste salarial de 4,11% e diferenças retroativas. Confira todos os detalhes na fonte.', 'category':'Conquistas','date':'2026-10-13T19:21:00','image':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/10/13190428/SUEESSOR-conquista-folga-feriado.png','source':'https://sueessor.org.br/2026/10/13/apos-negociacao-acirrada-sindicato-conquista-retorno-da-folga-feriado-para-trabalhadores-do-12x36-no-hgc/','place':'Hospital Geral de Carapicuíba, Carapicuíba, SP'},
@@ -301,8 +413,13 @@ def conventions(request:Request):
 
 @app.get('/servicos/{kind}', response_class=HTMLResponse)
 def services(request:Request,kind:str):
-    if kind not in ('beneficios','juridico','parcerias'): raise HTTPException(404)
-    return render(request,'services.html',page='servicos',kind=kind)
+    if kind == 'beneficios':
+        return render(request,'benefits.html',page='servicos',benefits=BENEFIT_CARDS)
+    if kind in BENEFIT_DETAILS:
+        return render(request,'benefit_detail.html',page='servicos',detail=BENEFIT_DETAILS[kind],benefits=BENEFIT_CARDS,slug=kind)
+    if kind in ('juridico','parcerias'):
+        return render(request,'services.html',page='servicos',kind=kind)
+    raise HTTPException(404)
 
 @app.get('/documentos/{kind}', response_class=HTMLResponse)
 def document(request:Request,kind:str):

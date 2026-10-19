@@ -1105,7 +1105,7 @@
     },
     {
       "year": 2019,
-      "count": 1,
+      "count": 2,
       "documents": [
         {
           "period": "2019–2020",
@@ -1115,6 +1115,16 @@
           "pages": 22,
           "size_mb": "12,5",
           "url": "/convencoes/arquivos/sinog/2-sinog_2019_2020.pdf"
+        },
+        {
+          "period": "2019–2020",
+          "label": "Convenção coletiva — segunda cópia",
+          "filename": "3-sinog_2019_2020.pdf",
+          "download_name": "3-sinog_2019_2020.pdf",
+          "pages": 22,
+          "size_mb": "12,5",
+          "url": "/convencoes/arquivos/sinog/3-sinog_2019_2020.pdf",
+          "note": "Cópia idêntica ao arquivo 2-sinog_2019_2020.pdf, mantida para reproduzir integralmente o pacote original."
         }
       ]
     },
@@ -1130,6 +1140,182 @@
           "pages": 20,
           "size_mb": "3,2",
           "url": "/convencoes/arquivos/sinog/4-sinog-2018.pdf"
+        }
+      ]
+    },
+    {
+      "year": 2017,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2017",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "5-sinbfir-2017.pdf",
+          "download_name": "5-sinbfir-2017.pdf",
+          "pages": 18,
+          "size_mb": "1,9",
+          "url": "/convencoes/arquivos/sinog/5-sinbfir-2017.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2016",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "6-sinbfir-2016.pdf",
+          "download_name": "6-sinbfir-2016.pdf",
+          "pages": 16,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/6-sinbfir-2016.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2015,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2015",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "7-sinbfir-2015.pdf",
+          "download_name": "7-sinbfir-2015.pdf",
+          "pages": 16,
+          "size_mb": "0,5",
+          "url": "/convencoes/arquivos/sinog/7-sinbfir-2015.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2014",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "8-sinbfir-2014.pdf",
+          "download_name": "8-sinbfir-2014.pdf",
+          "pages": 15,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/8-sinbfir-2014.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2013,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2013",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "9-sinbfir-2013.pdf",
+          "download_name": "9-sinbfir-2013.pdf",
+          "pages": 15,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/9-sinbfir-2013.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2012",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "10-sinbfir-2012.pdf",
+          "download_name": "10-sinbfir-2012.pdf",
+          "pages": 13,
+          "size_mb": "0,4",
+          "url": "/convencoes/arquivos/sinog/10-sinbfir-2012.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2011,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2011",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "11-sinbfir-2011.pdf",
+          "download_name": "11-sinbfir-2011.pdf",
+          "pages": 13,
+          "size_mb": "0,4",
+          "url": "/convencoes/arquivos/sinog/11-sinbfir-2011.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2010,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2010",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "12-sinbfir-2010.pdf",
+          "download_name": "12-sinbfir-2010.pdf",
+          "pages": 13,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/12-sinbfir-2010.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2009,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2009",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "13-sinbfir-2009.pdf",
+          "download_name": "13-sinbfir-2009.pdf",
+          "pages": 13,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/13-sinbfir-2009.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2008,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2008",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "14-sinbfir-2008.pdf",
+          "download_name": "14-sinbfir-2008.pdf",
+          "pages": 15,
+          "size_mb": "0,3",
+          "url": "/convencoes/arquivos/sinog/14-sinbfir-2008.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
+        }
+      ]
+    },
+    {
+      "year": 2007,
+      "count": 1,
+      "documents": [
+        {
+          "period": "2007",
+          "label": "Documento identificado como SINBFIR",
+          "filename": "15-sinbfir-2007.pdf",
+          "download_name": "15-sinbfir-2007.pdf",
+          "pages": 14,
+          "size_mb": "0,2",
+          "url": "/convencoes/arquivos/sinog/15-sinbfir-2007.pdf",
+          "note": "O PDF consta em sinog.rar, mas foi identificado como documento do SINBFIR."
         }
       ]
     }
