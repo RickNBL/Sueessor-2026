@@ -880,3 +880,46 @@ body{background:#fff;color:var(--ink)}
 @media(max-width:780px){.course-partner-head{flex-wrap:wrap;gap:17px}.course-title-wrap{flex:1 1 calc(100% - 180px)}.course-discount{margin-left:auto}.course-partner{border-radius:24px}}
 @media(max-width:590px){.courses-partners-section{padding:56px 0 65px}.courses-intro h2{font-size:34px}.courses-intro p{font-size:13px}.courses-jump{margin:23px 0 33px;gap:7px}.courses-jump a{padding:9px 12px;font-size:11px}.course-partner-head{padding:20px}.course-logo-box{width:135px;height:96px}.course-title-wrap{flex:1 1 100%}.course-title-wrap h3{font-size:25px}.course-discount{margin-left:0;max-width:100%;font-size:12px}.course-partner-content{padding:20px;gap:22px}.course-perks li{font-size:13px}.course-map iframe{height:270px}.course-actions{display:grid;grid-template-columns:1fr}.course-actions .btn{width:100%}.course-map-lookup{padding:22px}.courses-disclaimer{padding:21px}}
 @media(prefers-reduced-motion:reduce){.courses-jump a{transition:none!important}.courses-jump a:hover{transform:none!important}}
+
+/* Partnership parks */
+.parks-hero-row{align-items:center;gap:32px}
+.parks-hero-visual{max-width:520px;width:100%;padding:10px;background:#ffffff1a;border:1px solid #ffffff26;border-radius:28px;box-shadow:0 28px 80px -58px #000000a8}
+.parks-hero-visual img{display:block;width:100%;border-radius:20px}
+.parks-section{background:linear-gradient(180deg,#fbf8f8 0%,#fff 18%,#fff 100%);padding:76px 0 92px}
+.parks-intro{max-width:760px;margin-bottom:26px}
+.parks-intro h2{font:800 clamp(35px,4vw,54px)/1.13 var(--display);letter-spacing:-.06em;margin:16px 0;color:#2a1720}
+.parks-intro h2 em{color:#aa1020;font-style:normal}
+.parks-intro p{max-width:670px;font-size:15px;line-height:1.85;color:#796a72}
+.parks-jump{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 47px}
+.parks-jump a{display:inline-flex;align-items:center;gap:14px;background:#f9f0f1;border:1px solid #e9d8db;padding:13px 17px;color:#84121e;font-size:13px;font-weight:800;border-radius:100px;transition:background .2s,color .2s,transform .2s}
+.parks-jump a:hover{background:#ba0a0a;color:#fff;transform:translateY(-3px)}
+.parks-list{display:grid;gap:34px}
+.park-card{scroll-margin-top:115px;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);border-radius:30px;border:1px solid #ebdfe1;background:#fff;overflow:hidden;box-shadow:0 34px 82px -70px #5c0d18}
+.park-card-media{position:relative;min-height:330px;background:linear-gradient(145deg,#8e0f1f,#390915)}
+.park-card-cover{display:block;width:100%;height:100%;object-fit:cover}
+.park-card-logo-wrap{position:absolute;left:26px;right:26px;bottom:22px;background:#ffffffea;backdrop-filter:blur(10px);border-radius:18px;padding:12px 16px;box-shadow:0 18px 40px -28px #00000059}
+.park-card-logo{display:block;max-width:240px;max-height:92px;width:auto;height:auto}
+.park-card-content{padding:clamp(28px,3vw,46px)}
+.park-card-topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:#a21825;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.park-contact-mini{color:#8f7d85;letter-spacing:.08em}
+.park-card-content h3{font:800 clamp(28px,3vw,42px)/1.12 var(--display);letter-spacing:-.05em;margin:17px 0 12px;color:#271821}
+.park-summary{font-size:15px;line-height:1.8;color:#63585e;margin:0}
+.park-perks{list-style:none;padding:0;margin:23px 0;display:grid;gap:12px}
+.park-perks li{display:flex;gap:11px;align-items:flex-start;color:#5d5259;font-size:14px;line-height:1.7}
+.park-perks .icon{color:#aa1020;flex:none;margin-top:3px}
+.park-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px 0;border-top:1px solid #f0e8eb;border-bottom:1px solid #f0e8eb}
+.park-meta-grid strong{display:block;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#ab1826;margin-bottom:8px}
+.park-meta-grid p,.park-meta-grid a{font-size:13px;line-height:1.7;color:#554952}
+.park-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.park-actions .btn{white-space:normal;min-height:47px;font-size:12px;padding:12px 16px}
+.park-card-map{grid-column:1/-1;padding:26px;border-top:1px solid #f0e6e8;background:#fdfbfb}
+.park-map-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.park-map-head a{font-size:13px;font-weight:700;color:#8f1020}
+.park-card-map iframe{display:block;border:0;border-radius:18px;width:100%;height:320px;background:#f3e9e9}
+.parks-disclaimer{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;background:#f8eef0;padding:30px 34px;border-radius:24px;margin-top:46px}
+.parks-disclaimer strong{display:block;font:800 24px/1.2 var(--display);letter-spacing:-.04em;color:#25161f}
+.parks-disclaimer p{max-width:720px;font-size:14px;line-height:1.75;color:#7a636c;margin:0}
+.parks-disclaimer a{font-weight:800;color:#a20f1e;white-space:nowrap}
+@media(max-width:1100px){.park-card{grid-template-columns:1fr}.park-card-media{min-height:290px}}
+@media(max-width:760px){.parks-section{padding:50px 0 66px}.parks-intro h2{font-size:35px}.parks-jump{gap:8px;margin:24px 0 35px}.parks-jump a{padding:10px 13px;font-size:11px}.park-card{border-radius:22px}.park-card-media{min-height:230px}.park-card-logo-wrap{left:14px;right:14px;bottom:14px;padding:10px 12px}.park-card-logo{max-width:180px;max-height:76px}.park-card-content{padding:22px 18px}.park-card-content h3{font-size:29px}.park-summary,.park-perks li{font-size:13px}.park-meta-grid{grid-template-columns:1fr;gap:16px}.park-actions .btn{width:100%}.park-card-map{padding:15px}.park-card-map iframe{height:260px}.parks-disclaimer{display:block;padding:24px 20px}.parks-disclaimer a{display:inline-block;margin-top:16px;white-space:normal}}
+@media(prefers-reduced-motion:reduce){.parks-jump a{transition:none}.parks-jump a:hover{transform:none}}

@@ -374,6 +374,96 @@ for club in CLUB_PARTNERS:
     club['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(query, safe='')
     club['map_embed'] = 'https://www.google.com/maps?q=' + quote(club['address'], safe='') + '&output=embed'
 
+PARK_PARTNERS = [
+    {
+        'slug': 'hopi-hari',
+        'name': 'Hopi Hari',
+        'tag': 'Preços especiais',
+        'summary': 'Parque temático com preços especiais para associado SUEESSOR, conforme a parceria divulgada pelo sindicato.',
+        'address': 'Rodovia dos Bandeirantes, km 72, 7001 – Moinho – Vinhedo/SP – CEP 13288-130',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Noêmia – SUEESSOR',
+        'website': 'https://www.hopihari.com.br/',
+        'website_label': 'Site do parque',
+        'logo': '/static/parcerias/parques/hopi-hari-logo.webp',
+        'cover': '/static/parcerias/parques/hopi-hari-cover.webp',
+        'logo_alt': 'Logo Hopi Hari na arte promocional do SUEESSOR',
+        'cover_alt': 'Arte promocional do SUEESSOR destacando Hopi Hari',
+        'benefits': [
+            'Preços especiais para associado SUEESSOR.',
+            'Condições, disponibilidade e valores devem ser confirmados com o sindicato.',
+        ],
+        'map_query': 'Hopi Hari Rodovia dos Bandeirantes km 72 7001 Vinhedo SP',
+    },
+    {
+        'slug': 'magic-city',
+        'name': 'Parque Aquático Magic City',
+        'tag': 'Preços especiais',
+        'summary': 'Parque aquático parceiro com preços especiais para associado SUEESSOR.',
+        'address': 'Estrada do Koyama, 1 – Suzano/SP',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Noêmia – SUEESSOR',
+        'website': 'http://magiccity.com.br/',
+        'website_label': 'Site do parque',
+        'logo': '/static/parcerias/parques/magic-city-logo.webp',
+        'cover': '/static/parcerias/parques/magic-city-cover.webp',
+        'logo_alt': 'Logo Magic City na arte promocional do SUEESSOR',
+        'cover_alt': 'Arte promocional do SUEESSOR destacando Magic City',
+        'benefits': [
+            'Preços especiais para associado SUEESSOR.',
+            'Condições, disponibilidade e valores devem ser confirmados com o sindicato.',
+        ],
+        'map_query': 'Magic City Estrada do Koyama 1 Suzano SP',
+    },
+    {
+        'slug': 'parque-da-monica',
+        'name': 'Parque da Mônica',
+        'tag': 'Preços especiais',
+        'summary': 'Opção de lazer em São Paulo com preços especiais para associado SUEESSOR.',
+        'address': 'Av. das Nações Unidas, 22540 – Jurubatuba – São Paulo/SP – CEP 04795-000',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Noêmia – SUEESSOR',
+        'website': 'https://parquedamonica.com.br/',
+        'website_label': 'Site do parque',
+        'logo': '/static/parcerias/parques/parque-da-monica-logo.webp',
+        'cover': '/static/parcerias/parques/parque-da-monica-cover.webp',
+        'logo_alt': 'Logo Parque da Mônica na arte promocional do SUEESSOR',
+        'cover_alt': 'Arte promocional do SUEESSOR destacando Parque da Mônica',
+        'benefits': [
+            'Preços especiais para associado SUEESSOR.',
+            'Condições, disponibilidade e valores devem ser confirmados com o sindicato.',
+        ],
+        'map_query': 'Parque da Monica Avenida das Nacoes Unidas 22540 Jurubatuba Sao Paulo SP',
+    },
+    {
+        'slug': 'wetn-wild',
+        'name': "Wet'n Wild",
+        'tag': 'Preços especiais',
+        'summary': 'Parque aquático com preços especiais para associado SUEESSOR.',
+        'address': 'Rodovia dos Bandeirantes, Km 72, s/n – Zona Rural – Itupeva/SP – CEP 13295-000',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Noêmia – SUEESSOR',
+        'website': 'https://www.wetnwild.com.br/',
+        'website_label': 'Site do parque',
+        'logo': '/static/parcerias/parques/wetn-wild-logo.webp',
+        'cover': '/static/parcerias/parques/wetn-wild-cover.webp',
+        'logo_alt': "Logo Wet'n Wild na arte promocional do SUEESSOR",
+        'cover_alt': "Arte promocional do SUEESSOR destacando Wet'n Wild",
+        'benefits': [
+            'Preços especiais para associado SUEESSOR.',
+            'Condições, disponibilidade e valores devem ser confirmados com o sindicato.',
+        ],
+        'map_query': "Wet'n Wild Rodovia dos Bandeirantes km 72 Itupeva SP",
+    },
+]
+for park in PARK_PARTNERS:
+    park['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(park['map_query'], safe='')
+    park['map_embed'] = 'https://www.google.com/maps?q=' + quote(park['map_query'], safe='') + '&output=embed'
+
 PARTNERSHIP_DETAILS = {
     'beleza': {
         'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
@@ -903,6 +993,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'cursos':
         return render(request,'partnership_courses.html',page='servicos',partnership=card,
                       courses=COURSE_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'parques':
+        return render(request,'partnership_parks.html',page='servicos',partnership=card,
+                      parks=PARK_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 
