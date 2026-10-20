@@ -1,0 +1,110 @@
+{
+  "source_archive": "sinog.rar",
+  "entries": [
+    {
+      "original_name": "1-cct-sinog-x-sueessor-2024-2025.pdf",
+      "size_bytes": 1283281,
+      "crc32": "e35c9dc5",
+      "document_identification": "SINOG",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "10-sinbfir-2012.pdf",
+      "size_bytes": 395795,
+      "crc32": "71820614",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "11-sinbfir-2011.pdf",
+      "size_bytes": 394237,
+      "crc32": "6052a839",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "12-sinbfir-2010.pdf",
+      "size_bytes": 334810,
+      "crc32": "c8c1619c",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "13-sinbfir-2009.pdf",
+      "size_bytes": 355510,
+      "crc32": "2b82f024",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "14-sinbfir-2008.pdf",
+      "size_bytes": 296464,
+      "crc32": "be9154b7",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "15-sinbfir-2007.pdf",
+      "size_bytes": 227727,
+      "crc32": "96ffa540",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "2-sinog_2019_2020.pdf",
+      "size_bytes": 13121000,
+      "crc32": "da496572",
+      "document_identification": "SINOG",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "3-sinog_2019_2020.pdf",
+      "size_bytes": 13121000,
+      "crc32": "da496572",
+      "document_identification": "SINOG",
+      "duplicate_of": "2-sinog_2019_2020.pdf"
+    },
+    {
+      "original_name": "4-sinog-2018.pdf",
+      "size_bytes": 3361269,
+      "crc32": "8c7d4a8f",
+      "document_identification": "SINOG",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "5-sinbfir-2017.pdf",
+      "size_bytes": 1994830,
+      "crc32": "91b314ef",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "6-sinbfir-2016.pdf",
+      "size_bytes": 365359,
+      "crc32": "fba8fcb5",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "7-sinbfir-2015.pdf",
+      "size_bytes": 522778,
+      "crc32": "249cdb74",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "8-sinbfir-2014.pdf",
+      "size_bytes": 329244,
+      "crc32": "c51d2576",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    },
+    {
+      "original_name": "9-sinbfir-2013.pdf",
+      "size_bytes": 342982,
+      "crc32": "32899fa3",
+      "document_identification": "SINBFIR",
+      "duplicate_of": null
+    }
+  ]
+}

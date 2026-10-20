@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}{{ detail.title }} | Benefícios SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero">
+ <div class="shell">
+  <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><a href="/servicos/beneficios">Benefícios</a><span>/</span><span>{{ detail.title }}</span></nav>
+  <div class="benefit-detail-hero-row"><div><span class="eyebrow eyebrow-light">{{ detail.tag }}</span><h1>{{ detail.title }}</h1><p>{{ detail.heading }}</p></div><span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-{{ detail.icon }}"/></svg></span></div>
+ </div>
+</section>
+<section class="benefit-detail-section">
+ <div class="shell benefit-detail-layout">
+  <article class="benefit-detail-main">
+   <span class="eyebrow">SUEESSOR • CUIDANDO DE QUEM CUIDA</span>
+   <h2>{% if slug == 'espaco-para-eventos' %}Salão de festas{% elif slug == 'espaco-gourmet' %}Espaço Gourmet{% elif slug == 'salao-de-beleza' %}SPAÇO BELEZA SUEESSOR{% else %}Conheça este benefício{% endif %}</h2>
+   {% if detail.gallery %}
+   <section class="clinic-gallery" data-clinic-carousel data-interval="{{ detail.gallery_interval or 5000 }}" aria-label="Galeria de fotos: {{ detail.title }}">
+     <div class="clinic-gallery-frame">
+       {% for image in detail.gallery %}
+       <figure class="clinic-slide {% if loop.first %}is-active{% endif %}" data-clinic-slide aria-hidden="{{ 'false' if loop.first else 'true' }}">
+         <img src="{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+         {% if image.caption and slug not in ('espaco-para-eventos','espaco-gourmet','salao-de-beleza') %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
+       </figure>
+       {% endfor %}
+     </div>
+     <div class="clinic-gallery-controls">
+       <button type="button" class="clinic-gallery-btn" data-clinic-prev aria-label="Foto anterior">‹</button>
+       <div class="clinic-gallery-dots" role="group" aria-label="Selecionar foto">
+         {% for image in detail.gallery %}
+         <button type="button" class="clinic-gallery-dot {% if loop.first %}is-active{% endif %}" data-clinic-dot data-index="{{ loop.index0 }}" aria-label="Ir para a foto {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>
+         {% endfor %}
+       </div>
+       <button type="button" class="clinic-gallery-btn" data-clinic-next aria-label="Próxima foto">›</button>
+     </div>
+   </section>
+   {% endif %}
+   <p class="benefit-detail-intro">{{ detail.intro }}</p>
+   {% if detail.lead_paragraphs %}
+   <div class="clinic-story-text">{% for paragraph in detail.lead_paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</div>
+   {% endif %}
+   {% if slug == 'salao-de-beleza' %}
+   <section class="beauty-benefits" aria-labelledby="beauty-services-heading">
+     <span class="eyebrow">SERVIÇOS DISPONÍVEIS</span>
+     <h3 id="beauty-services-heading">Seu momento de cuidado</h3>
+     <div class="beauty-services-grid">
+       {% for service in detail.beauty_services %}
+       <div class="beauty-service"><span class="beauty-service-icon" aria-hidden="true"><svg class="icon sm"><use href="#i-check"/></svg></span><strong>{{ service }}</strong></div>
+       {% endfor %}
+     </div>
+     <p class="beauty-member-note"><strong>Condições especiais para associados e dependentes legais.</strong> Os valores são diferenciados em todos os serviços oferecidos.</p>
+   </section>
+   {% endif %}
+   {% if slug == 'clinica-medica' %}<div class="clinic-highlight-row">
+     <div class="clinic-pill-card"><strong>Consultas sem custo</strong><span>Para associados e dependentes legais.</span></div>
+     <div class="clinic-pill-card"><strong>Descontos em exames</strong><span>Laboratório e imagem com parceiros.</span></div>
+     <div class="clinic-pill-card"><strong>Atendimento ágil</strong><span>Segunda a sexta, das 08h00 às 17h00.</span></div>
+   </div>
+   {% endif %}
+   {% if slug in ('espaco-para-eventos', 'espaco-gourmet') %}
+   <section class="events-amenities" aria-labelledby="events-amenities-title">
+     <span class="eyebrow">ESTRUTURA DO ESPAÇO</span>
+     <h3 id="events-amenities-title">{% if slug == 'espaco-gourmet' %}Estrutura para reunir e aproveitar{% else %}Tudo preparado para seu evento{% endif %}</h3>
+     <div class="events-amenities-grid">{% for amenity in detail.amenities %}<div class="events-amenity"><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg><span>{{ amenity }}</span></div>{% endfor %}</div>
+   </section>
+   <section class="events-reservation" aria-labelledby="events-reservation-heading">
+     <span class="eyebrow">INFORMAÇÕES SOBRE RESERVAS</span>
+     <h3 id="events-reservation-heading">{% if slug == 'espaco-gourmet' %}Reserve o Espaço Gourmet{% else %}Reserve seu momento especial{% endif %}</h3>
+     <p>Mais informações sobre reservas pelos contatos abaixo. Falar com <strong>Kátia ou Noêmia</strong>.</p>
+     <div class="events-reservation-actions">
+       <a href="{{ detail.phone_href }}" class="btn btn-dark"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"/></svg> {{ detail.phone_display }}</a>
+       <a href="{{ detail.whatsapp_href }}" class="btn btn-lime" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"/></svg> WhatsApp {{ detail.whatsapp_display }}</a>
+     </div>
+   </section>
+   {% else %}
+   <div class="benefit-detail-facts">
+    {% for name, body in detail.highlights %}
+    <div class="benefit-detail-fact"><span class="benefit-fact-mark"><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg></span><div><h3>{{ name }}</h3><p>{{ body }}</p></div></div>
+    {% endfor %}
+   </div>
+   {% endif %}
+   {% if detail.dependent_rights %}
+   <section class="clinic-info-block">
+     <div class="clinic-info-head"><span class="eyebrow">Dependentes legais</span><h3>Quais são os direitos do cônjuge e dos filhos até 21 anos?</h3></div>
+     <ul class="clinic-bullet-list">{% for item in detail.dependent_rights %}<li>{{ item }}</li>{% endfor %}</ul>
+   </section>
+   {% endif %}
+   {% if detail.specialties %}
+   <section class="clinic-info-block">
+     <div class="clinic-info-head"><span class="eyebrow">Especialidades</span><h3>Atendimento em diversas áreas</h3></div>
+     <div class="clinic-specialties">{% for item in detail.specialties %}<span>{{ item }}</span>{% endfor %}</div>
+   </section>
+   {% endif %}
+   {% if detail.exam_partners %}
+   <section class="clinic-info-block">
+     <div class="clinic-info-head"><span class="eyebrow">Exames parceiros</span><h3>Onde são realizados os exames?</h3></div>
+     <div class="clinic-partner-grid">
+       {% for partner in detail.exam_partners %}
+       <article class="clinic-partner-card">
+         <h4>{{ partner.title }}</h4>
+         <p>{{ partner.description }}</p>
+         <p><strong>Endereço:</strong> {{ partner.address }}</p>
+         <p><strong>Contato:</strong> {{ partner.contact }}</p>
+         <a href="{{ partner.cta }}" target="_blank" rel="noopener noreferrer" class="text-link">{{ partner.cta_label }} <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+       </article>
+       {% endfor %}
+     </div>
+   </section>
+   {% endif %}
+   {% if slug == 'salao-de-beleza' %}
+   <section class="beauty-booking" aria-labelledby="beauty-booking-heading">
+     <div><span class="eyebrow">AGENDAMENTO</span><h3 id="beauty-booking-heading">Agende seu horário</h3>
+       <p>De segunda a sexta, das 08h00 às 17h00, na Rua General Bittencourt, 582 – Centro – Osasco.</p>
+     </div>
+     <a href="tel:+551136523390" class="btn btn-dark"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"/></svg> Ligar: (11) 3652-3390</a>
+   </section>
+   {% endif %}
+   <p class="benefit-detail-disclaimer">Benefícios, condições, valores e disponibilidade podem mudar. Confirme sempre os requisitos, documentos necessários e informações atualizadas com o sindicato antes de utilizar o serviço.</p>
+   <div class="benefit-detail-footer-links"><a href="{{ detail.source }}" target="_blank" rel="noopener noreferrer" class="text-link">Informações no portal oficial <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a><a class="text-link" href="/servicos/beneficios">← Voltar aos benefícios</a></div>
+  </article>
+  <aside class="benefit-detail-aside" aria-label="Informações para atendimento">
+   <span class="benefit-aside-label">PRECISA DE INFORMAÇÕES?</span><h2>Conte com a gente.</h2>
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg><div><strong>Local</strong><p>{{ detail.address }}</p></div></div>
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><div><strong>Atendimento</strong><p>{{ detail.hours }}</p></div></div>
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><div><strong>Contato</strong><p><a href="{{ detail.phone_href }}">{{ detail.phone_display }}</a></p></div></div>
+   {% if detail.whatsapp_href %}
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg><div><strong>WhatsApp</strong><p><a href="{{ detail.whatsapp_href }}" target="_blank" rel="noopener noreferrer">{{ detail.whatsapp_display }} — Kátia / Noêmia</a></p></div></div>
+   {% endif %}
+   <a href="{{ detail.whatsapp_href if detail.whatsapp_href else detail.phone_href }}" class="btn btn-lime benefit-contact-btn" {% if detail.whatsapp_href %}target="_blank" rel="noopener noreferrer"{% endif %}>Entrar em contato <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+   <a href="/contato" class="benefit-aside-contact">Outras formas de contato</a>
+  </aside>
+ </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outros benefícios</h2><a class="text-link" href="/servicos/beneficios">Ver todos <svg class="icon sm"><use href="#i-arrow"/></svg></a></div><div class="benefit-more-list">{% for item in benefits if item.slug != slug %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>{% endfor %}</div></div></section>
+{% endblock %}
+{% block scripts %}<script src="/static/benefits.js?v=beleza-20261020" defer></script>{% endblock %}

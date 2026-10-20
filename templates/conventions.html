@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}Convenções coletivas | SUEESSOR{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="shell">
+    <div class="breadcrumbs"><a href="/">Início</a> / Documentos / Convenções</div>
+    <span class="eyebrow eyebrow-light">DIREITOS EM DOCUMENTOS</span>
+    <h1>Convenções coletivas<br><em>sempre à mão.</em></h1>
+    <p>Consulte os documentos de sua entidade patronal, organizados por ano. Visualize o PDF ou faça o download quando precisar.</p>
+  </div>
+</section>
+<section class="prose-section conventions-section">
+  <div class="shell prose-layout">
+    <div class="prose-body">
+      <span class="eyebrow">ACERVO DE CONVENÇÕES</span>
+      <h2>Encontre a sua convenção coletiva</h2>
+      <p>Abra o card da entidade patronal, selecione o ano e escolha entre visualizar ou baixar o documento. Quando houver mais de um arquivo para o mesmo ano, todos ficam disponíveis.</p>
+      <div class="convention-grid" aria-label="Convenções por entidade patronal">
+        {% set entities = [
+          ('SINDIHCLOR', 'sindihclor.png','Hospitais, clínicas, casas de saúde e laboratórios de Osasco e região'),
+          ('SINDHOSP', 'sindhosp.png','Hospitais, clínicas e laboratórios do Estado de São Paulo'),
+          ('SINDHOSFIL', 'sindhosfil.png','Santas casas e hospitais filantrópicos do Estado de São Paulo'),
+          ('SINAMGE', 'sinamge.png','Empresas de medicina de grupo'),
+          ('SINOG', 'sinog.png','Empresas de odontologia de grupo'),
+          ('SINBFIR', 'sinbfir.png','Instituições beneficentes, filantrópicas e religiosas')
+        ] %}
+        {% for name, image, description in entities %}
+        {% set key = name|lower %}
+        <details class="convention-card" id="conv-{{ key }}">
+          <summary class="convention-card-summary" aria-label="Expandir ou recolher documentos de {{ name }}">
+            <div class="convention-logo-area">
+              <img class="convention-logo" src="/static/convenios/{{ image }}" alt="Logotipo {{ name }}" loading="lazy" decoding="async" width="160" height="90">
+            </div>
+            <div class="convention-content">
+              <h3>{{ name }}</h3>
+              <p>{{ description }}</p>
+              <span class="convention-expander"><span>Consultar {{ doc_counts[key] }} {% if doc_counts[key] == 1 %}PDF{% else %}PDFs{% endif %}</span><svg class="icon sm" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+            </div>
+          </summary>
+          <div class="convention-years">
+            {% if key == 'sinog' %}
+            <p class="convention-archive-notice"><strong>Arquivo SINOG completo:</strong> reunimos todos os 15 PDFs recebidos em <code>sinog.rar</code>. Entre eles há 11 arquivos identificados como <strong>SINBFIR</strong> e uma cópia repetida de 2019/2020. Mantivemos os nomes originais e indicamos esses casos para evitar confusão entre as entidades.</p>
+            {% endif %}
+            <p class="convention-years-label">Documentos por ano</p>
+            {% for group in docs_by_entity[key] %}
+            <details class="convention-year">
+              <summary class="convention-year-summary">
+                <span class="convention-year-main"><span class="convention-year-value">{{ group.year }}</span><span class="convention-year-count">{{ group.count }} {% if group.count == 1 %}documento{% else %}documentos{% endif %}</span></span>
+                <svg class="icon sm" aria-hidden="true"><use href="#i-chevron"/></svg>
+              </summary>
+              <div class="convention-year-files">
+                {% for pdf in group.documents %}
+                <div class="convention-file">
+                  <div class="convention-file-header">
+                    <span class="convention-file-icon" aria-hidden="true"><svg class="icon"><use href="#i-file"/></svg></span>
+                    <div class="convention-file-meta">
+                      <strong>{{ pdf.label }}{% if pdf.period != group.year|string %} — {{ pdf.period }}{% endif %}</strong>
+                      {% if pdf.note %}<span class="convention-file-note">{{ pdf.note }}</span>{% endif %}
+                      <span class="convention-original-filename">{{ pdf.filename }}</span>
+                      <span>PDF · {{ pdf.pages }} {% if pdf.pages == 1 %}página{% else %}páginas{% endif %} · {{ pdf.size_mb }} MB</span>
+                    </div>
+                  </div>
+                  <div class="convention-file-actions">
+                    <a class="convention-view" href="{{ pdf.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visualizar {{ pdf.label }} {{ pdf.period }} de {{ name }} em nova aba">Visualizar <svg class="icon xs" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+                    <a class="convention-download" href="{{ pdf.url }}" download="{{ pdf.download_name }}" aria-label="Baixar PDF {{ pdf.label }} {{ pdf.period }} de {{ name }}">Baixar PDF <svg class="icon xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </details>
+            {% endfor %}
+          </div>
+        </details>
+        {% endfor %}
+      </div>
+      <p class="convention-official-link">Se preferir, você também pode consultar o <a href="https://sueessor.org.br/convencoes-coletivas/" target="_blank" rel="noopener noreferrer">acervo oficial do SUEESSOR</a>.</p>
+      <h2>Não sabe qual instrumento consultar?</h2>
+      <p>Procure o departamento jurídico ou a equipe do sindicato antes de interpretar uma cláusula isolada. Regras e vigências podem variar por estabelecimento e categoria.</p>
+      <a class="btn btn-dark" href="/servicos/juridico">Falar com o jurídico <svg class="icon sm"><use href="#i-arrow-up"/></svg></a>
+    </div>
+    <aside class="aside-card">
+      <h3>Acesso rápido</h3>
+      <a href="/documentos/editais">Editais <svg class="icon xs"><use href="#i-arrow"/></svg></a>
+      <a href="/documentos/acordos">Modelos de acordo <svg class="icon xs"><use href="#i-arrow"/></svg></a>
+      <a href="/documentos/oposicao">Modelo de oposição <svg class="icon xs"><use href="#i-arrow"/></svg></a>
+      <a href="/documentos/financeiro">Emissão de boletos <svg class="icon xs"><use href="#i-arrow"/></svg></a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

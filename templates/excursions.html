@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Excursões | SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero excursion-hero">
+  <div class="shell">
+    <nav class="benefit-breadcrumb" aria-label="Você está aqui"><a href="/">Início</a><span>/</span><a href="/servicos/beneficios">Benefícios</a><span>/</span><span>Excursões</span></nav>
+    <div class="benefit-detail-hero-row">
+      <div><span class="eyebrow eyebrow-light">VIAGENS E LAZER</span><h1>Excursões SUEESSOR</h1><p>Destinos para conhecer, descansar e aproveitar boas experiências.</p></div>
+      <span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-bus"/></svg></span>
+    </div>
+  </div>
+</section>
+<section class="excursion-page" aria-labelledby="excursion-page-title">
+  <div class="shell">
+    <div class="excursion-heading">
+      <div><span class="eyebrow">DESTINOS E PASSEIOS</span><h2 id="excursion-page-title">Conheça viagens já divulgadas pelo sindicato.</h2></div>
+      <p>As informações são de divulgações anteriores. As datas e a disponibilidade de novas excursões devem ser confirmadas diretamente com o SUEESSOR.</p>
+    </div>
+    {% for destination in destinations %}
+    <article class="excursion-destination" id="{{ destination.slug }}" aria-labelledby="excursion-title-{{ destination.slug }}">
+      <div class="excursion-photos">
+        <section class="clinic-gallery excursion-gallery" data-clinic-carousel data-interval="5000" aria-label="Fotos de {{ destination.title }}">
+          <div class="clinic-gallery-frame">
+            {% for image in destination.gallery %}
+            <figure class="clinic-slide {% if loop.first %}is-active{% endif %}" data-clinic-slide aria-hidden="{{ 'false' if loop.first else 'true' }}">
+              <img src="{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %}loading="eager"{% else %}loading="lazy"{% endif %}>
+            </figure>
+            {% endfor %}
+          </div>
+          <div class="clinic-gallery-controls">
+            <button type="button" class="clinic-gallery-btn" data-clinic-prev aria-label="Foto anterior de {{ destination.title }}">‹</button>
+            <div class="clinic-gallery-dots" role="group" aria-label="Escolher fotografia de {{ destination.title }}">
+              {% for image in destination.gallery %}
+              <button type="button" class="clinic-gallery-dot {% if loop.first %}is-active{% endif %}" data-clinic-dot data-index="{{ loop.index0 }}" aria-label="Mostrar foto {{ loop.index }} de {{ destination.title }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>
+              {% endfor %}
+            </div>
+            <button type="button" class="clinic-gallery-btn" data-clinic-next aria-label="Próxima foto de {{ destination.title }}">›</button>
+          </div>
+        </section>
+      </div>
+      <div class="excursion-content">
+        <span class="eyebrow">{{ destination.label }}</span>
+        <h3 id="excursion-title-{{ destination.slug }}">{{ destination.title }}</h3>
+        <p class="excursion-description">{{ destination.description }}</p>
+        <div class="excursion-included"><strong>O passeio incluía</strong><div class="excursion-features">{% for item in destination.includes %}<span><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg>{{ item }}</span>{% endfor %}</div></div>
+        <div class="excursion-logistics">
+          <div><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><div><strong>Horários divulgados</strong><p>{{ destination.schedule }}</p></div></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg><div><strong>Embarque e retorno</strong><p>{{ destination.meeting_place }}</p></div></div>
+        </div>
+        <p class="excursion-notice"><svg class="icon sm" aria-hidden="true"><use href="#i-clock"/></svg>{{ destination.notice }}</p>
+      </div>
+    </article>
+    {% endfor %}
+    <section class="excursion-contact" aria-labelledby="excursion-contact-heading">
+      <div><span class="eyebrow eyebrow-light">INFORMAÇÕES E RESERVAS</span><h2 id="excursion-contact-heading">Converse com Kátia ou Noêmia.</h2><p>Consulte próximas datas, valores, vagas e condições de inscrição antes de se programar.</p><p class="excursion-contact-address">Informações na sede: Rua General Bittencourt, 582 – Centro – Osasco/SP</p></div>
+      <div class="excursion-contact-actions">
+        <a class="btn btn-outline-white" href="tel:+551136523390"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"/></svg>(11) 3652-3390</a>
+        <a class="btn btn-lime" href="https://wa.me/5511941825124" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"/></svg>WhatsApp (11) 94182-5124</a>
+      </div>
+    </section>
+    <div class="excursion-back"><a href="/servicos/beneficios" class="text-link">← Voltar aos benefícios</a><a href="https://sueessor.org.br/excursoes/" class="text-link" target="_blank" rel="noopener noreferrer">Informações no portal oficial <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/benefits.js?v=excursoes-20261020" defer></script>{% endblock %}

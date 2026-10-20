@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Parcerias em {{ partnership.title }} | SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero partnership-detail-hero">
+ <div class="shell">
+  <nav aria-label="Você está aqui" class="benefit-breadcrumb">
+   <a href="/">Início</a><span>/</span><a href="/servicos/parcerias">Parcerias</a><span>/</span><span>{{ partnership.title }}</span>
+  </nav>
+  <div class="benefit-detail-hero-row">
+   <div><span class="eyebrow eyebrow-light">{{ partnership.tag }}</span><h1>{{ partnership.title }}</h1><p>{{ partnership.summary }}</p></div>
+   <span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-{{ partnership.icon }}"/></svg></span>
+  </div>
+ </div>
+</section>
+<section class="partnership-detail-section" aria-labelledby="partners-heading">
+ <div class="shell partnership-detail-layout">
+  <div class="partnership-detail-content">
+   <span class="eyebrow">VANTAGENS PARA ASSOCIADOS</span>
+   <h2 id="partners-heading">Conheça as possibilidades</h2>
+   <p class="partnership-detail-intro">{{ detail.intro }}</p>
+   <div class="partnership-feature-list">
+   {% for feature in detail.features %}
+    <article class="partnership-feature">
+     <span class="partnership-feature-mark" aria-hidden="true"><svg class="icon"><use href="#i-{{ partnership.icon }}"/></svg></span>
+     <div><h3>{{ feature.title }}</h3><p>{{ feature.description }}</p>{% if feature.info %}<div class="partnership-feature-meta"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg><span>{{ feature.info }}</span></div>{% endif %}</div>
+    </article>
+   {% endfor %}
+   </div>
+   {% if detail.internal_links %}
+   <div class="partnership-related">
+    <span class="eyebrow">SERVIÇOS RELACIONADOS</span>
+    <div class="partnership-related-links">
+     {% for related in detail.internal_links %}
+      <a href="{{ related.href }}"><span>{{ related.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+     {% endfor %}
+    </div>
+   </div>
+   {% endif %}
+   <div class="partnership-disclaimer">As condições divulgadas podem variar ao longo do tempo. Valores, descontos, vagas e disponibilidade devem ser confirmados diretamente com o sindicato ou com o parceiro antes da contratação.</div>
+   <div class="partnership-detail-links">
+    <a href="{{ detail.source }}" target="_blank" rel="noopener noreferrer" class="text-link">Ver informações no portal oficial <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+    <a href="/servicos/parcerias" class="text-link">← Voltar às parcerias</a>
+   </div>
+  </div>
+  <aside class="benefit-detail-aside partnership-aside" aria-label="Informações para associados">
+   <span class="benefit-aside-label">TEM INTERESSE EM UM CONVÊNIO?</span><h2>Consulte as condições.</h2>
+   <p>Confirme descontos, documentos necessários e funcionamento de cada parceria com nossa equipe antes de utilizar.</p>
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><div><strong>Atendimento do SUEESSOR</strong><p><a href="tel:+551136523390">(11) 3652-3390</a></p></div></div>
+   <div class="benefit-detail-info"><svg class="icon" aria-hidden="true"><use href="#i-location"/></svg><div><strong>Endereço</strong><p>Rua General Bittencourt, 582 – Centro, Osasco/SP</p></div></div>
+   <a class="btn btn-lime benefit-contact-btn" href="/contato">Fale com o sindicato <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </aside>
+ </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outras parcerias</h2><a class="text-link" href="/servicos/parcerias">Ver todas <svg class="icon sm"><use href="#i-arrow"/></svg></a></div><div class="benefit-more-list">{% for item in partnerships if item.slug != partnership.slug %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>{% endfor %}</div></div></section>
+{% endblock %}

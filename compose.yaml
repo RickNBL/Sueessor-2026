@@ -1,0 +1,13 @@
+services:
+  sueessor:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - sueessor_data:/app/data
+      - sueessor_uploads:/app/uploads
+volumes:
+  sueessor_data:
+  sueessor_uploads:
