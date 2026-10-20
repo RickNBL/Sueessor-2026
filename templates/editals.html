@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Editais | SUEESSOR{% endblock %}
+{% block content %}
+<section class="editals-hero">
+  <div class="shell">
+    <nav class="editals-breadcrumb" aria-label="Localização na página"><a href="/">Início</a><span>/</span><a href="/convencoes">Documentos</a><span>/</span>Editais</nav>
+    <span class="eyebrow eyebrow-light">ACERVO DE DOCUMENTOS</span>
+    <h1>Editais e convocações <em>SUEESSOR.</em></h1>
+    <p>Consulte as assembleias, campanhas salariais e demais comunicados do sindicato. Encontre um documento pelo nome, pelo ano ou por palavras do título e acesse o PDF original.</p>
+    <div class="editals-hero-stats"><span><strong>{{ documents|length }}</strong> documentos</span><span><strong>{{ years|length }}</strong> anos no acervo</span><span><svg class="icon sm" aria-hidden="true"><use href="#i-file"/></svg> Visualização e download</span></div>
+  </div>
+</section>
+<section class="editals-section" id="consulta-editais">
+ <div class="shell">
+   <div class="editals-heading"><div><span class="eyebrow">CONSULTA DE EDITAIS</span><h2>Encontre o documento <em>que procura.</em></h2></div><p>Expanda um ano e selecione um edital para visualizar seus dados e acessar o arquivo.</p></div>
+   <div class="editals-toolbar" role="search" aria-label="Filtros de editais">
+     <div class="editals-field editals-search-field">
+       <label for="edital-busca">Pesquisar edital</label>
+       <div class="editals-input-wrap"><svg class="icon sm" aria-hidden="true"><use href="#i-search"/></svg><input id="edital-busca" type="search" placeholder="Título, hospital, unidade, greve..." autocomplete="off" aria-controls="edital-groups" data-edital-search></div>
+     </div>
+     <div class="editals-field"><label for="edital-ano">Filtrar por ano</label><select id="edital-ano" data-edital-year><option value="">Todos os anos</option>{% for year in years %}<option value="{{ year }}">{{ year }}</option>{% endfor %}</select></div>
+     <div class="editals-field"><label for="edital-nome">Filtrar por nome</label><select id="edital-nome" data-edital-name><option value="">Todos os nomes</option>{% for name in names %}<option value="{{ name }}">{{ name }}</option>{% endfor %}</select></div>
+     <button class="editals-clear" type="button" data-edital-clear>Limpar filtros</button>
+   </div>
+   <div class="editals-toolbar-bottom"><p class="editals-count" role="status" aria-live="polite" data-edital-count>Mostrando {{ documents|length }} documentos</p><div class="editals-expand-actions"><button type="button" data-expand-all>Expandir todos os anos</button><button type="button" data-collapse-all>Recolher todos</button></div></div>
+   <div id="edital-groups" class="editals-groups" data-edital-groups>
+    {% for year in years %}
+      <details class="editals-year" data-edital-group data-year="{{ year }}" {% if loop.first %}open{% endif %}>
+        <summary><span class="editals-year-number">{{ year }}</span><span class="editals-year-caption">Editais e convocações</span><span class="editals-year-count" data-edital-year-count>{{ grouped[year]|length }} documentos</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="editals-table-scroll"><table class="editals-table">
+          <thead><tr><th scope="col">Documento</th><th scope="col">Nome / Unidade</th><th scope="col">Vigência / Tema</th><th scope="col">Arquivo</th></tr></thead>
+          <tbody>
+          {% for doc in grouped[year] %}
+          <tr data-edital-row data-year="{{ doc.year }}" data-name="{{ doc.name }}" data-search="{{ doc.title }} {{ doc.name }} {{ doc.year }} {{ doc.period }} {{ doc.type }} {{ doc.original_filename }}">
+           <td><div class="editals-title-cell"><button type="button" class="editals-row-toggle" aria-expanded="false" aria-controls="details-{{ doc.id }}" data-edital-toggle aria-label="Expandir detalhes de {{ doc.title }}"><svg class="icon sm" aria-hidden="true"><use href="#i-plus"/></svg></button><div><strong>{{ doc.title }}</strong><small>{{ doc.type }} · {{ doc.year }}</small></div></div></td>
+           <td><span class="editals-org">{{ doc.name }}</span></td>
+           <td><span class="editals-period">{{ doc.period }}</span></td>
+           <td><div class="editals-row-actions"><a href="{{ doc.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visualizar {{ doc.title }}">Visualizar</a><a href="{{ doc.url }}" download="{{ doc.filename }}" aria-label="Baixar {{ doc.title }}">Baixar</a></div></td>
+          </tr>
+          <tr class="editals-detail-row" id="details-{{ doc.id }}" data-edital-detail hidden><td colspan="4"><div class="editals-detail-inner"><div class="editals-detail-text"><span class="eyebrow">SOBRE O DOCUMENTO</span><h3>{{ doc.title }}</h3><p><strong>Nome / unidade:</strong> {{ doc.name }}</p><p><strong>Tipo:</strong> {{ doc.type }} · <strong>Ano do edital:</strong> {{ doc.year }} · <strong>Referência:</strong> {{ doc.period }}</p><p><strong>Documento:</strong> {{ doc.pages }} página{% if doc.pages != 1 %}s{% endif %} · {{ (doc.size_bytes / 1024)|round(0)|int }} KB</p><p class="editals-file-note">Arquivo original incluído no acervo enviado ao SUEESSOR, com título de catálogo descritivo.</p></div><div class="editals-detail-actions"><a class="btn btn-dark" href="{{ doc.url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-file"/></svg> Visualizar PDF</a><a class="btn btn-soft" href="{{ doc.url }}" download="{{ doc.filename }}">Baixar PDF</a></div></div></td></tr>
+          {% endfor %}
+          </tbody>
+        </table></div>
+      </details>
+    {% endfor %}
+   </div>
+   <div class="editals-empty" data-edital-empty hidden><svg class="icon lg" aria-hidden="true"><use href="#i-search"/></svg><h3>Nenhum edital encontrado</h3><p>Tente outro termo ou remova os filtros para visualizar o acervo completo.</p><button type="button" data-edital-empty-clear>Ver todos os editais</button></div>
+   <aside class="editals-note"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><div><strong>Documentos digitalizados</strong><p>Grande parte dos PDFs é composta por digitalizações. A pesquisa desta página encontra títulos, nomes, anos e referências cadastradas, mas não pesquisa todo o texto dentro das páginas digitalizadas.</p></div></aside>
+ </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/editals.js?v=editais-20261020" defer></script>{% endblock %}

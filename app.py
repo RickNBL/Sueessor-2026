@@ -48,9 +48,15 @@ app.mount('/uploads', StaticFiles(directory=str(UPLOADS)), name='uploads')
 # PDFs públicos em public/: na Vercel são servidos como assets estáticos; localmente, pelo FastAPI.
 if not IS_VERCEL:
     app.mount('/convencoes/arquivos', StaticFiles(directory=str(BASE / 'public' / 'convencoes' / 'arquivos')), name='convencoes-arquivos')
+    app.mount('/editais/arquivos', StaticFiles(directory=str(BASE / 'public' / 'editais' / 'arquivos')), name='editais-arquivos')
 templates = Jinja2Templates(directory=str(BASE / 'templates'))
 CONVENTION_DOCS = json.loads((BASE / 'static' / 'convention_index.json').read_text(encoding='utf-8'))
 CONVENTION_COUNTS = {key:sum(len(year['documents']) for year in years) for key,years in CONVENTION_DOCS.items()}
+EDITAL_DOCS = json.loads((BASE / 'static' / 'editais_index.json').read_text(encoding='utf-8'))
+EDITAL_YEARS = sorted({record['year'] for record in EDITAL_DOCS}, reverse=True)
+EDITAL_BY_YEAR = {year:[r for r in EDITAL_DOCS if r['year']==year] for year in EDITAL_YEARS}
+EDITAL_NAMES = sorted({r['name'] for r in EDITAL_DOCS}, key=lambda s:s.casefold())
+
 
 AREAS = ['Barueri', 'Carapicuíba', 'Cotia', 'Embu', 'Embu-Guaçu', 'Ibiúna', 'Itapecerica da Serra', 'Itapevi', 'Jandira', 'Osasco', 'Santana de Parnaíba', 'Taboão da Serra', 'Vargem Grande Paulista']
 DIRECTORY = [
@@ -1211,6 +1217,10 @@ def partnership_detail(request:Request,slug:str):
 def document(request:Request,kind:str):
     options={'editais':('Editais','https://sueessor.org.br/editais/'), 'acordos':('Modelos de acordo','https://sueessor.org.br/modelos-de-acordo/'), 'oposicao':('Modelo de oposição','https://sueessor.org.br/modelo-de-oposicao/'), 'financeiro':('Emissão de boletos','https://sueessor.org.br/emissao-de-boleto/'), 'aplicativo':('Aplicativo SUEESSOR','https://sueessor.org.br/aplicativo/')}
     if kind not in options: raise HTTPException(404)
+    if kind == 'editais':
+        return render(request, 'editals.html', page='convencoes',
+                      documents=EDITAL_DOCS, years=EDITAL_YEARS, grouped=EDITAL_BY_YEAR,
+                      names=EDITAL_NAMES)
     return render(request,'documents.html',page='convencoes',kind=kind,doc=options[kind])
 
 @app.get('/associe-se', response_class=HTMLResponse)

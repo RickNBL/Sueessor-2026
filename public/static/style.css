@@ -1025,3 +1025,112 @@ body{background:#fff;color:var(--ink)}
 .travel-source{margin:20px 0 0;color:#8b7a81;font-size:12px}.travel-source a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:920px){.travel-heading{display:block}.travel-heading>p{max-width:660px;margin-top:18px}.travel-partner{grid-template-columns:1fr}.travel-brand{padding:30px}.travel-brand-logo{width:min(100%,290px)}}
 @media(max-width:620px){.travel-section{padding:51px 0 65px}.travel-heading h2{font-size:36px}.travel-heading>p{font-size:14px}.travel-partner{border-radius:23px}.travel-brand{padding:25px 20px}.travel-brand-logo{width:min(100%,240px);border-radius:20px}.travel-content{padding:26px 20px}.travel-content h3{font-size:35px}.travel-summary{font-size:14px}.travel-services{grid-template-columns:1fr}.travel-actions .btn{width:100%}.travel-after{display:block;padding:24px 20px}.travel-after .btn{width:100%;margin-top:20px}}
+
+/* Acervo de editais — tabela e filtros */
+.editals-hero{background:linear-gradient(112deg,#5c0712,#ba0a0a 72%,#8b101c);padding:58px 0 66px;color:#fff;overflow:hidden;position:relative}
+.editals-hero:after{content:"";position:absolute;right:-160px;top:-250px;width:700px;height:700px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 150px rgba(255,255,255,.018);pointer-events:none}
+.editals-hero .shell{position:relative;z-index:1}
+.editals-breadcrumb{display:flex;align-items:center;gap:10px;margin:0 0 46px;color:rgba(255,255,255,.68);font-size:12px}
+.editals-breadcrumb a{color:inherit;text-decoration:none}
+.editals-breadcrumb a:hover{color:#fff}
+.editals-hero h1{font:800 clamp(42px,5.3vw,76px)/1.02 var(--display);letter-spacing:-.065em;max-width:900px;margin:18px 0 20px;color:#fff}
+.editals-hero h1 em{font-style:normal;color:#ffd4d9}
+.editals-hero p{max-width:700px;color:#fbdde0;font-size:16px;line-height:1.8;margin:0}
+.editals-hero-stats{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-top:36px}
+.editals-hero-stats>span{display:inline-flex;align-items:center;gap:8px;border-radius:14px;padding:11px 16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#ffedf0;font-size:13px;font-weight:600}
+.editals-hero-stats strong{font-size:22px;line-height:1;color:#fff}
+.editals-section{background:linear-gradient(#faf5f6,#fff 210px);padding:72px 0 95px}
+.editals-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+.editals-heading h2{font:800 clamp(30px,3.4vw,50px)/1.13 var(--display);letter-spacing:-.055em;color:#281821;margin:12px 0 0;max-width:740px}
+.editals-heading h2 em{font-style:normal;color:#ad1120}
+.editals-heading>p{max-width:270px;color:#75636b;font-size:13px;line-height:1.8;margin:0}
+.editals-toolbar{display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(155px,.68fr) minmax(190px,1fr) auto;gap:14px;align-items:end;border:1px solid #efdce0;background:#fff;padding:23px;border-radius:24px;box-shadow:0 20px 50px -43px #530e1b}
+.editals-field{display:flex;flex-direction:column;gap:9px;min-width:0}
+.editals-field label{color:#5b3840;font-size:12px;font-weight:800;letter-spacing:.02em}
+.editals-field input,.editals-field select{height:48px;display:block;width:100%;min-width:0;padding:10px 15px;color:#2e1a22;background:#fcfafb;border:1px solid #e9d5db;border-radius:11px;outline-offset:3px;outline-color:#ba0a0a;font-size:14px}
+.editals-field select{padding-right:20px;cursor:pointer}
+.editals-input-wrap{display:flex;align-items:center;position:relative}
+.editals-input-wrap .icon{position:absolute;left:15px;pointer-events:none;color:#a81627}
+.editals-input-wrap input{padding-left:43px}
+.editals-clear{height:48px;white-space:nowrap;background:#f7ebed;border:1px solid #ead4d8;padding:0 16px;border-radius:11px;color:#8f1020;font-size:13px;font-weight:800;transition:background .2s}
+.editals-clear:hover{background:#efdae0}
+.editals-toolbar-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:24px 0 14px}
+.editals-count{margin:0;font-size:13px;font-weight:750;color:#6c505a}
+.editals-expand-actions{display:flex;gap:10px;flex-wrap:wrap}
+.editals-expand-actions button{background:transparent;border:0;color:#a11624;font-size:13px;font-weight:750;padding:5px 0}
+.editals-expand-actions button+button{border-left:1px solid #d9c7cb;padding-left:12px}
+.editals-expand-actions button:hover{text-decoration:underline}
+.editals-groups{display:grid;gap:15px}
+.editals-year{border:1px solid #e9d9dd;border-radius:23px;background:#fff;overflow:hidden;box-shadow:0 25px 55px -48px #2a070e}
+.editals-year>summary{display:flex;align-items:center;gap:16px;list-style:none;padding:22px 27px;cursor:pointer;transition:background .2s}
+.editals-year>summary::-webkit-details-marker{display:none}
+.editals-year>summary:hover{background:#fdf7f8}
+.editals-year-number{font:800 30px/1 var(--display);color:#a20d1d;letter-spacing:-.03em}
+.editals-year-caption{font-size:14px;font-weight:800;color:#35212a}
+.editals-year-count{margin-left:auto;border-radius:100px;padding:8px 11px;background:#fceff1;font-size:12px;color:#9c2130;font-weight:700}
+.editals-year>summary>.icon{color:#9d1324;transition:transform .2s;flex:none}
+.editals-year[open]>summary>.icon{transform:rotate(180deg)}
+.editals-year[open]>summary{border-bottom:1px solid #f1e6e9}
+.editals-table-scroll{overflow-x:auto;overscroll-behavior-inline:contain}
+.editals-table{width:100%;border-collapse:collapse;text-align:left;min-width:740px;font-size:13px}
+.editals-table thead{background:#fcf8f9}
+.editals-table th{padding:15px 20px;color:#8a6a75;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.editals-table th:first-child{width:42%}
+.editals-table th:nth-child(2){width:26%}
+.editals-table th:nth-child(3){width:14%}
+.editals-table th:nth-child(4){width:18%}
+.editals-table tbody tr[data-edital-row]{border-top:1px solid #f1e8ea}
+.editals-table tbody tr[data-edital-row]:hover{background:#fffafb}
+.editals-table td{padding:18px 20px;vertical-align:top;color:#4f3943}
+.editals-title-cell{display:flex;align-items:flex-start;gap:13px}
+.editals-row-toggle{flex:none;width:30px;height:30px;display:grid;place-items:center;background:#f8eced;color:#a31120;border:0;border-radius:9px;transition:background .2s,color .2s}
+.editals-row-toggle:hover,.editals-row-toggle[aria-expanded=true]{background:#ba0a0a;color:#fff}
+.editals-row-toggle[aria-expanded=true] .icon{transform:rotate(45deg)}
+.editals-title-cell strong{font-size:14px;color:#301d27;line-height:1.45;display:block;max-width:560px}
+.editals-title-cell small{display:block;color:#a34c5a;margin-top:6px;font-size:11px}
+.editals-org{color:#68515a;font-weight:600}
+.editals-period{display:inline-flex;border:1px solid #ead8dc;background:#fbf3f4;border-radius:100px;padding:7px 10px;color:#8d2431;font-weight:700;font-size:12px;white-space:nowrap}
+.editals-row-actions{display:flex;flex-wrap:wrap;gap:7px}
+.editals-row-actions a{display:inline-flex;text-decoration:none;padding:8px 11px;border-radius:9px;background:#fbeef0;color:#991522;font-size:12px;font-weight:800;white-space:nowrap}
+.editals-row-actions a:last-child{background:#aa0d1c;color:#fff}
+.editals-row-actions a:hover{filter:brightness(.91)}
+.editals-detail-row td{padding:0 20px 20px 63px;background:#fffafb}
+.editals-detail-inner{display:flex;justify-content:space-between;gap:26px;padding:20px 24px;border-radius:16px;border:1px solid #efdde1;background:#fff}
+.editals-detail-text h3{font:800 19px/1.25 var(--display);letter-spacing:-.025em;color:#321922;margin:10px 0 12px}
+.editals-detail-text p{font-size:12px;line-height:1.65;margin:4px 0;color:#6d5c64}
+.editals-detail-text .editals-file-note{margin-top:12px;color:#8a6d78;font-style:italic}
+.editals-detail-actions{min-width:165px;display:flex;flex-direction:column;gap:10px;align-self:center}
+.editals-detail-actions .btn{font-size:12px;white-space:nowrap;min-height:43px;justify-content:center}
+.editals-empty{text-align:center;border:1px dashed #e8d0d6;padding:60px 20px;border-radius:24px;background:#fff;margin-top:17px;color:#8d1121}
+.editals-empty h3{font-size:23px;color:#2e1b23;margin:15px 0 8px}
+.editals-empty p{color:#816d75}
+.editals-empty button{background:#ba0a0a;border:0;color:#fff;border-radius:12px;padding:12px 24px;font-weight:800;margin-top:14px}
+.editals-note{display:flex;align-items:flex-start;gap:18px;padding:24px;border-radius:18px;background:#f9f1f2;border:1px solid #ecd7da;margin-top:30px;color:#8e1523}
+.editals-note .icon{flex:none;width:27px;height:27px}
+.editals-note strong{display:block;color:#39212c;margin-bottom:6px}
+.editals-note p{max-width:750px;color:#77656d;line-height:1.7;font-size:13px;margin:0}
+/* ensure HTML hidden attribute is respected even on CSS display:grid elements */
+.editals-year[hidden],.editals-table tr[hidden],.editals-empty[hidden]{display:none!important}
+@media(max-width:1050px){.editals-toolbar{grid-template-columns:1.3fr 1fr}.editals-clear{width:100%}.editals-heading{align-items:start;flex-direction:column;gap:10px}}
+@media(max-width:650px){.editals-hero{padding:36px 0 50px}.editals-breadcrumb{margin-bottom:30px}.editals-hero h1{font-size:40px}.editals-hero p{font-size:14px}.editals-hero-stats{gap:8px}.editals-hero-stats>span{font-size:11px;padding:10px 12px}.editals-section{padding:45px 0 65px}.editals-heading h2{font-size:32px}.editals-toolbar{grid-template-columns:1fr;padding:18px;border-radius:18px}.editals-toolbar-bottom{flex-direction:column;align-items:flex-start;gap:8px}.editals-expand-actions{gap:18px}.editals-year{border-radius:17px}.editals-year>summary{padding:18px 16px;gap:8px}.editals-year-number{font-size:25px}.editals-year-caption{font-size:11px}.editals-year-count{font-size:10px;padding:7px 9px}.editals-detail-inner{flex-direction:column}.editals-detail-actions{min-width:0;flex-direction:row;width:100%}.editals-detail-actions .btn{width:50%}.editals-note{padding:18px}}
+@media(prefers-reduced-motion:reduce){.editals-year>summary>.icon,.editals-clear,.editals-row-toggle{transition:none!important}}
+/* On phones, keep all document actions visible without horizontal scrolling. */
+@media(max-width:680px){
+  .editals-table-scroll{overflow:visible}
+  .editals-table{min-width:0;width:100%;display:block}
+  .editals-table thead{display:none}
+  .editals-table tbody{display:block}
+  .editals-table tr[data-edital-row]:not([hidden]){display:block;padding:15px 15px 17px;border-bottom:1px solid #f1e8ea}
+  .editals-table tr[data-edital-detail]:not([hidden]){display:block}
+  .editals-table tr[data-edital-detail] td{display:block;padding:0 15px 18px}
+  .editals-table tr[data-edital-row] td{display:block;width:100%;padding:6px 0}
+  .editals-table tr[data-edital-row] td:not(:first-child){padding-left:42px}
+  .editals-title-cell strong{font-size:13px}
+  .editals-title-cell small{font-size:11px}
+  .editals-org{font-size:12px}
+  .editals-table tr[data-edital-row] td:nth-child(3){display:inline-block;width:auto}
+  .editals-row-actions a{min-height:37px;align-items:center;padding:8px 12px}
+  .editals-detail-inner{padding:16px}
+  .editals-detail-actions{display:grid;grid-template-columns:1fr 1fr}
+  .editals-detail-actions .btn{width:100%;font-size:11px;padding:9px 10px}
+}
