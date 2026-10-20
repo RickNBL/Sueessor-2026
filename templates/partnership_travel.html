@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Viagens e Turismo | Parcerias SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero partnership-detail-hero travel-hero">
+  <div class="shell">
+    <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><a href="/servicos/parcerias">Parcerias</a><span>/</span><span>Viagens e Turismo</span></nav>
+    <div class="benefit-detail-hero-row">
+      <div>
+        <span class="eyebrow eyebrow-light">PARCERIAS PARA ASSOCIADOS</span>
+        <h1>Viajar fica melhor <em>com vantagens.</em></h1>
+        <p>Conheça a parceria do SUEESSOR com a Mafisa Turismo e consulte opções de viagens para você e sua família.</p>
+      </div>
+      <span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-bus"></use></svg></span>
+    </div>
+  </div>
+</section>
+
+<section class="travel-section" aria-labelledby="travel-heading">
+  <div class="shell">
+    <div class="travel-heading">
+      <div><span class="eyebrow">VIAGENS E TURISMO</span><h2 id="travel-heading">Sua próxima experiência <em>começa aqui.</em></h2></div>
+      <p>Explore os benefícios anunciados para a categoria. A representante da Mafisa pode informar destinos disponíveis, descontos e formas de pagamento.</p>
+    </div>
+    <div class="travel-partners">
+      {% for partner in travel_partners %}
+      <article class="travel-partner" id="{{ partner.slug }}">
+        <div class="travel-brand">
+          <div class="travel-brand-logo">
+            <strong class="travel-brand-fallback">Mafisa<br>Turismo</strong>
+            <img src="{{ partner.logo }}" alt="{{ partner.logo_alt }}" loading="lazy" decoding="async" onerror="this.hidden=true" />
+          </div>
+          <span class="travel-brand-kicker">PARCERIA SUEESSOR</span>
+          <p>Experiências e viagens com condições para associados e dependentes.</p>
+        </div>
+        <div class="travel-content">
+          <span class="travel-offer">{{ partner.offer }}</span>
+          <h3>{{ partner.name }}</h3>
+          <p class="travel-summary">{{ partner.summary }}</p>
+          <div class="travel-services">
+            {% for service in partner['services'] %}<span><svg class="icon sm" aria-hidden="true"><use href="#i-check"></use></svg>{{ service }}</span>{% endfor %}
+          </div>
+          <div class="travel-contact">
+            <span>INFORMAÇÕES E RESERVAS</span>
+            <strong>Fale com {{ partner.contact_person }}</strong>
+            <a href="{{ partner.phone_href }}">{{ partner.phone_display }}</a>
+          </div>
+          <div class="travel-actions">
+            <a class="btn btn-lime" href="{{ partner.whatsapp_url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"></use></svg>WhatsApp com Cristina</a>
+            <a class="btn btn-dark" href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">Site da Mafisa <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
+          </div>
+          <p class="travel-terms">Destinos, valores, descontos, disponibilidade e condições de pagamento devem ser confirmados diretamente com a representante antes de contratar.</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="travel-after">
+      <div><span class="eyebrow">MAIS EXPERIÊNCIAS</span><h3>Conheça também as excursões do SUEESSOR.</h3><p>Confira os destinos já divulgados e consulte as próximas programações do sindicato.</p></div>
+      <a class="btn btn-dark" href="/servicos/excursoes">Ver excursões <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
+    </div>
+    <p class="travel-source">Informações da parceria: <a href="https://sueessor.org.br/viagens-e-turismo/" target="_blank" rel="noopener noreferrer">portal do SUEESSOR ↗</a></p>
+  </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outras parcerias</h2><a class="text-link" href="/servicos/parcerias">Ver todas <svg class="icon sm"><use href="#i-arrow"></use></svg></a></div><div class="benefit-more-list">{% for item in partnerships if item.slug != 'viagens-e-turismo' %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"></use></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>{% endfor %}</div></div></section>
+{% endblock %}

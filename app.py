@@ -644,6 +644,25 @@ for partner in HEALTH_PARTNERS:
         location['map_embed'] = 'https://www.google.com/maps?q=' + quote(location['maps_query'], safe='') + '&output=embed'
         location['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(location['maps_query'], safe='')
 
+TRAVEL_PARTNERS = [
+    {
+        'slug': 'mafisa-turismo',
+        'name': 'Mafisa Turismo',
+        'category': 'Viagens e turismo',
+        'offer': 'Descontos exclusivos',
+        'summary': 'Na Mafisa Turismo, associados SUEESSOR e seus dependentes têm descontos exclusivos. Entre em contato com a representante Cristina para conhecer destinos, descontos e formas de pagamento.',
+        'logo': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05155148/mafisa-01-1024x1024.png',
+        'logo_alt': 'Marca da Mafisa Turismo divulgada no site oficial do SUEESSOR',
+        'phone_display': '(11) 98828-8614',
+        'phone_href': 'tel:+5511988288614',
+        'whatsapp_url': 'https://wa.me/5511988288614',
+        'contact_person': 'Cristina',
+        'website': 'https://www.mafisaturismo.com.br/',
+        'source_url': 'https://sueessor.org.br/viagens-e-turismo/',
+        'services': ['Hotéis e pousadas', 'Pacotes de viagens', 'Destinos nacionais e internacionais', 'Formas de pagamento a consultar'],
+    }
+]
+
 PARTNERSHIP_DETAILS = {
     'beleza': {
         'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
@@ -1182,6 +1201,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'saude':
         return render(request,'partnership_health.html',page='servicos',partnership=card,
                       partners=HEALTH_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'viagens-e-turismo':
+        return render(request,'partnership_travel.html',page='servicos',partnership=card,
+                      travel_partners=TRAVEL_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 

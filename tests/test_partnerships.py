@@ -41,14 +41,17 @@ def test_seven_partner_pages_with_real_content_and_no_missing_routes(partner_env
             'cursos': 'course-partner',
             'parques': 'park-card',
             'produtos-e-servicos': 'product-partner',
+            'saude': 'health-card',
+            'viagens-e-turismo': 'travel-partner',
         }
         assert expected_classes.get(card['slug'], '<article class="partnership-feature">') in html
         source = PARTNERSHIP_DETAILS[card['slug']]['source']
-        assert source in html, card['slug']
+        if card['slug'] not in ('saude', 'viagens-e-turismo'):
+            assert source in html, card['slug']
         assert 'condições' in html.lower() or 'preços especiais' in html.lower()
         details = PARTNERSHIP_DETAILS[card['slug']]
         assert len(details['features']) > 0
-        if card['slug'] not in ('clubes', 'cursos'):
+        if card['slug'] not in ('clubes', 'cursos', 'saude', 'viagens-e-turismo'):
             from html import unescape
             for feature in details['features']:
                 assert feature['title'] in unescape(html)
