@@ -695,3 +695,62 @@ body{background:#fff;color:var(--ink)}
 @media(max-width:940px){.partnership-detail-layout,.partnership-teaser{grid-template-columns:1fr}.partnership-detail-layout .benefit-detail-aside{position:static;max-width:none}.partnership-note{flex-direction:column;align-items:flex-start}.partnership-note .btn{align-self:flex-start}}
 @media(max-width:650px){.partnership-feature{padding:19px;gap:14px}.partnership-feature-mark{width:43px;height:43px;border-radius:13px}.partnership-feature h3{font-size:19px}.partnership-feature p{font-size:13px}.partnership-teaser{margin:48px 0 36px;padding:27px 23px}.partnership-detail-section{padding:55px 0 70px}.partnership-note{padding:24px 20px;margin-top:33px}.partnership-note .btn{width:100%}.partnership-detail-links{gap:12px}}
 @media(prefers-reduced-motion:reduce){.partnership-feature,.partnership-related-links a{transition:none!important;transform:none!important}}
+
+/* Parcerias — beleza e bem-estar. Estrutura responsiva e mapas reais. */
+.beauty-partners-hero h1 em{font-style:normal;color:#ffd3d6}
+.beauty-partners-section{background:linear-gradient(180deg,#fbf8f8 0%,#fff 20%,#fff 100%);padding:76px 0 90px}
+.beauty-partners-intro{max-width:770px;margin-bottom:26px}
+.beauty-partners-intro h2{font:800 clamp(35px,4vw,54px)/1.13 var(--display);letter-spacing:-.06em;margin:16px 0;color:#2a1720}
+.beauty-partners-intro h2 em{color:#aa1020;font-style:normal}
+.beauty-partners-intro p{max-width:650px;font-size:15px;line-height:1.85;color:#796a72}
+.beauty-partners-jump{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 47px}
+.beauty-partners-jump a{display:inline-flex;align-items:center;gap:14px;background:#f9f0f1;border:1px solid #e9d8db;padding:13px 17px;color:#84121e;font-size:13px;font-weight:800;border-radius:100px;transition:background .2s,color .2s,transform .2s}
+.beauty-partners-jump a:hover{background:#ba0a0a;color:#fff;transform:translateY(-3px)}
+.beauty-partner-list{display:grid;gap:46px}
+.beauty-partner-card{scroll-margin-top:114px;display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);border-radius:30px;border:1px solid #ebdfe1;background:white;overflow:hidden;box-shadow:0 34px 82px -70px #5c0d18}
+.beauty-partner-picture{min-width:0;min-height:465px;position:relative;overflow:hidden;background:linear-gradient(138deg,#81141e,#320d17);display:flex;align-items:center;justify-content:center}
+.beauty-partner-picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.98);z-index:2}
+.beauty-partner-picture-brand{position:relative;z-index:1;text-align:center;max-width:340px;padding:25px;color:white}
+.beauty-partner-picture-brand span{display:block;font:800 clamp(28px,4vw,53px)/1.05 var(--display);letter-spacing:-.055em}
+.beauty-partner-picture-brand small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#f1c0c6;display:block;margin-top:10px}
+.beauty-partner-image-credit{position:absolute;left:19px;right:19px;bottom:19px;z-index:3;color:#fff;background:#250b15dd;backdrop-filter:blur(8px);padding:11px 15px;border-radius:11px;font-size:11px;line-height:1.5;max-width:390px}
+.beauty-partner-main{padding:clamp(28px,3vw,50px)}
+.beauty-partner-topline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;color:#a21825;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.beauty-partner-offer{background:#feecef;color:#9e0b1e;padding:10px 14px;border-radius:50px;letter-spacing:0;text-transform:none;font-size:12px}
+.beauty-partner-main h3{font:800 clamp(28px,3vw,40px)/1.16 var(--display);letter-spacing:-.052em;margin:20px 0 14px;color:#251922}
+.beauty-partner-summary{font-size:15px;line-height:1.8;color:#63585e;margin:0}
+.beauty-partner-tags{display:flex;flex-wrap:wrap;gap:8px;margin:21px 0 26px}
+.beauty-partner-tags span{font-weight:700;font-size:12px;border:1px solid #efdce0;background:#fcf6f7;color:#96202d;border-radius:999px;padding:8px 12px}
+.beauty-partner-contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid #f0e8eb;border-bottom:1px solid #f0e8eb;padding:23px 0;color:#524750}
+.beauty-contact-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#a71a28}
+.beauty-partner-contact p{font-size:13px;line-height:1.7;margin:8px 0}
+.beauty-partner-contact small{font-size:11px;color:#85747b;line-height:1.5;display:block}
+.beauty-contact-tel>a{display:block;margin:8px 0 0;font-size:12px;line-height:1.5;color:#84111f;text-decoration:underline;text-underline-offset:3px}
+.beauty-partner-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.beauty-partner-actions .btn{white-space:normal;min-height:47px;font-size:12px;padding:12px 16px}
+.beauty-partner-gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:15px 22px 0}
+.beauty-partner-gallery a{display:block;aspect-ratio:1.68;overflow:hidden;border-radius:15px;background:#f5eff0}
+.beauty-partner-gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.beauty-partner-gallery a:hover img{transform:scale(1.06)}
+.beauty-partner-map{grid-column:1/-1;padding:26px;border-top:1px solid #f0e6e8;background:#fdfbfb}
+.beauty-map-heading{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px;margin-bottom:17px}
+.beauty-map-heading h4{font:800 21px/1.22 var(--display);letter-spacing:-.04em;color:#251923;margin:7px 0 0}
+.beauty-map-heading>a{font-size:12px;font-weight:800;color:#980b1d;border-bottom:1px solid #edb5bb;padding-bottom:5px}
+.beauty-partner-map iframe{display:block;border:0;border-radius:18px;width:100%;height:315px;background:#f3e9e9}
+.beauty-plans{margin:16px 0 23px}
+.beauty-plans>h4{font:800 20px var(--display);letter-spacing:-.035em;margin:0 0 15px}
+.beauty-plans-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.beauty-plan{border:1px solid #e8d5d9;border-radius:19px;background:#fff9fa;padding:19px}
+.beauty-plan-name{font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:800;color:#a51729}
+.beauty-plan strong{font:800 clamp(18px,2vw,24px)/1.25 var(--display);color:#2f1521;display:block;margin:9px 0 13px}
+.beauty-plan ul{padding-left:17px;margin:0;color:#74636d;font-size:12px;line-height:1.75}
+.beauty-plan-disclaimer{font-size:11px;color:#846c74;line-height:1.55;margin:13px 0 0}
+.beauty-partners-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;background:#f8eef0;padding:31px 36px;border-radius:24px;margin-top:55px}
+.beauty-partners-footer h2{font:800 28px/1.2 var(--display);letter-spacing:-.04em;margin:8px 0}
+.beauty-partners-footer p{font-size:14px;line-height:1.6;color:#7a636c;margin:0}
+.beauty-partners-footer .btn{flex:none}
+.beauty-partners-source{font-size:12px;line-height:1.6;color:#8a7881;margin:20px 0 0}
+.beauty-partners-source a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1050px){.beauty-partner-card{grid-template-columns:1fr}.beauty-partner-picture{min-height:400px}.beauty-partner-main{padding:30px}.beauty-partner-gallery{padding:0 22px 18px}.beauty-partner-list{gap:30px}}
+@media(max-width:670px){.beauty-partners-section{padding:48px 0 64px}.beauty-partners-intro h2{font-size:35px}.beauty-partners-jump{gap:8px;margin:24px 0 35px}.beauty-partners-jump a{padding:10px 13px;font-size:11px}.beauty-partner-card{border-radius:22px}.beauty-partner-picture{min-height:280px}.beauty-partner-image-credit{font-size:10px;left:12px;right:12px;bottom:12px;padding:9px 11px}.beauty-partner-main{padding:23px 19px}.beauty-partner-main h3{font-size:28px}.beauty-partner-summary{font-size:13px}.beauty-partner-contact,.beauty-plans-grid{grid-template-columns:1fr}.beauty-partner-contact{gap:16px}.beauty-partner-actions .btn{width:100%}.beauty-partner-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 12px 12px}.beauty-partner-gallery a:last-child{grid-column:1/-1}.beauty-partner-map{padding:15px}.beauty-partner-map iframe{height:260px}.beauty-partners-footer{display:block;padding:25px 20px}.beauty-partners-footer h2{font-size:24px}.beauty-partners-footer .btn{margin-top:20px;width:100%}}
+@media(prefers-reduced-motion:reduce){.beauty-partners-jump a,.beauty-partner-gallery img{transition:none}.beauty-partners-jump a:hover,.beauty-partner-gallery a:hover img{transform:none}}

@@ -35,8 +35,8 @@ def test_seven_partner_pages_with_real_content_and_no_missing_routes(partner_env
         assert resp.status_code == 200, card['href']
         html = resp.text
         assert card['title'] in html
-        assert '<article class="partnership-feature">' in html
-        assert 'Ver informações no portal oficial' in html
+        assert ('beauty-partner-card' in html if card['slug'] == 'beleza' else '<article class="partnership-feature">' in html)
+        assert ('Portal oficial do SUEESSOR' in html if card['slug'] == 'beleza' else 'Ver informações no portal oficial' in html)
         assert 'Condições' in html or 'condições' in html
         details = PARTNERSHIP_DETAILS[card['slug']]
         assert len(details['features']) > 0

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Beleza e bem-estar | Parcerias SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero partnership-detail-hero beauty-partners-hero">
+  <div class="shell">
+    <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><a href="/servicos/parcerias">Parcerias</a><span>/</span><span>Beleza</span></nav>
+    <div class="benefit-detail-hero-row"><div><span class="eyebrow eyebrow-light">PARCERIAS PARA ASSOCIADOS</span>
+      <h1>Beleza e<br><em>bem-estar.</em></h1><p>Descubra vantagens em acessórios, cuidados pessoais e atividades físicas para você e sua família.</p>
+    </div><span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-scissors"/></svg></span></div>
+  </div>
+</section>
+<section class="beauty-partners-section">
+ <div class="shell">
+   <div class="beauty-partners-intro"><span class="eyebrow">PARCEIROS SUEESSOR</span><h2>Cuide de você.<br><em>Aproveite mais.</em></h2>
+     <p>Confira os serviços, condições divulgadas e formas de contato. Descontos e disponibilidade podem mudar; confirme os detalhes diretamente com cada parceiro ou com o sindicato.</p>
+   </div>
+   <nav class="beauty-partners-jump" aria-label="Ir até um parceiro">
+     {% for partner in partners %}<a href="#{{ partner.slug }}">{{ partner.name }} <span aria-hidden="true">↗</span></a>{% endfor %}
+   </nav>
+   <div class="beauty-partner-list">
+    {% for partner in partners %}
+    <article class="beauty-partner-card" id="{{ partner.slug }}" aria-labelledby="partner-heading-{{ loop.index }}">
+      <div class="beauty-partner-picture">
+        {% if partner.image %}
+        <img src="{{ partner.image }}" alt="{{ partner.image_alt }}" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        {% endif %}
+        <div class="beauty-partner-picture-brand" aria-hidden="true"><span>{{ partner.name }}</span><small>{{ partner.category }}</small></div>
+        {% if partner.image %}<div class="beauty-partner-image-credit">{{ partner.image_note }}</div>{% else %}<div class="beauty-partner-image-credit">{{ partner.image_note }}</div>{% endif %}
+      </div>
+      <div class="beauty-partner-main">
+        <div class="beauty-partner-topline"><span>{{ partner.category }}</span><span class="beauty-partner-offer">{{ partner.offer }}</span></div>
+        <h3 id="partner-heading-{{ loop.index }}">{{ partner.name }}</h3>
+        <p class="beauty-partner-summary">{{ partner.summary }}</p>
+        <div class="beauty-partner-tags" aria-label="Serviços oferecidos">{% for item in partner.features %}<span>{{ item }}</span>{% endfor %}</div>
+        {% if partner.plans %}
+        <div class="beauty-plans">
+          <h4>Planos especiais anunciados</h4>
+          <div class="beauty-plans-grid">
+          {% for plan in partner.plans %}
+            <div class="beauty-plan"><span class="beauty-plan-name">{{ plan.name }}</span><strong>{{ plan.price }}</strong>
+              <ul>{% for item in plan["items"] %}<li>{{ item }}</li>{% endfor %}</ul>
+            </div>
+          {% endfor %}
+          </div>
+          <p class="beauty-plan-disclaimer">Valores e regras divulgados na parceria de fevereiro de 2026. Confirme as condições atuais com Luciana, do SUEESSOR, antes de contratar.</p>
+        </div>
+        {% endif %}
+        <div class="beauty-partner-contact">
+          <div><span class="beauty-contact-label">Local divulgado</span><p>{{ partner.address }}</p>
+            <small>{{ partner.place_note }}</small></div>
+          <div class="beauty-contact-tel"><span class="beauty-contact-label">Contato</span>
+            <a href="{{ partner.phone_href }}">{{ partner.phone }}</a>
+            <a href="{{ partner.whatsapp_href }}" target="_blank" rel="noopener noreferrer">WhatsApp: {{ partner.whatsapp }}</a>
+            {% if partner.instagram %}<a href="{{ partner.instagram_href }}" target="_blank" rel="noopener noreferrer">Instagram {{ partner.instagram }} ↗</a>{% endif %}
+          </div>
+        </div>
+        <div class="beauty-partner-actions">
+           <a class="btn btn-primary" href="{{ partner.whatsapp_href }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"/></svg> Falar no WhatsApp</a>
+           <a class="btn btn-soft" href="{{ partner.maps_url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg> Abrir no Maps</a>
+        </div>
+      </div>
+      {% if partner.gallery %}
+      <div class="beauty-partner-gallery" aria-label="Fotografias da {{ partner.name }}">
+        {% for photo in partner.gallery %}<a href="{{ photo.src }}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto {{ loop.index }} da {{ partner.name }}"><img src="{{ photo.src }}" alt="{{ photo.alt }}" loading="lazy" decoding="async"></a>{% endfor %}
+      </div>
+      {% endif %}
+      <div class="beauty-partner-map">
+        <div class="beauty-map-heading"><div><span class="eyebrow">COMO CHEGAR</span><h4>Localização no Google Maps</h4></div><a href="{{ partner.maps_url }}" target="_blank" rel="noopener noreferrer">Ver rota ↗</a></div>
+        <iframe src="{{ partner.map_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de {{ partner.name }}" allowfullscreen></iframe>
+      </div>
+    </article>
+    {% endfor %}
+   </div>
+   <div class="beauty-partners-footer"><div><span class="eyebrow">AINDA TEM DÚVIDAS?</span><h2>O sindicato está aqui para ajudar.</h2><p>Confirme como apresentar a comprovação de associado e aproveite os benefícios com tranquilidade.</p></div><a href="/contato" class="btn btn-dark">Fale com o SUEESSOR <svg class="icon sm"><use href="#i-arrow-up"/></svg></a></div>
+   <p class="beauty-partners-source">Fonte dos descontos e serviços: <a href="https://sueessor.org.br/beleza/" target="_blank" rel="noopener noreferrer">Portal oficial do SUEESSOR</a>. Fotografias e logotipos não verificados não foram substituídos por imagens de outros estabelecimentos.</p>
+ </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outras parcerias</h2><a class="text-link" href="/servicos/parcerias">Ver todas <svg class="icon sm"><use href="#i-arrow"/></svg></a></div><div class="benefit-more-list">{% for item in partnerships if item.slug != 'beleza' %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>{% endfor %}</div></div></section>
+{% endblock %}

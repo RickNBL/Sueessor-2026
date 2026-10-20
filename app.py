@@ -114,6 +114,76 @@ PARTNERSHIP_CARDS = [
      'summary':'Passeios, excursões e opções para viajar e descansar.',
      'href':'/servicos/parcerias/viagens-e-turismo'},
 ]
+# Parceiros e endereços divulgados pelo SUEESSOR. Horários, descontos e localização
+# podem mudar; cada card sinaliza quando a localização exige confirmação.
+BEAUTY_PARTNERS = [
+    {
+        'slug': 'acessorios-rojo',
+        'name': 'Acessórios Rojo',
+        'category': 'Semijoias e acessórios',
+        'offer': '10% de desconto',
+        'summary': 'Associados SUEESSOR recebem 10% de desconto em brincos, pulseiras, correntes e anéis, conforme condições divulgadas pela entidade.',
+        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/24105827/acessorios.jpg',
+        'image_alt': 'Pulseiras e acessórios Rojo divulgados pelo SUEESSOR (foto de produtos, não da fachada da loja)',
+        'image_note': 'Foto dos produtos, publicada pelo SUEESSOR; não é fotografia da loja.',
+        'address': 'Shopping Bella Vista, Rua Antônio Agú, 502, lojas 2 e 3, térreo, Centro, Osasco/SP',
+        'place_note': 'Endereço divulgado pelo SUEESSOR. Outros cadastros públicos indicam outro endereço; confirme com a loja antes de sair.',
+        'map_query': 'Shopping Bella Vista, Rua Antônio Agú, 502, Osasco, SP',
+        'phone': '(11) 4311-9233', 'phone_href': 'tel:+551143119233',
+        'whatsapp': '(11) 96391-7523', 'whatsapp_href': 'https://wa.me/5511963917523',
+        'instagram': '@acessorios_rojo', 'instagram_href': 'https://www.instagram.com/acessorios_rojo/',
+        'features': ['Brincos', 'Pulseiras', 'Correntes', 'Anéis'],
+        'gallery': [],
+    },
+    {
+        'slug': 'sao-paulo-fashion-hair',
+        'name': 'São Paulo – Fashion Hair',
+        'category': 'Salão de beleza',
+        'offer': 'Desconto exclusivo',
+        'summary': 'Serviços de corte, escova, química em geral, manicure e pedicure com desconto especial para associados e novas opções de horários, conforme divulgação.',
+        'image': '',
+        'image_alt': '',
+        'image_note': 'Fotografia verificada do estabelecimento ainda indisponível. Use o mapa para consultar imagens recentes.',
+        'address': 'Rua Presidente Castelo Branco, 159 – Centro, Osasco/SP',
+        'place_note': 'Endereço confirmado em listagens do salão. Confirme os horários antes da visita.',
+        'map_query': 'São Paulo Hair Fashion, Rua Presidente Castelo Branco, 159, Osasco SP',
+        'phone': '(11) 3682-6297', 'phone_href': 'tel:+551136826297',
+        'whatsapp': '(11) 97268-5658', 'whatsapp_href': 'https://wa.me/5511972685658',
+        'instagram': None, 'instagram_href': None,
+        'features': ['Corte', 'Escova', 'Química', 'Manicure', 'Pedicure'],
+        'gallery': [],
+    },
+    {
+        'slug': 'morellos-academia',
+        'name': 'Morellos – Academia',
+        'category': 'Atividade física e bem-estar',
+        'offer': 'Planos especiais para associados',
+        'summary': 'A parceria divulgada pelo SUEESSOR oferece condições especiais para associados e associadas da categoria na academia em Itapecerica da Serra.',
+        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/02/26170023/whatsapp-image-2026-02-25-at-12-01-08-2.jpeg',
+        'image_alt': 'Entrada interna da Academia Morellos com o logotipo oficial na parede, em fotografia publicada pelo SUEESSOR',
+        'image_note': 'Fotografia real da Academia Morellos e de sua marca, publicada pelo SUEESSOR.',
+        'address': 'Rodovia Prefeito Bento Rotger Domingues, 238 – Jardim Elisa, Itapecerica da Serra/SP',
+        'place_note': 'Endereço divulgado em plataformas de academias; confirme a unidade e as condições do convênio com Luciana.',
+        'map_query': 'Morellos Academia, Rodovia Prefeito Bento Rotger Domingues, 238, Itapecerica da Serra SP',
+        'phone': '(11) 96050-2742 (Luciana – SUEESSOR)', 'phone_href': 'tel:+5511960502742',
+        'whatsapp': '(11) 96050-2742', 'whatsapp_href': 'https://wa.me/5511960502742',
+        'instagram': '@morellosacademia', 'instagram_href': 'https://www.instagram.com/morellosacademia/',
+        'features': ['Aulas coletivas', 'Avaliação física', 'Treino personalizado'],
+        'gallery': [
+            {'src':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/02/26170025/whatsapp-image-2026-02-25-at-12-01-08-3.jpeg', 'alt':'Área de musculação da Academia Morellos divulgada pelo SUEESSOR'},
+            {'src':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/02/26170050/whatsapp-image-2026-02-25-at-12-01-07-768x346-1.jpeg', 'alt':'Recepção da Academia Morellos divulgada pelo SUEESSOR'},
+            {'src':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/02/26170051/whatsapp-image-2026-02-25-at-12-01-08-768x346-1.jpeg', 'alt':'Equipamentos de musculação da Academia Morellos'},
+        ],
+        'plans': [
+            {'name':'Plano recorrente','price':'R$ 109,90 / mês', 'items':['Acesso a todas as aulas coletivas','Avaliação física','Treino personalizado']},
+            {'name':'Plano anual','price':'12× de R$ 109,90', 'items':['Acesso a todas as aulas coletivas','Avaliação física','Treino personalizado','4 convidados por mês (na condição de dependentes do associado)','60 dias de trancamento']},
+        ],
+    },
+]
+for partner in BEAUTY_PARTNERS:
+    partner['map_embed'] = 'https://www.google.com/maps?q=' + quote(partner['map_query'], safe='') + '&output=embed'
+    partner['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(partner['map_query'], safe='')
+
 PARTNERSHIP_DETAILS = {
     'beleza': {
         'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
@@ -634,6 +704,9 @@ def partnership_detail(request:Request,slug:str):
     if slug not in PARTNERSHIP_DETAILS:
         raise HTTPException(404)
     card = next(card for card in PARTNERSHIP_CARDS if card['slug'] == slug)
+    if slug == 'beleza':
+        return render(request,'partnership_beauty.html',page='servicos',partnership=card,
+                      partners=BEAUTY_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 
