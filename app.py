@@ -523,6 +523,127 @@ PRODUCT_SERVICE_PARTNERS = [
     },
 ]
 
+
+HEALTH_PARTNERS = [
+    {
+        'slug':'bio-imagem-diagnosticos',
+        'name':'Bio Imagem Diagnósticos',
+        'category':'Exames e diagnósticos',
+        'offer':'Exames a partir de R$ 27,00',
+        'summary':'Confiança e respeito é na Bio Imagem. Condições divulgadas para associados SUEESSOR em exames e diagnósticos.',
+        'logo':'/static/parcerias/saude/bio-imagem.svg',
+        'website':'https://www.bioimagemdiagnosticos.com.br/',
+        'website_label':'Site oficial',
+        'items':['Exames a partir de R$ 27,00','Atendimento por telefone e WhatsApp','Unidade em Barueri'],
+        'locations':[
+            {'label':'Unidade Barueri','address':'Rua Enedina Chalupe Guerra, 44 - Centro, Barueri/SP','maps_query':'Rua Enedina Chalupe Guerra 44 Centro Barueri SP','phones':[('(11) 3173-3550','tel:+551131733550')],'whatsapps':[('(11) 94196-9113','https://wa.me/5511941969113')]}
+        ],
+        'email':None,
+        'notes':['Valores e disponibilidade sujeitos à confirmação com o parceiro.'],
+    },
+    {
+        'slug':'cdi-itapevi',
+        'name':'Centro de Diagnósticos de Itapevi',
+        'category':'Exames e diagnósticos',
+        'offer':'Exames a partir de R$ 80,00',
+        'summary':'Exames na CDI a partir de R$ 80,00 para associados SUEESSOR, conforme informações divulgadas.',
+        'logo':'/static/parcerias/saude/cdi-itapevi.svg',
+        'website':'http://www.cdiitapevi.com.br/',
+        'website_label':'Site oficial',
+        'items':['Exames a partir de R$ 80,00','Atendimento em Itapevi','Contatos por telefone e celular'],
+        'locations':[
+            {'label':'Unidade Itapevi','address':'Rua Dr. Pedro de Castro, 332 – Centro - Itapevi/SP','maps_query':'Rua Dr. Pedro de Castro 332 Centro Itapevi SP','phones':[('(11) 4553-7571','tel:+551145537571'),('(11) 4553-7572','tel:+551145537572'),('(11) 97571-3542','tel:+5511975713542')],'whatsapps':[]}
+        ],
+        'email':None,
+        'notes':['Confirme a tabela vigente antes do agendamento.'],
+    },
+    {
+        'slug':'clinica-lares',
+        'name':'Clínica Lares',
+        'category':'Psicologia e cuidado emocional',
+        'offer':'Descontos exclusivos para associados',
+        'summary':'A Clínica de Psicologia LARES atua desde 2000 com atendimento a crianças, adolescentes e adultos.',
+        'logo':'/static/parcerias/saude/lares.svg',
+        'website':None,
+        'website_label':'',
+        'items':['Atendimento a crianças, adolescentes e adultos','Duas unidades em Osasco','Descontos exclusivos para associados SUEESSOR'],
+        'locations':[
+            {'label':'Unidade I','address':'Rua Padre Dâmaso, 181 – Centro, Osasco/SP','maps_query':'Rua Padre Damaso 181 Centro Osasco SP','phones':[('(11) 3699-4245','tel:+551136994245')],'whatsapps':[]},
+            {'label':'Unidade II','address':'Rua dos Marianos, 444 – Centro, Osasco/SP','maps_query':'Rua dos Marianos 444 Centro Osasco SP','phones':[('(11) 3683-0630','tel:+551136830630')],'whatsapps':[]},
+        ],
+        'email':'contato@clinicalares.com.br',
+        'notes':['Instituto LARES de Psicologia e afins S/S Ltda.'],
+    },
+    {
+        'slug':'dr-mauricio-rodrigues',
+        'name':'Consultório Odontológico Dr. Maurício R. Rodrigues',
+        'category':'Odontologia',
+        'offer':'Agendamento facilitado para associados',
+        'summary':'Consultório odontológico parceiro em Itapevi para agendamento de consultas e atendimento relacionado ao convênio.',
+        'logo':'/static/parcerias/saude/dr-mauricio.svg',
+        'website':None,
+        'website_label':'',
+        'items':['Consultório em Itapevi','Atendimento com agendamento prévio','Telefone e WhatsApp para marcação'],
+        'locations':[
+            {'label':'Unidade Itapevi','address':'Avenida Cesário de Abreu, 60 – Centro, Itapevi/SP (em frente à Loja Marisa)','maps_query':'Avenida Cesario de Abreu 60 Centro Itapevi SP','phones':[('(11) 4557-7240','tel:+551145577240')],'whatsapps':[('(11) 4557-7240','https://wa.me/551145577240')]}
+        ],
+        'email':None,
+        'notes':['Parceria divulgada também na área de tratamento odontológico do SUEESSOR.'],
+    },
+    {
+        'slug':'gs-imagem',
+        'name':'GS Imagem',
+        'category':'Exames e procedimentos',
+        'offer':'Exames e procedimentos a partir de R$ 30,00',
+        'summary':'Associados e dependentes contam com exames e procedimentos em condições especiais, conforme divulgação do sindicato.',
+        'logo':'/static/parcerias/saude/gs-imagem.svg',
+        'website':'https://www.gsimagem.com.br/',
+        'website_label':'Site oficial',
+        'items':['Exames e procedimentos a partir de R$ 30,00','Unidade em Osasco','Agendamento direto com a clínica'],
+        'locations':[
+            {'label':'Unidade Osasco','address':'Rua Madre Rosselo, 77 - Centro, Osasco/SP','maps_query':'Rua Madre Rosselo 77 Centro Osasco SP','phones':[('SUEESSOR: (11) 3652-3390','tel:+551136523390'),('GS Imagem: (11) 3651-9330','tel:+551136519330')],'whatsapps':[]}
+        ],
+        'email':None,
+        'notes':['Agendamentos podem ser orientados pelo sindicato com Camila ou Kátia.'],
+    },
+    {
+        'slug':'kpo-vitalle',
+        'name':'KPO Vitalle Odontologia e Bem Estar',
+        'category':'Odontologia e harmonização',
+        'offer':'Serviços para associados e dependentes',
+        'summary':'Serviços de ortodontia e harmonização orofacial para associados e dependentes.',
+        'logo':'/static/parcerias/saude/kpo-vitalle.svg',
+        'website':'https://www.facebook.com/KPO-Vitalle-Odontologia-Bem-Estar',
+        'website_label':'Página oficial',
+        'items':['Ortodontia','Harmonização orofacial','Atendimento em Osasco'],
+        'locations':[
+            {'label':'Unidade Osasco','address':'Rua Eloy Candido Lopes, 269 - Centro, Osasco – SP','maps_query':'Rua Eloy Candido Lopes 269 Centro Osasco SP','phones':[('(11) 3681-8826','tel:+551136818826')],'whatsapps':[]}
+        ],
+        'email':None,
+        'notes':[],
+    },
+    {
+        'slug':'otica-ricon',
+        'name':'Ótica Ricon',
+        'category':'Ótica',
+        'offer':'Descontos especiais',
+        'summary':'Associados SUEESSOR contam com descontos especiais na Ótica Ricon.',
+        'logo':'/static/parcerias/saude/otica-ricon.svg',
+        'website':None,
+        'website_label':'',
+        'items':['Descontos especiais para associados','Unidade no Centro de Osasco','Atendimento orientado pelo SUEESSOR'],
+        'locations':[
+            {'label':'Unidade Osasco','address':'R. Itabuna, 30 - Centro, Osasco - SP, 06010-120','maps_query':'Rua Itabuna 30 Centro Osasco SP 06010-120','phones':[('SUEESSOR: (11) 3652-3390','tel:+551136523390')],'whatsapps':[]}
+        ],
+        'email':None,
+        'notes':['Informações com Camila ou Kátia no SUEESSOR.'],
+    },
+]
+for partner in HEALTH_PARTNERS:
+    for location in partner['locations']:
+        location['map_embed'] = 'https://www.google.com/maps?q=' + quote(location['maps_query'], safe='') + '&output=embed'
+        location['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(location['maps_query'], safe='')
+
 PARTNERSHIP_DETAILS = {
     'beleza': {
         'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
@@ -1058,6 +1179,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'produtos-e-servicos':
         return render(request,'partnership_products.html',page='servicos',partnership=card,
                       products=PRODUCT_SERVICE_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'saude':
+        return render(request,'partnership_health.html',page='servicos',partnership=card,
+                      partners=HEALTH_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 
