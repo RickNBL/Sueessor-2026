@@ -49,6 +49,7 @@ app.mount('/uploads', StaticFiles(directory=str(UPLOADS)), name='uploads')
 if not IS_VERCEL:
     app.mount('/convencoes/arquivos', StaticFiles(directory=str(BASE / 'public' / 'convencoes' / 'arquivos')), name='convencoes-arquivos')
     app.mount('/editais/arquivos', StaticFiles(directory=str(BASE / 'public' / 'editais' / 'arquivos')), name='editais-arquivos')
+    app.mount('/modelos-de-acordo/arquivos', StaticFiles(directory=str(BASE / 'public' / 'modelos-de-acordo' / 'arquivos')), name='modelos-acordo-arquivos')
 templates = Jinja2Templates(directory=str(BASE / 'templates'))
 CONVENTION_DOCS = json.loads((BASE / 'static' / 'convention_index.json').read_text(encoding='utf-8'))
 CONVENTION_COUNTS = {key:sum(len(year['documents']) for year in years) for key,years in CONVENTION_DOCS.items()}
@@ -56,6 +57,32 @@ EDITAL_DOCS = json.loads((BASE / 'static' / 'editais_index.json').read_text(enco
 EDITAL_YEARS = sorted({record['year'] for record in EDITAL_DOCS}, reverse=True)
 EDITAL_BY_YEAR = {year:[r for r in EDITAL_DOCS if r['year']==year] for year in EDITAL_YEARS}
 EDITAL_NAMES = sorted({r['name'] for r in EDITAL_DOCS}, key=lambda s:s.casefold())
+# PDFs de referência fornecidos pelo SUEESSOR: modelos não assinados, datados de 2019.
+# Manter as cópias originais e servir como assets públicos (inclusive na Vercel).
+AGREEMENT_MODELS = [
+    {
+        'id': 'banco-de-horas',
+        'number': '01',
+        'title': 'Acordo coletivo de trabalho para implantação de Banco de Horas',
+        'summary': 'Modelo de acordo coletivo para implantação de banco de horas, com regras de formação, composição, compensação e acompanhamento dos saldos.',
+        'topics': ['Criação e composição do banco de horas', 'Regras para compensação e informação dos saldos', 'Procedimentos de renovação, revisão ou revogação'],
+        'pages': 4,
+        'url': '/modelos-de-acordo/arquivos/acordo-coletivo-modelo-banco-de-horas.pdf',
+        'filename': 'Acordo-Coletivo-Modelo-Banco-de-Horas.pdf',
+    },
+    {
+        'id': 'jornada-12x36',
+        'number': '02',
+        'title': 'Acordo coletivo de trabalho para compensação de horas com implantação do regime de jornada 12×36',
+        'subtitle': '(doze horas de trabalho por 36 horas de descanso) e outros fins específicos nele indicados.',
+        'summary': 'Modelo para implementação da jornada de doze horas de trabalho por trinta e seis horas de descanso, com disposições sobre intervalos, trabalho noturno e feriados.',
+        'topics': ['Jornada 12×36 e intervalos para refeição e descanso', 'Condições para trabalho noturno e feriados', 'Previsão expressa de vedação do banco de horas aos empregados abrangidos'],
+        'pages': 3,
+        'url': '/modelos-de-acordo/arquivos/acordo-coletivo-modelo-jornada-12x36.pdf',
+        'filename': 'Acordo-Coletivo-Modelo-Jornada-12x36.pdf',
+    },
+]
+
 
 
 AREAS = ['Barueri', 'Carapicuíba', 'Cotia', 'Embu', 'Embu-Guaçu', 'Ibiúna', 'Itapecerica da Serra', 'Itapevi', 'Jandira', 'Osasco', 'Santana de Parnaíba', 'Taboão da Serra', 'Vargem Grande Paulista']
@@ -1221,6 +1248,8 @@ def document(request:Request,kind:str):
         return render(request, 'editals.html', page='convencoes',
                       documents=EDITAL_DOCS, years=EDITAL_YEARS, grouped=EDITAL_BY_YEAR,
                       names=EDITAL_NAMES)
+    if kind == 'acordos':
+        return render(request, 'agreements.html', page='convencoes', models=AGREEMENT_MODELS)
     return render(request,'documents.html',page='convencoes',kind=kind,doc=options[kind])
 
 @app.get('/associe-se', response_class=HTMLResponse)

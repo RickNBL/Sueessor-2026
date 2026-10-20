@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Modelos de acordo coletivo | SUEESSOR{% endblock %}
+{% block content %}
+<section class="editals-hero agreements-hero">
+  <div class="shell">
+    <nav class="editals-breadcrumb" aria-label="Localização na página"><a href="/">Início</a><span>/</span><a href="/convencoes">Documentos</a><span>/</span>Modelos de acordo</nav>
+    <span class="eyebrow eyebrow-light">DOCUMENTOS PARA CONSULTA</span>
+    <h1>Modelos de acordo <em>coletivo de trabalho.</em></h1>
+    <p>Consulte os modelos disponibilizados pelo SUEESSOR para banco de horas e jornada 12×36. Visualize o PDF diretamente nesta página ou faça o download do documento original.</p>
+    <div class="editals-hero-stats"><span><strong>02</strong> modelos em PDF</span><span><svg class="icon sm" aria-hidden="true"><use href="#i-file"/></svg> Consulta e download</span><span><svg class="icon sm" aria-hidden="true"><use href="#i-shield"/></svg> Arquivos originais</span></div>
+  </div>
+</section>
+<section class="agreements-section" aria-labelledby="agreements-title">
+  <div class="shell">
+    <div class="agreements-heading">
+      <span class="eyebrow">BIBLIOTECA DE MODELOS</span>
+      <h2 id="agreements-title">Escolha o documento <em>que procura.</em></h2>
+      <p>Os dois modelos abaixo foram fornecidos em PDF, com campos para identificação da empresa, datas e assinaturas.</p>
+    </div>
+    <div class="agreements-grid">
+      {% for model in models %}
+      <article class="agreement-card" id="{{ model.id }}" aria-labelledby="agreement-title-{{ loop.index }}">
+        <div class="agreement-card-upper">
+          <span class="agreement-number" aria-hidden="true">{{ model.number }}</span>
+          <div class="agreement-card-labels"><span>MODELO DE ACORDO COLETIVO</span><span class="agreement-pages">{{ model.pages }} páginas · PDF</span></div>
+          <h3 id="agreement-title-{{ loop.index }}">{{ model.title }}</h3>
+          {% if model.subtitle %}<p class="agreement-subtitle">{{ model.subtitle }}</p>{% endif %}
+          <p class="agreement-description">{{ model.summary }}</p>
+          <div class="agreement-actions"><a class="btn btn-dark" href="{{ model.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visualizar PDF de {{ model.title }}"><svg class="icon sm" aria-hidden="true"><use href="#i-file"/></svg> Visualizar PDF</a><a class="btn btn-soft" href="{{ model.url }}" download="{{ model.filename }}" aria-label="Baixar PDF de {{ model.title }}">Baixar PDF <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </div>
+        <details class="agreement-details">
+          <summary><span>Ver detalhes e visualizar nesta página</span><svg class="icon sm" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="agreement-details-content">
+            <h4>O que você encontra no modelo</h4>
+            <ul>{% for topic in model.topics %}<li><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg><span>{{ topic }}</span></li>{% endfor %}</ul>
+            <div class="agreement-pdf-header"><span>Pré-visualização do documento</span><a href="{{ model.url }}" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></div>
+            <iframe class="agreement-pdf-viewer" src="{{ model.url }}#toolbar=1" loading="lazy" title="Visualização do modelo {{ model.title }}"></iframe>
+            <p class="agreement-viewer-note">Se o visualizador não carregar no seu navegador, use o botão <a href="{{ model.url }}" target="_blank" rel="noopener noreferrer">Visualizar PDF</a> ou <a href="{{ model.url }}" download="{{ model.filename }}">Baixar PDF</a>.</p>
+          </div>
+        </details>
+      </article>
+      {% endfor %}
+    </div>
+    <aside class="agreements-alert"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Atenção: modelos de referência de 2019</strong><p>Os arquivos contêm campos em branco para preenchimento e não representam acordos coletivos assinados ou em vigor. Antes de utilizar qualquer modelo, confirme com o SUEESSOR a legislação, a convenção coletiva e as condições aplicáveis atualmente. Os PDFs foram preservados sem alterações.</p></div></aside>
+    <div class="agreements-links"><a href="/convencoes">Consultar convenções coletivas <svg class="icon sm"><use href="#i-arrow"/></svg></a><a href="/servicos/juridico">Orientação jurídica <svg class="icon sm"><use href="#i-arrow"/></svg></a><a href="/contato">Falar com o SUEESSOR <svg class="icon sm"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+{% endblock %}
