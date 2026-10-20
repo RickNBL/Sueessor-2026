@@ -1,8 +1,0 @@
-__pycache__/
-.pytest_cache/
-.env
-*.pyc
-data/*
-!data/.gitkeep
-uploads/*
-!uploads/.gitkeep
