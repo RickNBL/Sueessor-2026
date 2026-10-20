@@ -135,9 +135,7 @@ BEAUTY_PARTNERS = [
         'whatsapp': '(11) 96391-7523', 'whatsapp_href': 'https://wa.me/5511963917523',
         'instagram': '@acessorios_rojo', 'instagram_href': 'https://www.instagram.com/acessorios_rojo/',
         'features': ['Brincos', 'Pulseiras', 'Correntes', 'Anéis'],
-        'gallery': [
-            {'src':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/24105827/acessorios.jpg', 'alt':'Fotografia de acessórios e produtos Rojo divulgada pelo SUEESSOR'},
-        ],
+        'gallery': [],
     },
     {
         'slug': 'sao-paulo-fashion-hair',
@@ -187,6 +185,127 @@ BEAUTY_PARTNERS = [
 for partner in BEAUTY_PARTNERS:
     partner['map_embed'] = 'https://www.google.com/maps?q=' + quote(partner['map_query'], safe='') + '&output=embed'
     partner['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(partner['map_query'], safe='')
+
+# Parceiros de cursos: informações e logos de referência publicados pelo SUEESSOR.
+# A localização no mapa é incorporada apenas quando um endereço físico específico
+# pode ser associado ao parceiro. Para serviços online/multiunidade, usar pesquisa.
+COURSE_PARTNERS = [
+    {
+        'slug':'argos', 'name':'Argos | Centro de Educação Profissional Santo Amaro',
+        'type':'Educação profissional', 'discount':'15% de desconto',
+        'summary':'Sócios e seus dependentes têm 15% de desconto nos cursos oferecidos.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152148/argos.jpg',
+        'address':'Rua Clemente Álvares, 470 – Lapa, São Paulo/SP',
+        'address_note':'Endereço publicado pelo SUEESSOR. O nome da instituição menciona Santo Amaro; confirme a unidade antes da visita.',
+        'maps_query':'Rua Clemente Alvares 470 Lapa Sao Paulo SP',
+        'show_map':True,
+        'phones':[('(11) 5521-5847','tel:+551155215847'),('(11) 5522-1533','tel:+551155221533')],
+        'whatsapps':[('(11) 94873-0486','https://wa.me/5511948730486'),('(11) 96996-0935','https://wa.me/5511969960935')],
+        'email':'santoamaro@escolasargos.com.br', 'website':'http://escolasargos.com.br/',
+        'benefits':['Cursos oferecidos pela escola com desconto para sócios e dependentes legais.'],
+    },
+    {
+        'slug':'cna', 'name':'CNA Inglês definitivo',
+        'type':'Idiomas', 'discount':'A partir de 30% de desconto',
+        'summary':'Associados SUEESSOR e dependentes recebem descontos nas mensalidades dos cursos do CNA, nas unidades participantes.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152159/cna.jpg',
+        'address':'Unidades participantes: Alphaville (Barueri), Cotia, Granja Viana, Osasco Centro, Vargem Grande Paulista e Vila dos Remédios.',
+        'address_note':'Consulte o endereço da unidade escolhida com a rede CNA. A pesquisa no mapa é de uma das regiões abrangidas, não uma confirmação de endereço.',
+        'maps_query':'CNA Ingles Osasco Centro SP', 'show_map':False,
+        'phones':[('(11) 4003-3599','tel:+551140033599')],
+        'whatsapps':[], 'email':None, 'website':'https://www.cna.com.br/',
+        'benefits':['Desconto exclusivo para as seis regiões participantes, conforme regras do convênio.'],
+        'units':['Alphaville (Barueri)','Cotia','Granja Viana','Osasco Centro','Vargem Grande Paulista','Vila dos Remédios'],
+    },
+    {
+        'slug':'colegio-seta', 'name':'Colégio Seta',
+        'type':'Educação básica e técnica', 'discount':'15% nas mensalidades',
+        'summary':'Associados, dependentes legais e agregados têm desconto de 15% nas mensalidades dos cursos do Colégio Seta em Osasco.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152208/logo-colegio-seta.png',
+        'address':'Avenida João Batista, 487 – Osasco/SP – CEP 06097-105',
+        'address_note':'Endereço divulgado pelo SUEESSOR.',
+        'maps_query':'Avenida Joao Batista 487 Osasco SP 06097-105', 'show_map':True,
+        'phones':[('(11) 3681-9695','tel:+551136819695'),('(11) 3689-2121','tel:+551136892121')],
+        'whatsapps':[], 'email':'contato@colegioseta.com.br', 'website':'https://www.colegioseta.com.br/',
+        'benefits':['Ensino Fundamental e Ensino Médio regular','Educação de Jovens e Adultos (EJA)','Cursos técnicos integrados ao Médio ou sequenciais: Administração, Contabilidade, Eletrônica, Eletrotécnica, Informática, Mecatrônica e Segurança do Trabalho.'],
+    },
+    {
+        'slug':'damasio', 'name':'Damásio Educacional',
+        'type':'Concursos, OAB, pós-graduação e MBA', 'discount':'Até 30% de desconto',
+        'summary':'Condições anunciadas para cursos preparatórios, pós-graduação e MBA voltadas aos associados SUEESSOR.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152218/adesivo_foto_vertical-02-650x450-1.jpg',
+        'address':'Unidade Osasco (informação atual do Damásio): Rua Avelino Lopes, 297 – Centro, Osasco/SP.',
+        'address_note':'O endereço da unidade é divulgado pelo Damásio, mas não confirma onde o desconto do convênio pode ser utilizado. Consulte antes de ir.',
+        'maps_query':'Damásio Rua Avelino Lopes 297 Centro Osasco SP', 'show_map':True,
+        'phones':[('(11) 3683-9432','tel:+551136839432'),('(11) 4623-2644','tel:+551146232644')],
+        'whatsapps':[('(11) 94513-0422','https://wa.me/5511945130422')], 'email':None, 'website':'https://damasio.com.br/',
+        'benefits':['Preparatórios para concursos públicos e OAB: 30% de desconto.','Pós-graduação com certificação Damásio: 25% de desconto.','MBA e IMBEC AGRO: 20% de desconto.'],
+    },
+    {
+        'slug':'estacio', 'name':'Faculdade Estácio de Sá',
+        'type':'Graduação e bolsas', 'discount':'Bolsas de 40% a 72%',
+        'summary':'Associados e dependentes podem ter bolsas de 40% a 72% em cursos de graduação, com mais 10% de desconto acumulável nas mensalidades, conforme divulgação.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152226/estacio.png',
+        'address':'Diversas unidades e modalidades. Confirme o campus ou polo de interesse.',
+        'address_note':'Não há campus específico indicado para o convênio; o Maps abre uma busca, não uma unidade confirmada.',
+        'maps_query':'Faculdade Estácio Osasco SP', 'show_map':False,
+        'phones':[('(11) 96742-5757 (Paula)','tel:+5511967425757')],
+        'whatsapps':[('(11) 9569-8690 (Coordenação Comercial)','https://wa.me/551195698690')],
+        'email':'silva.paula@estacio.br', 'website':'https://estacio.br/selecao',
+        'benefits':['Bolsas informadas de 40% até 72% na graduação.','Mais 10% de desconto nas mensalidades, acumulável conforme regras divulgadas.','Atendimento com a coordenadora comercial para simulação.'],
+    },
+    {
+        'slug':'rg-cursos', 'name':'RG – Cursos de Capacitação',
+        'type':'Capacitação profissional', 'discount':'Preços exclusivos',
+        'summary':'Condições especiais para associados em cursos de capacitação nas áreas de cuidado e saúde.',
+        'logo':None,
+        'address':'Endereço não informado no material enviado.',
+        'address_note':'Não encontramos endereço específico confirmado. Use o contato para localizar a unidade.',
+        'maps_query':'RG Cursos de Capacitacao Sao Paulo SP', 'show_map':False,
+        'phones':[('(11) 4237-6727','tel:+551142376727'),('(11) 99596-9301 (Júnior)','tel:+5511995969301')],
+        'whatsapps':[('(11) 99596-9301','https://wa.me/5511995969301')],
+        'email':'rgcursos@terra.com.br', 'website':'http://rgcursossp.com.br/',
+        'benefits':['Cuidador de Idosos','Berçarista','Babá','Punção Venosa','Outras formações: consultar a instituição.'],
+    },
+    {
+        'slug':'supergeeks', 'name':'SuperGeeks Carapicuíba',
+        'type':'Robótica e programação', 'discount':'20% de desconto',
+        'summary':'Parceria para crianças de 8 a 17 anos, com 20% de desconto nos cursos de robótica e programação (exceto material didático). Aula demonstrativa gratuita anunciada.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152247/whatsapp-image-2019-05-22-at-10-44-20.jpeg',
+        'address':'Unidade Carapicuíba: Avenida Miriam, 122 – Carapicuíba/SP, CEP 06320-060.',
+        'address_note':'Endereço de unidade divulgado no site atual da SuperGeeks. Confirme a aplicação do desconto informado pelo SUEESSOR.',
+        'maps_query':'SuperGeeks Carapicuiba Avenida Miriam 122 SP', 'show_map':True,
+        'phones':[], 'whatsapps':[('(11) 98364-3933','https://wa.me/5511983643933')],
+        'email':None, 'website':'https://novo.supergeeks.ai/unidade/carapicuiba',
+        'benefits':['20% de desconto para crianças de 8 a 17 anos (material didático não incluso).','Aula demonstrativa gratuita divulgada pelo convênio.','Cursos de programação, aplicativos, games e robótica.'],
+        'extra_links':[('WhatsApp divulgado na campanha','https://bit.ly/WhattsSuperGeeks'),('Solicitar aula demonstrativa','https://bit.ly/AulaDemoGr%C3%A1tis')],
+    },
+    {
+        'slug':'uninter', 'name':'UNINTER – Centro Universitário',
+        'type':'Ensino superior', 'discount':'10% de desconto',
+        'summary':'O associado SUEESSOR tem 10% de desconto nas mensalidades, conforme as condições do convênio divulgado.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152256/uninter.jpg',
+        'address':'Vários polos e modalidades de ensino. Confirme o polo mais próximo.',
+        'address_note':'Nenhum polo específico foi fornecido; a busca no Maps não indica um endereço de parceria confirmado.',
+        'maps_query':'UNINTER polo Osasco SP', 'show_map':False,
+        'phones':[('0800 702 0500','tel:08007020500')], 'whatsapps':[], 'email':None, 'website':'https://www.uninter.com/',
+        'benefits':['10% de desconto nas mensalidades de cursos elegíveis, mediante confirmação do convênio.'],
+    },
+    {
+        'slug':'unyleya', 'name':'Unyleya – Graduação e Pós-Graduação',
+        'type':'Graduação e pós-graduação', 'discount':'Até 58% de bolsa',
+        'summary':'Conforme divulgação, associados SUEESSOR e dependentes legais podem obter bolsas de até 58% em cursos elegíveis.',
+        'logo':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05152304/whatsapp-image-2024-03-11-at-16-25-49.jpeg',
+        'address':'Modalidades de ensino e unidades a consultar no site da instituição.',
+        'address_note':'O material não fornece endereço de unidade; o Google Maps abre uma pesquisa geral.',
+        'maps_query':'Unyleya ensino superior Osasco Sao Paulo', 'show_map':False,
+        'phones':[('0800 604 2210','tel:08006042210')], 'whatsapps':[], 'email':None, 'website':'https://unyleya.edu.br/invista.voce',
+        'benefits':['Até 58% de bolsa para associados e seus dependentes legais em cursos elegíveis.'],
+    },
+]
+for partner in COURSE_PARTNERS:
+    partner['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(partner['maps_query'],safe='')
+    partner['map_embed'] = 'https://www.google.com/maps?q=' + quote(partner['maps_query'],safe='') + '&output=embed' if partner['show_map'] else None
 
 CLUB_PARTNERS = [
     {
@@ -280,7 +399,7 @@ PARTNERSHIP_DETAILS = {
             {'title':'SuperGeeks — Robótica e Programação','description':'Parceria divulgada para cursos de robótica e programação voltados ao público infantojuvenil. Consulte turmas e condições atuais antes da matrícula.','info':'Informações e encaminhamentos pelo SUEESSOR.'},
             {'title':'Capacitação e formação','description':'O SUEESSOR divulga oportunidades de formação e cursos profissionalizantes para associados. Consulte as opções disponíveis neste momento.','info':'Peça informações sobre instituições, inscrições e eventuais descontos.'},
         ],
-        'source':'https://sueessor.org.br/parcerias/',
+        'source':'https://sueessor.org.br/cursos/',
         'internal_links':[],
     },
     'parques': {
@@ -781,6 +900,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'clubes':
         return render(request,'partnership_clubs.html',page='servicos',partnership=card,
                       clubs=CLUB_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'cursos':
+        return render(request,'partnership_courses.html',page='servicos',partnership=card,
+                      courses=COURSE_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 

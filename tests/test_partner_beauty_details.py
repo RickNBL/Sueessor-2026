@@ -39,7 +39,8 @@ def test_images_are_grounded_not_mislabeled_and_have_source_fallback(site):
     assert '/static/parcerias/logo-rojo.webp' in html
     assert 'beauty-partner-image-credit' not in html
     assert 'logotipo oficial na parede' in html
-    assert html.count('class="beauty-partner-gallery"') == 2
+    assert html.count('class="beauty-partner-gallery"') == 1
+    assert '24105827/acessorios.jpg' not in html
     assert 'beauty-partner-picture--logo' in html
 
 
