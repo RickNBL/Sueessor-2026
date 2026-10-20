@@ -8,8 +8,8 @@ CAMPAIGNS = [
     ('destaque-assedio-moral.webp', '/denuncie'),
     ('destaque-o-que-sao-sindicatos.webp', '/sobre#o-que-e-um-sindicato'),
     ('destaque-sugestao-de-temas.webp', '/contato'),
-    ('destaque-parques-conveniados.webp', '/servicos/parcerias#parques'),
-    ('destaque-super-geeks.webp', '/servicos/parcerias#super-geeks'),
+    ('destaque-parques-conveniados.webp', '/servicos/parcerias/parques'),
+    ('destaque-super-geeks.webp', '/servicos/parcerias/cursos'),
 ]
 
 
@@ -36,8 +36,8 @@ def test_promo_images_and_interactions_are_deployed():
         assert client.get(url.split('#')[0]).status_code == 200
     assert 'data-promo-carousel' in client.get('/').text
     assert 'id="o-que-e-um-sindicato"' in client.get('/sobre').text
-    assert 'id="parques"' in client.get('/servicos/parcerias').text
-    assert 'id="super-geeks"' in client.get('/servicos/parcerias').text
+    assert 'href="/servicos/parcerias/parques"' in client.get('/servicos/parcerias').text
+    assert 'href="/servicos/parcerias/cursos"' in client.get('/servicos/parcerias').text
     assert (ROOT / 'src/carousel.ts').is_file()
     assert (ROOT / 'static/carousel.js').is_file()
     assert (ROOT / 'public/static/carousel.js').is_file()

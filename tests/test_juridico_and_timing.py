@@ -42,6 +42,7 @@ def test_juridical_page_contains_supplied_content_and_contact_links():
 def test_other_services_are_unchanged():
     from app import app
     client = TestClient(app)
-    assert 'Parques e lazer para associados' in client.get('/servicos/parcerias').text
+    assert 'Parcerias' in client.get('/servicos/parcerias').text
+    assert 'data-benefit-card' in client.get('/servicos/parcerias').text
     assert 'Acordos e convenções' in client.get('/servicos/beneficios').text
     assert client.get('/').status_code == 200

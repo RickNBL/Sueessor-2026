@@ -89,47 +89,211 @@ BENEFIT_CARDS = [
      'summary':'Atendimento odontológico básico em Osasco e Itapevi.',
      'href':'/servicos/tratamento-odontologico'},
 ]
+# Categorias de parcerias; as condições devem ser confirmadas com o SUEESSOR.
+# São exemplos da rede do sindicato, não garantia de desconto atual ou disponibilidade.
+PARTNERSHIP_CARDS = [
+    {'title':'Beleza','slug':'beleza','icon':'scissors','tag':'Autocuidado',
+     'summary':'Salões, acessórios e serviços de beleza com vantagens para associados.',
+     'href':'/servicos/parcerias/beleza'},
+    {'title':'Clubes','slug':'clubes','icon':'users','tag':'Lazer em família',
+     'summary':'Espaços de lazer, piscinas e atividades para aproveitar com a família.',
+     'href':'/servicos/parcerias/clubes'},
+    {'title':'Cursos','slug':'cursos','icon':'graduation','tag':'Educação',
+     'summary':'Capacitação, formação profissional e oportunidades de aprendizagem.',
+     'href':'/servicos/parcerias/cursos'},
+    {'title':'Parques','slug':'parques','icon':'trees','tag':'Diversão',
+     'summary':'Experiências e ingressos em parques de diversão e aquáticos.',
+     'href':'/servicos/parcerias/parques'},
+    {'title':'Produtos e Serviços','slug':'produtos-e-servicos','icon':'shopping','tag':'Economia',
+     'summary':'Vantagens em compras, serviços e entretenimento.',
+     'href':'/servicos/parcerias/produtos-e-servicos'},
+    {'title':'Saúde','slug':'saude','icon':'heart','tag':'Cuidado',
+     'summary':'Acesso facilitado a serviços de saúde e exames com parceiros.',
+     'href':'/servicos/parcerias/saude'},
+    {'title':'Viagens e Turismo','slug':'viagens-e-turismo','icon':'bus','tag':'Novas experiências',
+     'summary':'Passeios, excursões e opções para viajar e descansar.',
+     'href':'/servicos/parcerias/viagens-e-turismo'},
+]
+PARTNERSHIP_DETAILS = {
+    'beleza': {
+        'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
+        'features':[
+            {'title':'São Paulo – Fashion Hair','description':'Salão com serviços de corte, escova, química, manicure e pedicure; o portal divulga condições especiais para associados.','info':'Rua Presidente Castelo Branco, 159 – Centro, Osasco/SP. Telefone: (11) 3682-6297.'},
+            {'title':'Acessórios Rojo','description':'Loja de acessórios, como brincos, pulseiras, correntes e anéis. O portal divulga desconto para associados.','info':'Rua Antônio Agú, 502 – Centro de Osasco. Informações: (11) 4311-9233.'},
+        ],
+        'source':'https://sueessor.org.br/beleza/',
+        'internal_links':[{'title':'Conheça o SPAÇO BELEZA SUEESSOR','href':'/servicos/salao-de-beleza'}],
+    },
+    'clubes': {
+        'intro':'Opções de lazer em clubes de campo, com regras específicas para acesso de associados e dependentes legais.',
+        'features':[
+            {'title':'CEFOL — Centro de Formação e Lazer','description':'O portal divulga entrada gratuita para associados e dependentes legais. O uso das piscinas depende de exame médico e o associado precisa solicitar autorização ao SUEESSOR.','info':'Estrada das Mulatas, 1000 – Tijuco Preto, Cotia/SP.'},
+            {'title':'Clube de Campo SIMTRATECOR','description':'O portal divulga uso de piscinas em condições especiais para associados e dependentes legais, conforme regras e faixa etária do clube.','info':'Estrada Taxaquara, 900 – São João Novo, São Roque/SP.'},
+        ],
+        'source':'https://sueessor.org.br/clubes/',
+        'internal_links':[],
+    },
+    'cursos': {
+        'intro':'A qualificação abre novas possibilidades. Conheça oportunidades e parceiros de cursos e formação divulgados pelo sindicato.',
+        'features':[
+            {'title':'SuperGeeks — Robótica e Programação','description':'Parceria divulgada para cursos de robótica e programação voltados ao público infantojuvenil. Consulte turmas e condições atuais antes da matrícula.','info':'Informações e encaminhamentos pelo SUEESSOR.'},
+            {'title':'Capacitação e formação','description':'O SUEESSOR divulga oportunidades de formação e cursos profissionalizantes para associados. Consulte as opções disponíveis neste momento.','info':'Peça informações sobre instituições, inscrições e eventuais descontos.'},
+        ],
+        'source':'https://sueessor.org.br/parcerias/',
+        'internal_links':[],
+    },
+    'parques': {
+        'intro':'Diversão para toda a família com opções de parques que aparecem na rede de parcerias do sindicato.',
+        'features':[
+            {'title':'Hopi Hari','description':'Parque de diversões com condições especiais para associados divulgadas pelo sindicato.','info':'Rodovia dos Bandeirantes, km 72 – Vinhedo/SP.'},
+            {'title':'Parque Aquático Magic City','description':'Parque aquático com condições especiais divulgadas para a categoria.','info':'Estrada do Koyama, 1 – Suzano/SP.'},
+            {'title':'Parque da Mônica','description':'Opção de lazer familiar com preços especiais anunciados pelo SUEESSOR.','info':'Av. das Nações Unidas, 22540 – Jurubatuba, São Paulo/SP.'},
+            {'title':'Wet’n Wild','description':'Parque aquático incluído nas opções divulgadas pelo sindicato.','info':'Rodovia dos Bandeirantes, km 72 – Itupeva/SP.'},
+        ],
+        'source':'https://sueessor.org.br/parques/',
+        'internal_links':[],
+    },
+    'produtos-e-servicos': {
+        'intro':'Produtos, serviços e lazer com condições especiais anunciadas para associados.',
+        'features':[
+            {'title':'Acessórios Rojo','description':'Acessórios e semijoias com condição diferenciada divulgada pelo sindicato.','info':'Informações: (11) 4311-9233.'},
+            {'title':'Cinemark','description':'Ingressos de cinema em condições especiais para associados; consulte valores e aquisição junto ao sindicato.','info':'Informações no SUEESSOR: (11) 3652-3390.'},
+            {'title':'Disk Carreto','description':'Serviços de frete e mudanças para a região da Grande São Paulo, com condições divulgadas para associados.','info':'Contato anunciado: (11) 99775-2672.'},
+        ],
+        'source':'https://sueessor.org.br/produtos-e-servicos/',
+        'internal_links':[],
+    },
+    'saude': {
+        'intro':'Além do atendimento oferecido pelo sindicato, associados podem conhecer opções de exames com condições especiais em laboratórios parceiros.',
+        'features':[
+            {'title':'Alphaclin — exames laboratoriais','description':'O Ambulatório Médico SUEESSOR orienta associados e dependentes sobre descontos em exames laboratoriais no parceiro.','info':'Rua Salem Bechara, 143 – Centro, Osasco/SP. (11) 2284-5566.'},
+            {'title':'Sabin — diagnóstico por imagem','description':'Unidades de Alphaville/Barueri e Osasco, com encaminhamento carimbado pelo SUEESSOR para acesso às condições informadas.','info':'Agendamento: (11) 4195-1679.'},
+        ],
+        'source':'https://sueessor.org.br/clinica-medica/',
+        'internal_links':[{'title':'Conheça a Clínica Médica','href':'/servicos/clinica-medica'}, {'title':'Tratamento odontológico','href':'/servicos/tratamento-odontologico'}],
+    },
+    'viagens-e-turismo': {
+        'intro':'Passeios, viagens e oportunidades de lazer para descansar, conhecer novos destinos e aproveitar momentos especiais.',
+        'features':[
+            {'title':'Lambari (MG)','description':'Destino divulgado em excursões do SUEESSOR, conhecido por suas fontes de água mineral e atrações naturais.','info':'Consulte novas datas e disponibilidade diretamente com o sindicato.'},
+            {'title':'Ilha Morena','description':'Excursão já divulgada pelo SUEESSOR. A programação publicada foi em novembro de 2024 e não representa uma viagem com inscrições atuais.','info':'Informe-se sobre futuros roteiros com a equipe do sindicato.'},
+        ],
+        'source':'https://sueessor.org.br/excursoes/',
+        'internal_links':[{'title':'Conheça as Excursões do SUEESSOR','href':'/servicos/excursoes'}],
+    },
+}
+
 BENEFIT_DETAILS = {
     'clinica-medica': {
         'title':'Clínica Médica', 'tag':'Saúde e prevenção', 'icon':'stethoscope',
-        'heading':'Cuidado para quem também precisa ser cuidado.',
-        'intro':'O Ambulatório Médico SUEESSOR Cuidando de Quem Cuida oferece consultas nas especialidades disponíveis para associados e seus dependentes legais, além de acesso a condições diferenciadas para exames.',
-        'highlights':[
-            ('Atendimentos','Consultas nas especialidades disponíveis estão incluídas na mensalidade associativa, conforme as regras do benefício. Psicologia possui condição própria.'),
-            ('Especialidades','Entre as especialidades divulgadas estão clínica geral, cardiologia, dermatologia, ginecologia, ortopedia, pediatria, neurologia, endocrinologia, urologia, psicologia e psiquiatria.'),
-            ('Exames','O sindicato informa descontos em exames laboratoriais e de imagem por meio de parceiros. Consulte condições e necessidade de encaminhamento.'),
+        'heading':'Excelência, agilidade e consulta médica gratuita para quem cuida de quem cuida.',
+        'intro':'O Ambulatório Médico SUEESSOR — Cuidando de Quem Cuida oferece atendimento humanizado, ágil e gratuito para associados, além de cobertura para dependentes legais e descontos em exames laboratoriais e de imagem.',
+        'lead_paragraphs':[
+            'Quem é associado ao SUEESSOR tem consultas médicas sem custo adicional, e o melhor: seus dependentes legais também. Com o Benefício Assistencial do SUEESSOR, você não precisa esperar meses por um agendamento nem pagar caro por uma consulta de qualidade.',
+            'Os atendimentos com as especialidades médicas disponíveis na clínica já estão incluídos na mensalidade associativa do sindicato, tanto para os associados quanto para seus dependentes legais: cônjuge e filhos de até 21 anos.',
+            'Cuidar da sua saúde com qualidade e dignidade é a nossa prioridade. Além das consultas, você e sua família contam com atendimento odontológico básico gratuito e descontos exclusivos em exames de laboratório e imagem.',
         ],
-        'address':'Rua General Bittencourt, 622 – Centro – Osasco/SP',
-        'hours':'Segunda a sexta, das 08h às 17h',
-        'phone_display':'(11) 4557-7240', 'phone_href':'tel:+551145577240',
+        'highlights':[
+            ('Consultas gratuitas','As consultas nas especialidades médicas disponíveis na clínica já estão incluídas na mensalidade associativa para os associados e dependentes legais.'),
+            ('Dependentes legais','Cônjuge e filhos de até 21 anos têm consulta médica gratuita, atendimento odontológico básico gratuito e descontos em exames. Na psicologia, o valor é de R$ 40,00 por consulta, sujeito a alterações.'),
+            ('Mais agilidade no cuidado','O atendimento é realizado no Ambulatório Médico SUEESSOR, em Osasco, com agenda facilitada e acesso a laboratórios parceiros para exames com descontos.'),
+        ],
+        'gallery': [
+            {'src':'/static/clinica-medica/1.jpg','alt':'Ambulatório Médico SUEESSOR — foto 1','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/10.jpg','alt':'Ambulatório Médico SUEESSOR — foto 2','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/12.jpg','alt':'Ambulatório Médico SUEESSOR — foto 3','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/13.jpg','alt':'Ambulatório Médico SUEESSOR — foto 4','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/14.jpg','alt':'Ambulatório Médico SUEESSOR — foto 5','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/15.jpg','alt':'Ambulatório Médico SUEESSOR — foto 6','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/16.jpg','alt':'Ambulatório Médico SUEESSOR — foto 7','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/17.jpg','alt':'Ambulatório Médico SUEESSOR — foto 8','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/18.jpg','alt':'Ambulatório Médico SUEESSOR — foto 9','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/2.jpg','alt':'Ambulatório Médico SUEESSOR — foto 10','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/4.jpg','alt':'Ambulatório Médico SUEESSOR — foto 11','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/7.jpg','alt':'Ambulatório Médico SUEESSOR — foto 12','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+            {'src':'/static/clinica-medica/8.jpg','alt':'Ambulatório Médico SUEESSOR — foto 13','caption':'Ambulatório Médico SUEESSOR • estrutura de atendimento e acolhimento'},
+        ],
+        'gallery_interval': 5000,
+        'dependent_rights':[
+            'Consulta médica gratuita, exceto na especialidade de psicologia (R$ 40,00 por consulta, sujeito a alterações).',
+            'Atendimento odontológico básico gratuito.',
+            'Descontos nos exames de laboratório e de imagem.',
+        ],
+        'specialties':['Cardiologista','Clínico Geral','Dentista (em Osasco e Itapevi)','Dermatologista','Endocrinologista','Geriatria','Ginecologista','Neurologista','Oftalmologista','Ortopedista','Pediatra','Psicólogo','Urologista'],
+        'exam_partners':[
+            {
+                'title':'Exames laboratoriais — Alphaclin',
+                'description':'Descontos exclusivos em exames laboratoriais para associados e dependentes.',
+                'address':'Rua Salem Bechara, nº 143, Centro, Osasco – SP',
+                'contact':'(11) 2284-5566 / (11) 95453-4174 (WhatsApp)',
+                'cta':'https://www.alphaclin.com.br/',
+                'cta_label':'Visitar site da Alphaclin'
+            },
+            {
+                'title':'Exames de imagem — Sabin Diagnóstico e Saúde',
+                'description':'Exames de imagem nas unidades de Alphaville/Barueri e Osasco. É necessário estar com o pedido médico carimbado pelo SUEESSOR em mãos.',
+                'address':'Unidades Alphaville/Barueri e Osasco',
+                'contact':'Agendamento: (11) 4195-1679',
+                'cta':'https://www.sabin.com.br/',
+                'cta_label':'Conhecer o Sabin'
+            },
+        ],
+        'address':'Rua General Bittencourt, 622 – Centro – Osasco / São Paulo',
+        'hours':'De segunda a sexta, das 08h00 às 17h00',
+        'phone_display':'(11) 4557-7240 • (11) 3681-0780', 'phone_href':'https://wa.me/551145577240',
         'source':'https://sueessor.org.br/clinica-medica/',
     },
     'espaco-para-eventos': {
-        'title':'Espaço para Eventos', 'tag':'Convivência', 'icon':'calendar',
-        'heading':'Seu momento especial merece um bom espaço.',
-        'intro':'O salão de festas do SUEESSOR está destinado a eventos de associados e seus dependentes. A reserva e as condições de utilização devem ser confirmadas diretamente com a entidade.',
+        'title':'Espaço para Eventos', 'tag':'Salão de festas', 'icon':'calendar',
+        'heading':'Um lugar especial para os encontros e celebrações de nossos associados.',
+        'intro':'O Salão de Festas do SUEESSOR está disponível para a realização dos eventos de associados e seus dependentes. O espaço disponibiliza mesas e cadeiras, ar condicionado, iluminação, aparelhos sonoros, cozinha e freezer.',
         'highlights':[
-            ('Estrutura','Mesas, cadeiras, ar-condicionado, iluminação e aparelhos sonoros.'),
-            ('Apoio','Cozinha e freezer para auxiliar na organização de encontros.'),
-            ('Reservas','Consulte disponibilidade, requisitos e eventuais taxas de utilização com a equipe do sindicato.'),
+            ('Estrutura para celebrações','Mesas, cadeiras, ar condicionado e iluminação.'),
+            ('Aparelhos e apoio','Aparelhos sonoros, cozinha e freezer para auxiliar na realização dos eventos.'),
+            ('Reservas','Entre em contato pelo telefone (11) 3652-3390 ou pelo WhatsApp (11) 94182-5124 e fale com Kátia ou Noêmia.'),
         ],
+        'amenities':['Mesas e cadeiras','Ar condicionado','Iluminação','Aparelhos sonoros','Cozinha','Freezer'],
+        'gallery':[
+            {'src':'/static/espaco-para-eventos/1.webp','alt':'Vista ampla do salão de festas, palco e mesas com cadeiras'},
+            {'src':'/static/espaco-para-eventos/DSCN4698.webp','alt':'Área do salão com mesas e cadeiras organizadas'},
+            {'src':'/static/espaco-para-eventos/DSCN4705.webp','alt':'Salão preparado com mesas para confraternização'},
+            {'src':'/static/espaco-para-eventos/DSCN4703.webp','alt':'Visão do salão e dos equipamentos de iluminação'},
+            {'src':'/static/espaco-para-eventos/2.webp','alt':'Equipamentos de iluminação e climatização do salão'},
+            {'src':'/static/espaco-para-eventos/DSCN4700.webp','alt':'Mesa com aparelhos sonoros do espaço para eventos'},
+        ],
+        'gallery_interval':5000,
         'address':'Rua General Bittencourt, 582 – Centro – Osasco/SP',
         'hours':'Reservas mediante consulta',
         'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'whatsapp_display':'(11) 94182-5124', 'whatsapp_href':'https://wa.me/5511941825124',
+        'reservation_contacts':'Kátia / Noêmia',
         'source':'https://sueessor.org.br/espaco-para-eventos/',
     },
     'espaco-gourmet': {
         'title':'Espaço Gourmet', 'tag':'Lazer e encontros', 'icon':'utensils',
-        'heading':'Um lugar para celebrar e compartilhar.',
-        'intro':'O Espaço Gourmet do SUEESSOR é voltado à realização de eventos de associados e dependentes, com uma estrutura voltada à convivência.',
+        'heading':'Um espaço para celebrar, reunir a família e aproveitar bons momentos.',
+        'intro':'O Espaço Gourmet do SUEESSOR está disponível para a realização dos eventos de ASSOCIADOS e seus dependentes. Conta com uma estrutura composta de churrasqueira, forno de pizza, mesas de pebolim e ping-pong.',
         'highlights':[
-            ('Área gastronômica','Churrasqueira e forno de pizza.'),
-            ('Lazer','Mesas de pebolim e pingue-pongue divulgadas entre os equipamentos do espaço.'),
-            ('Reservas','Entre em contato com a equipe do sindicato para condições e disponibilidade.'),
+            ('Gastronomia','Churrasqueira e forno de pizza para os encontros e confraternizações.'),
+            ('Lazer','Mesas de pebolim e ping-pong disponíveis no espaço.'),
+            ('Reservas','Mais informações pelo telefone (11) 3652-3390 ou pelo WhatsApp (11) 94182-5124. Falar com Kátia ou Noêmia.'),
         ],
+        'amenities':['Churrasqueira','Forno de pizza','Mesa de pebolim','Mesa de ping-pong'],
+        'gallery':[
+            {'src':'/static/espaco-gourmet/espaco-gourmet-07.webp','alt':'Cozinha, forno de pizza e freezer do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-02.webp','alt':'Mesa de ping-pong e ambiente de jogos do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-04.webp','alt':'Mesa de pebolim do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-05.webp','alt':'Área de convivência e jogos do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-01.webp','alt':'Foto do forno de pizza e churrasqueira do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-03.webp','alt':'Acesso e corredor interno do Espaço Gourmet'},
+            {'src':'/static/espaco-gourmet/espaco-gourmet-06.webp','alt':'Área de circulação do Espaço Gourmet'},
+        ],
+        'gallery_interval':5000,
         'address':'Rua General Bittencourt, 582 – Centro – Osasco/SP',
         'hours':'Reservas mediante consulta',
         'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
+        'whatsapp_display':'(11) 94182-5124', 'whatsapp_href':'https://wa.me/5511941825124',
+        'reservation_contacts':'Kátia / Noêmia',
         'source':'https://sueessor.org.br/espaco-gourmet/',
     },
     'excursoes': {
@@ -147,34 +311,72 @@ BENEFIT_DETAILS = {
         'source':'https://sueessor.org.br/excursoes/',
     },
     'salao-de-beleza': {
-        'title':'Salão de Beleza', 'tag':'Bem-estar', 'icon':'scissors',
-        'heading':'Um cuidado especial com você.',
-        'intro':'O SUEESSOR divulga benefícios de beleza e condições especiais para associados, incluindo serviços vinculados à sede e a parceiros credenciados.',
-        'highlights':[
-            ('Serviços','A rede de beleza divulgada pela entidade inclui opções como corte, escova, manicure e pedicure, conforme o estabelecimento.'),
-            ('Vantagens','Descontos para associados em serviços de beleza, sujeitos às regras vigentes.'),
-            ('Orientação','Consulte os parceiros, preços, horários e disponibilidade diretamente com o sindicato antes do atendimento.'),
+        'title':'Salão de Beleza', 'tag':'Bem-estar e autoestima', 'icon':'scissors',
+        'heading':'SPAÇO BELEZA SUEESSOR — cuidado e bem-estar para a categoria.',
+        'intro':'O SPAÇO BELEZA SUEESSOR oferece aos trabalhadores serviços de manicure, depilação, designer de sobrancelha e cabeleireiro unissex. Associados e seus dependentes legais contam com valores diferenciados em todos os serviços, realizados por profissionais qualificados.',
+        'gallery': [
+            {'src':'/static/salao-de-beleza/foto-01.jpg', 'alt':'Ambiente de atendimento com maca e toalha identificada com o SUEESSOR'},
+            {'src':'/static/salao-de-beleza/foto-02.jpg', 'alt':'Salão de beleza SUEESSOR com cadeiras, espelhos e área de espera'},
         ],
-        'address':'Informações na sede: Rua General Bittencourt, 582 – Centro – Osasco/SP',
-        'hours':'Horários conforme estabelecimento',
+        'gallery_interval':5000,
+        'beauty_services':['Manicure','Depilação','Designer de sobrancelha','Cabeleireiro unissex'],
+        'highlights':[
+            ('Atendimento aos associados','Os associados ao SUEESSOR, assim como seus dependentes legais, têm acesso a valores diferenciados em todos os serviços disponíveis.'),
+            ('Profissionais de beleza','Serviços de manicure, depilação, designer de sobrancelha e cabeleireiro unissex oferecidos por profissionais qualificados.'),
+            ('Agendamento','Atendimento de segunda a sexta-feira, das 08h00 às 17h00. Agende diretamente pelo telefone da entidade.'),
+        ],
+        'address':'Rua General Bittencourt, 582 – Centro – Osasco/SP',
+        'hours':'De segunda a sexta-feira, das 08h00 às 17h00',
         'phone_display':'(11) 3652-3390', 'phone_href':'tel:+551136523390',
         'source':'https://sueessor.org.br/beleza/',
     },
     'tratamento-odontologico': {
         'title':'Tratamento Odontológico', 'tag':'Saúde bucal', 'icon':'smile',
-        'heading':'Sorrir também faz parte do cuidado.',
-        'intro':'Desde a fundação, o SUEESSOR oferece atendimento odontológico básico aos trabalhadores, estendido aos dependentes legais dos associados conforme critérios de acesso.',
+        'heading':'Cuidado com o sorriso dos trabalhadores desde 2002.',
+        'intro':'Desde sua fundação, em 2002, o SUEESSOR disponibiliza em sua sede um consultório odontológico moderno e equipado para a realização de tratamento básico e gratuito dedicado aos trabalhadores. Exclusivamente para os associados, esse atendimento se estende aos dependentes legais.',
         'highlights':[
-            ('Atendimento básico','Tratamento odontológico básico gratuito, conforme as regras do benefício.'),
-            ('Unidade Osasco','Ambulatório Médico SUEESSOR: Rua General Bittencourt, 622 – Centro – Osasco/SP.'),
-            ('Unidade Itapevi','Consultório Odontológico Dr. Maurício R. Rodrigues: Avenida Cesário de Abreu, 60 – Centro – Itapevi/SP.'),
+            ('Tratamento básico gratuito','O SUEESSOR oferece tratamento odontológico básico gratuito aos trabalhadores, de acordo com as regras de acesso ao benefício.'),
+            ('Dependentes legais','Para os associados, o tratamento básico também é oferecido aos seus dependentes legais.'),
+            ('Unidades em Osasco e Itapevi','Os atendimentos são realizados no Ambulatório Médico SUEESSOR em Osasco e no consultório do Dr. Maurício R. Rodrigues em Itapevi.'),
         ],
-        'address':'Osasco e Itapevi — consulte os endereços acima',
-        'hours':'Agendamento prévio',
+        'address':'Osasco: Rua General Bittencourt, 622 • Itapevi: Avenida Cesário de Abreu, 60',
+        'hours':'Atendimento mediante agendamento',
         'phone_display':'(11) 4557-7240', 'phone_href':'tel:+551145577240',
+        'whatsapp_href':'https://wa.me/551145577240',
         'source':'https://sueessor.org.br/tratamento-odontologico/',
     },
 }
+
+# Unidades odontológicas: endereços, mapas e imagens oficiais do portal SUEESSOR.
+DENTAL_UNITS = [{'city': 'Osasco', 'name': 'Ambulatório Médico SUEESSOR — Cuidando de Quem Cuida', 'address': 'Rua General Bittencourt, 622, Centro, Osasco – SP', 'map_search': 'Rua General Bittencourt, 622, Centro, Osasco, SP, Brasil', 'photo': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/10/30113309/unidade-osasco-350x150-1.png', 'photo_alt': 'Foto de um consultório odontológico com cadeira, equipamentos e bancada na unidade de Osasco, publicada pelo SUEESSOR', 'image_type': 'Foto do consultório', 'map_embed': 'https://www.google.com/maps?q=Rua%20General%20Bittencourt%2C%20622%2C%20Centro%2C%20Osasco%2C%20SP%2C%20Brasil&output=embed', 'map_link': 'https://www.google.com/maps/search/?api=1&query=Rua%20General%20Bittencourt%2C%20622%2C%20Centro%2C%20Osasco%2C%20SP%2C%20Brasil'}, {'city': 'Itapevi', 'name': 'Consultório Odontológico Dr. Maurício R. Rodrigues', 'address': 'Avenida Cesário de Abreu, 60, Centro, Itapevi – SP', 'map_search': 'Avenida Cesário de Abreu, 60, Centro, Itapevi, SP, Brasil', 'photo': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/10/30113331/whatsapp-image-2024-03-11-at-16-22-41-350x150-1.jpeg', 'photo_alt': 'Identidade visual do Consultório Odontológico Dr. Maurício R. Rodrigues publicada pelo SUEESSOR', 'image_type': 'Identidade visual divulgada pelo sindicato — foto do imóvel não disponibilizada', 'map_embed': 'https://www.google.com/maps?q=Avenida%20Ces%C3%A1rio%20de%20Abreu%2C%2060%2C%20Centro%2C%20Itapevi%2C%20SP%2C%20Brasil&output=embed', 'map_link': 'https://www.google.com/maps/search/?api=1&query=Avenida%20Ces%C3%A1rio%20de%20Abreu%2C%2060%2C%20Centro%2C%20Itapevi%2C%20SP%2C%20Brasil'}]
+
+LAMBARI_PHOTOS = [{'src': '/static/excursoes/lambari/01.webp', 'alt': 'Lambari, Minas Gerais — foto 1'}, {'src': '/static/excursoes/lambari/02.webp', 'alt': 'Lambari, Minas Gerais — foto 2'}, {'src': '/static/excursoes/lambari/03.webp', 'alt': 'Lambari, Minas Gerais — foto 3'}, {'src': '/static/excursoes/lambari/04.webp', 'alt': 'Lambari, Minas Gerais — foto 4'}, {'src': '/static/excursoes/lambari/05.webp', 'alt': 'Lambari, Minas Gerais — foto 5'}, {'src': '/static/excursoes/lambari/06.webp', 'alt': 'Lambari, Minas Gerais — foto 6'}, {'src': '/static/excursoes/lambari/07.webp', 'alt': 'Lambari, Minas Gerais — foto 7'}, {'src': '/static/excursoes/lambari/08.webp', 'alt': 'Lambari, Minas Gerais — foto 8'}]
+ILHA_MORENA_PHOTOS = [{'src': '/static/excursoes/ilha-morena/01.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 1'}, {'src': '/static/excursoes/ilha-morena/02.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 2'}, {'src': '/static/excursoes/ilha-morena/03.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 3'}, {'src': '/static/excursoes/ilha-morena/04.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 4'}, {'src': '/static/excursoes/ilha-morena/05.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 5'}, {'src': '/static/excursoes/ilha-morena/06.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 6'}, {'src': '/static/excursoes/ilha-morena/07.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 7'}, {'src': '/static/excursoes/ilha-morena/08.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 8'}, {'src': '/static/excursoes/ilha-morena/09.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 9'}, {'src': '/static/excursoes/ilha-morena/10.webp', 'alt': 'Ilha Morena, imagens do hotel e entorno — foto 10'}]
+
+EXCURSION_DESTINATIONS = [
+    {
+        'slug': 'lambari',
+        'title': 'Lambari, Minas Gerais',
+        'label': 'Natureza e águas minerais',
+        'description': 'A cidade de Lambari é conhecida por suas belezas naturais, clima e fontes de água mineral. Segundo a apresentação histórica do destino, suas águas minerais teriam sido consideradas no passado a terceira melhor do mundo. São descritas sete fontes, com destaque para as de números 1 e 2, apontadas nessa divulgação como a maior fonte de água mineral naturalmente gasosa do mundo. Relatos antigos sobre supostas propriedades curativas não representam comprovação de eficácia médica.',
+        'includes': ['Transporte', 'Hospedagem', 'Refeição completa'],
+        'schedule': 'Saída às 14h00 e retorno às 17h00, conforme informação do passeio divulgado anteriormente. Datas a confirmar com o sindicato.',
+        'meeting_place': 'Rua General Bittencourt, 582 — Centro, Osasco/SP',
+        'notice': 'Programação de referência: confirme novas datas, valores e disponibilidade.',
+        'gallery': LAMBARI_PHOTOS,
+    },
+    {
+        'slug': 'ilha-morena',
+        'title': 'Ilha Morena',
+        'label': 'Viagem e lazer',
+        'description': 'A excursão divulgada pelo SUEESSOR para Ilha Morena incluía transporte, hospedagem e refeição completa. A programação original indicava vagas limitadas e atendimento aos associados interessados por telefone ou WhatsApp.',
+        'includes': ['Transporte', 'Hospedagem', 'Refeição completa'],
+        'schedule': 'Programação anterior: saída às 21h00 de 22 de novembro de 2024 e retorno às 17h00 de 24 de novembro de 2024.',
+        'meeting_place': 'Sede do SUEESSOR — Rua General Bittencourt, 582 — Centro, Osasco/SP',
+        'notice': 'Evento de novembro de 2024 encerrado. Consulte o sindicato sobre novas excursões.',
+        'gallery': ILHA_MORENA_PHOTOS,
+    },
+]
 
 NEWS_SEED = [
   {'slug':'mobilizacao-hospital-ibiuna','title':'Sindicato reforça presença no Hospital Municipal de Ibiúna','excerpt':'Assembleias dos dias 13 e 14 de outubro abordaram direitos previstos na Convenção Coletiva 2026/2027 e mobilizaram profissionais da saúde.', 'body':'Nos dias 13 e 14 de outubro, dirigentes do SUEESSOR estiveram no Hospital Municipal de Ibiúna para conversar com profissionais sobre a aplicação da Convenção Coletiva de Trabalho 2026/2027. Entre os temas debatidos estiveram reajuste salarial, pisos, jornada 12×36 e benefícios sociais. Leia o relato integral no portal oficial.', 'category':'Mobilização','date':'2026-10-14T14:32:00','image':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2026/10/14132122/Sindicato-mobiliza-trabalhadores-em-Ibiuna.png','source':'https://sueessor.org.br/2026/10/14/sindicato-reforca-presenca-no-hospital-municipal-de-ibiuna-e-mobiliza-trabalhadores-pela-garantia-dos-direitos-coletivos/','place':'Hospital Municipal de Ibiúna, Ibiúna, SP'},
@@ -415,11 +617,25 @@ def conventions(request:Request):
 def services(request:Request,kind:str):
     if kind == 'beneficios':
         return render(request,'benefits.html',page='servicos',benefits=BENEFIT_CARDS)
+    if kind == 'parcerias':
+        return render(request,'partnerships.html',page='servicos',partnerships=PARTNERSHIP_CARDS)
+    if kind == 'excursoes':
+        return render(request,'excursions.html',page='servicos',destinations=EXCURSION_DESTINATIONS,benefits=BENEFIT_CARDS)
+    if kind == 'tratamento-odontologico':
+        return render(request,'dental.html',page='servicos',detail=BENEFIT_DETAILS[kind],benefits=BENEFIT_CARDS,slug=kind,units=DENTAL_UNITS)
     if kind in BENEFIT_DETAILS:
         return render(request,'benefit_detail.html',page='servicos',detail=BENEFIT_DETAILS[kind],benefits=BENEFIT_CARDS,slug=kind)
-    if kind in ('juridico','parcerias'):
+    if kind == 'juridico':
         return render(request,'services.html',page='servicos',kind=kind)
     raise HTTPException(404)
+
+@app.get('/servicos/parcerias/{slug}', response_class=HTMLResponse)
+def partnership_detail(request:Request,slug:str):
+    if slug not in PARTNERSHIP_DETAILS:
+        raise HTTPException(404)
+    card = next(card for card in PARTNERSHIP_CARDS if card['slug'] == slug)
+    return render(request, 'partnership_detail.html',page='servicos',
+                  partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 
 @app.get('/documentos/{kind}', response_class=HTMLResponse)
 def document(request:Request,kind:str):

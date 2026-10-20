@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Parcerias | SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-hero partnership-hero">
+ <div class="shell benefit-hero-inner">
+  <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><span>Parcerias</span></nav>
+  <span class="eyebrow eyebrow-light">PARCERIAS PARA ASSOCIADOS</span>
+  <h1>Mais vantagens.<br><em>Mais possibilidades.</em></h1>
+  <p>Beleza, lazer, educação, saúde e muito mais. Conheça as áreas em que o SUEESSOR busca oferecer condições especiais a você e sua família.</p>
+ </div>
+</section>
+<section class="benefit-index partnership-index" aria-labelledby="partnership-index-heading">
+ <div class="shell">
+  <div class="benefit-index-heading">
+    <div><span class="eyebrow">REDE DE PARCERIAS</span><h2 id="partnership-index-heading">Uma rede de vantagens <em>para o seu dia a dia.</em></h2></div>
+    <p>Explore as categorias. Passe o mouse ou toque em um card para ver os detalhes.</p>
+  </div>
+  <div class="benefit-grid partnership-grid">
+   {% for partner in partnerships %}
+    <a class="benefit-card partnership-card" href="{{ partner.href }}" data-benefit-card aria-label="Ver parcerias de {{ partner.title }}">
+     <div class="benefit-card-inner">
+      <span class="benefit-card-top">
+       <span class="benefit-icon"><svg class="icon lg" aria-hidden="true"><use href="#i-{{ partner.icon }}"/></svg></span>
+       <svg class="icon benefit-diagonal" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </span>
+      <span class="benefit-tag">{{ partner.tag }}</span>
+      <h3>{{ partner.title }}</h3>
+      <p>{{ partner.summary }}</p>
+      <span class="benefit-discover">Conhecer parcerias <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+     </div>
+    </a>
+   {% endfor %}
+  </div>
+  <aside class="partnership-note" aria-label="Informações sobre os convênios">
+   <div><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Como aproveitar as parcerias?</strong><p>Condições, disponibilidade e exigências podem mudar. Antes de utilizar qualquer benefício, confirme as regras e a comprovação de associação com o SUEESSOR.</p></div></div>
+   <a class="btn btn-dark" href="/contato">Tirar dúvidas <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+  </aside>
+  <div class="partnership-after-links"><a class="text-link" href="/servicos/beneficios">Conheça também os benefícios do sindicato <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+ </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/benefits.js?v=parcerias-20261020" defer></script>{% endblock %}
