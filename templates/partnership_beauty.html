@@ -20,12 +20,15 @@
    <div class="beauty-partner-list">
     {% for partner in partners %}
     <article class="beauty-partner-card" id="{{ partner.slug }}" aria-labelledby="partner-heading-{{ loop.index }}">
-      <div class="beauty-partner-picture">
-        {% if partner.image %}
+      <div class="beauty-partner-picture {% if partner.logo %}beauty-partner-picture--logo{% endif %}">
+        {% if partner.logo %}
+        <img class="beauty-partner-logo" src="{{ partner.logo }}" alt="Logo {{ partner.name }}" loading="eager" decoding="async">
+        {% elif partner.image %}
         <img src="{{ partner.image }}" alt="{{ partner.image_alt }}" loading="lazy" decoding="async" onerror="this.style.display='none'">
-        {% endif %}
         <div class="beauty-partner-picture-brand" aria-hidden="true"><span>{{ partner.name }}</span><small>{{ partner.category }}</small></div>
-        {% if partner.image %}<div class="beauty-partner-image-credit">{{ partner.image_note }}</div>{% else %}<div class="beauty-partner-image-credit">{{ partner.image_note }}</div>{% endif %}
+        {% else %}
+        <div class="beauty-partner-picture-brand" aria-hidden="true"><span>{{ partner.name }}</span><small>{{ partner.category }}</small></div>
+        {% endif %}
       </div>
       <div class="beauty-partner-main">
         <div class="beauty-partner-topline"><span>{{ partner.category }}</span><span class="beauty-partner-offer">{{ partner.offer }}</span></div>
@@ -56,7 +59,7 @@
         </div>
         <div class="beauty-partner-actions">
            <a class="btn btn-primary" href="{{ partner.whatsapp_href }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"/></svg> Falar no WhatsApp</a>
-           <a class="btn btn-soft" href="{{ partner.maps_url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg> Abrir no Maps</a>
+           {% if partner.show_map is not defined or partner.show_map %}<a class="btn btn-soft" href="{{ partner.maps_url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg> Abrir no Maps</a>{% endif %}
         </div>
       </div>
       {% if partner.gallery %}
@@ -64,10 +67,10 @@
         {% for photo in partner.gallery %}<a href="{{ photo.src }}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto {{ loop.index }} da {{ partner.name }}"><img src="{{ photo.src }}" alt="{{ photo.alt }}" loading="lazy" decoding="async"></a>{% endfor %}
       </div>
       {% endif %}
-      <div class="beauty-partner-map">
+      {% if partner.show_map is not defined or partner.show_map %}<div class="beauty-partner-map">
         <div class="beauty-map-heading"><div><span class="eyebrow">COMO CHEGAR</span><h4>Localização no Google Maps</h4></div><a href="{{ partner.maps_url }}" target="_blank" rel="noopener noreferrer">Ver rota ↗</a></div>
         <iframe src="{{ partner.map_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de {{ partner.name }}" allowfullscreen></iframe>
-      </div>
+      </div>{% endif %}
     </article>
     {% endfor %}
    </div>

@@ -123,9 +123,11 @@ BEAUTY_PARTNERS = [
         'category': 'Semijoias e acessórios',
         'offer': '10% de desconto',
         'summary': 'Associados SUEESSOR recebem 10% de desconto em brincos, pulseiras, correntes e anéis, conforme condições divulgadas pela entidade.',
-        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/24105827/acessorios.jpg',
-        'image_alt': 'Pulseiras e acessórios Rojo divulgados pelo SUEESSOR (foto de produtos, não da fachada da loja)',
-        'image_note': 'Foto dos produtos, publicada pelo SUEESSOR; não é fotografia da loja.',
+        'image': '',
+        'logo': '/static/parcerias/logo-rojo.webp',
+        'show_map': False,
+        'image_alt': 'Logo Acessórios Rojo enviado pelo SUEESSOR',
+        'image_note': '',
         'address': 'Shopping Bella Vista, Rua Antônio Agú, 502, lojas 2 e 3, térreo, Centro, Osasco/SP',
         'place_note': 'Endereço divulgado pelo SUEESSOR. Outros cadastros públicos indicam outro endereço; confirme com a loja antes de sair.',
         'map_query': 'Shopping Bella Vista, Rua Antônio Agú, 502, Osasco, SP',
@@ -133,7 +135,9 @@ BEAUTY_PARTNERS = [
         'whatsapp': '(11) 96391-7523', 'whatsapp_href': 'https://wa.me/5511963917523',
         'instagram': '@acessorios_rojo', 'instagram_href': 'https://www.instagram.com/acessorios_rojo/',
         'features': ['Brincos', 'Pulseiras', 'Correntes', 'Anéis'],
-        'gallery': [],
+        'gallery': [
+            {'src':'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/24105827/acessorios.jpg', 'alt':'Fotografia de acessórios e produtos Rojo divulgada pelo SUEESSOR'},
+        ],
     },
     {
         'slug': 'sao-paulo-fashion-hair',
@@ -183,6 +187,73 @@ BEAUTY_PARTNERS = [
 for partner in BEAUTY_PARTNERS:
     partner['map_embed'] = 'https://www.google.com/maps?q=' + quote(partner['map_query'], safe='') + '&output=embed'
     partner['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(partner['map_query'], safe='')
+
+CLUB_PARTNERS = [
+    {
+        'slug': 'cefol',
+        'name': 'CEFOL – Centro de Formação e Lazer',
+        'tag': 'Entrada gratuita',
+        'subtitle': 'Cotia / SP',
+        'intro': 'A entrada no CEFOL é gratuita para associados SUEESSOR e dependentes legais. Para usar a piscina, é cobrado apenas o valor do exame médico por pessoa, válido por 90 dias.',
+        'terms': [
+            'Entrada gratuita para associados e dependentes legais.',
+            'Para utilizar as piscinas, é necessário exame médico pago por pessoa, válido por 90 dias.',
+            'Antes da visita, solicite a autorização de acesso na sede do SUEESSOR.',
+        ],
+        'hours': 'Consulte os dias e horários atualizados com o clube antes da visita.',
+        'address': 'Estrada das Mulatas, 1000 – Tijuco Preto – Cotia/SP',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Kátia – SUEESSOR',
+        'whatsapp': '(11) 94182-5124',
+        'whatsapp_href': 'https://wa.me/5511941825124',
+        'website': 'https://cefol.com.br/',
+        'logo': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05151243/cefol-logo.jpeg',
+        'logo_alt': 'Logotipo oficial CEFOL – Centro de Formação e Lazer',
+        'gallery': [
+            {'src':'https://quimicosunificados.com.br/arquivos/2016/05/banner-site-quimicos-20171.jpg', 'alt':'Piscina do CEFOL em foto divulgada pelo Sindicato Químicos Unificados'},
+            {'src':'https://www.quimicosunificados.com.br/arquivos/2011/03/68deb1ace75874ec7e3aa6d027576f9.JPG', 'alt':'Área de lazer e piscina do CEFOL Osasco em fotografia institucional'},
+            {'src':'https://www.quimicosunificados.com.br/arquivos/2011/03/00aa7692265fcb084d57fa02fb3a3815.JPG', 'alt':'Área de quiosques do CEFOL Osasco em fotografia institucional'},
+        ],
+        'photo_source': 'Fotografias publicadas pelo Sindicato Químicos Unificados (registros institucionais e históricos).',
+        'source_url': 'https://sueessor.org.br/clubes/',
+    },
+    {
+        'slug': 'simtratecor',
+        'name': 'Clube de Campo SIMTRATECOR',
+        'tag': 'Piscinas gratuitas',
+        'subtitle': 'São Roque / SP',
+        'intro': 'O uso das piscinas é gratuito para o associado SUEESSOR e seus dependentes legais com até 17 anos, conforme as condições divulgadas pelo sindicato.',
+        'terms': [
+            'Uso gratuito das piscinas para associados SUEESSOR.',
+            'Benefício estendido aos dependentes legais de até 17 anos.',
+            'De terça a sexta-feira: das 08h00 às 16h00.',
+            'Sábados, domingos e feriados: das 07h00 às 18h00, conforme a informação divulgada pelo SUEESSOR.',
+        ],
+        'hours': 'Terça a sexta: 08h00–16h00. Sábados, domingos e feriados: 07h00–18h00 (conforme SUEESSOR).',
+        'hour_note': 'O portal do próprio SIMTRATECOR informa sábado das 08h00 às 17h00. Confirme o horário atualizado antes de sair de casa.',
+        'address': 'Estrada Taxaquara, 900 – São João Novo – São Roque/SP',
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Camila ou Kátia – SUEESSOR',
+        'whatsapp': None,
+        'whatsapp_href': None,
+        'website': 'https://www.simtratecor.com.br/clube-de-campo',
+        'logo': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05151250/logo3-300x155-1.png',
+        'logo_alt': 'Logotipo oficial SIMTRATECOR',
+        'gallery': [
+            {'src':'https://static.wixstatic.com/media/a998bb_b1243e4968d44156b5fe73834e5bd333~mv2.jpg', 'alt':'Instalações do Clube de Campo SIMTRATECOR em imagem publicada pelo próprio clube'},
+            {'src':'https://static.wixstatic.com/media/a998bb_cfdb9c95cb174629ab9a57f1ec40eb13~mv2.jpg', 'alt':'Piscinas e área de lazer do Clube de Campo SIMTRATECOR'},
+            {'src':'https://static.wixstatic.com/media/a998bb_fba559717c25453b881a985cf8e2c6ae~mv2.jpg', 'alt':'Estrutura do Clube de Campo SIMTRATECOR em São Roque'},
+        ],
+        'photo_source': 'Fotografias divulgadas no site oficial do SIMTRATECOR.',
+        'source_url': 'https://sueessor.org.br/clubes/',
+    },
+]
+for club in CLUB_PARTNERS:
+    query = club['name'] + ', ' + club['address']
+    club['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(query, safe='')
+    club['map_embed'] = 'https://www.google.com/maps?q=' + quote(club['address'], safe='') + '&output=embed'
 
 PARTNERSHIP_DETAILS = {
     'beleza': {
@@ -707,6 +778,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'beleza':
         return render(request,'partnership_beauty.html',page='servicos',partnership=card,
                       partners=BEAUTY_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'clubes':
+        return render(request,'partnership_clubs.html',page='servicos',partnership=card,
+                      clubs=CLUB_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 

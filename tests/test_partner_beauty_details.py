@@ -12,13 +12,13 @@ BASE = Path(__file__).resolve().parents[1]
 URL = '/servicos/parcerias/beleza'
 
 
-def test_beauty_partners_render_and_three_maps(site):
+def test_beauty_partners_render_and_only_other_two_maps(site):
     response = site[0].get(URL)
     assert response.status_code == 200
     html = response.text
     assert html.count('class="beauty-partner-card"') == 3
-    assert html.count('output=embed') == 3
-    assert html.count('class="beauty-partner-map"') == 3
+    assert html.count('output=embed') == 2
+    assert html.count('class="beauty-partner-map"') == 2
     assert html.count('Falar no WhatsApp') == 3
     assert 'R$ 109,90' in html
     assert '12× de R$ 109,90' in html
@@ -36,11 +36,11 @@ def test_beauty_partners_render_and_three_maps(site):
 def test_images_are_grounded_not_mislabeled_and_have_source_fallback(site):
     response = site[0].get(URL)
     html = response.text
-    assert 'Foto dos produtos, publicada pelo SUEESSOR' in html
-    assert 'Fotografia verificada do estabelecimento ainda indisponível' in html
+    assert '/static/parcerias/logo-rojo.webp' in html
+    assert 'beauty-partner-image-credit' not in html
     assert 'logotipo oficial na parede' in html
-    assert html.count('class="beauty-partner-gallery"') == 1
-    assert html.count('class="beauty-partner-picture"') == 3
+    assert html.count('class="beauty-partner-gallery"') == 2
+    assert 'beauty-partner-picture--logo' in html
 
 
 def test_maps_urls_and_whatsapp_for_every_partner(site):
@@ -61,3 +61,20 @@ def test_css_on_static_and_public_match_and_mobile_rules_present():
     assert '.beauty-partner-card' in css
     assert '.beauty-partner-map iframe' in css
     assert (BASE / 'public/static/style.css').read_bytes() == (BASE / 'static/style.css').read_bytes()
+
+
+def test_rojo_no_map_but_logo_visible_and_other_partners_have_maps(site):
+    from bs4 import BeautifulSoup
+    page = BeautifulSoup(site[0].get(URL).text, 'html.parser')
+    rojo = page.select_one('#acessorios-rojo')
+    assert rojo is not None
+    assert rojo.select_one('.beauty-partner-logo')['src'] == '/static/parcerias/logo-rojo.webp'
+    assert not rojo.select('.beauty-partner-map, iframe, a[href*="google.com/maps"]')
+    assert not page.select('.beauty-partner-image-credit')
+    assert len(page.select('.beauty-partner-map')) == 2
+    assert len(page.select('#sao-paulo-fashion-hair .beauty-partner-map')) == 1
+    assert len(page.select('#morellos-academia .beauty-partner-map')) == 1
+    assert (BASE / 'public/static/parcerias/logo-rojo.webp').read_bytes() == (BASE / 'static/parcerias/logo-rojo.webp').read_bytes()
+    asset=site[0].get('/static/parcerias/logo-rojo.webp')
+    assert asset.status_code == 200
+    assert asset.headers['content-type'] == 'image/webp'

@@ -754,3 +754,70 @@ body{background:#fff;color:var(--ink)}
 @media(max-width:1050px){.beauty-partner-card{grid-template-columns:1fr}.beauty-partner-picture{min-height:400px}.beauty-partner-main{padding:30px}.beauty-partner-gallery{padding:0 22px 18px}.beauty-partner-list{gap:30px}}
 @media(max-width:670px){.beauty-partners-section{padding:48px 0 64px}.beauty-partners-intro h2{font-size:35px}.beauty-partners-jump{gap:8px;margin:24px 0 35px}.beauty-partners-jump a{padding:10px 13px;font-size:11px}.beauty-partner-card{border-radius:22px}.beauty-partner-picture{min-height:280px}.beauty-partner-image-credit{font-size:10px;left:12px;right:12px;bottom:12px;padding:9px 11px}.beauty-partner-main{padding:23px 19px}.beauty-partner-main h3{font-size:28px}.beauty-partner-summary{font-size:13px}.beauty-partner-contact,.beauty-plans-grid{grid-template-columns:1fr}.beauty-partner-contact{gap:16px}.beauty-partner-actions .btn{width:100%}.beauty-partner-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 12px 12px}.beauty-partner-gallery a:last-child{grid-column:1/-1}.beauty-partner-map{padding:15px}.beauty-partner-map iframe{height:260px}.beauty-partners-footer{display:block;padding:25px 20px}.beauty-partners-footer h2{font-size:24px}.beauty-partners-footer .btn{margin-top:20px;width:100%}}
 @media(prefers-reduced-motion:reduce){.beauty-partners-jump a,.beauty-partner-gallery img{transition:none}.beauty-partners-jump a:hover,.beauty-partner-gallery a:hover img{transform:none}}
+
+/* Parcerias / Clubes: identidade institucional e mapas responsivos */
+.clubs-hero h1 em{font-style:normal;color:#ffcfd6}
+.club-partners-section{background:linear-gradient(#faf5f5,#fff 230px);padding:74px 0 96px}
+.clubs-intro{max-width:780px}
+.clubs-intro h2{font:800 clamp(32px,4vw,54px)/1.12 var(--display);letter-spacing:-.06em;margin:14px 0;color:#2f1821}
+.clubs-intro h2 em{font-style:normal;color:#ac1020}
+.clubs-intro p{color:#72656d;font-size:15px;line-height:1.8}
+.clubs-jump{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 43px}
+.clubs-jump a{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid #ead5d9;border-radius:999px;padding:12px 20px;font-weight:800;font-size:13px;color:#851422;transition:background .24s,color .24s,transform .24s}
+.clubs-jump a:hover{background:#ba0a0a;color:#fff;transform:translateY(-3px)}
+.clubs-list{display:grid;gap:46px}
+.club-partner{scroll-margin-top:115px;background:white;border:1px solid #eadddf;border-radius:30px;overflow:hidden;box-shadow:0 30px 80px -62px #520c1b}
+.club-partner-head{display:flex;align-items:center;gap:28px;padding:30px clamp(24px,4vw,46px);background:#fff;border-bottom:1px solid #f3e9ea}
+.club-logo-block{position:relative;width:220px;max-width:34%;height:112px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:18px;background:#f8f5f5;border:1px solid #f0e5e7;padding:18px}
+.club-logo-block img{display:block;max-width:100%;max-height:100%;object-fit:contain;position:relative;z-index:1}
+.club-logo-fallback{display:none;color:#a51424;font:800 19px/1.2 var(--display);text-align:center}
+.club-logo-block.image-unavailable .club-logo-fallback{display:block}
+.club-head-copy h3{font:800 clamp(27px,3.1vw,40px)/1.12 var(--display);letter-spacing:-.052em;margin:9px 0 15px;color:#27161e}
+.club-offer{display:inline-flex;padding:9px 14px;background:#fcebed;color:#a10d20;border-radius:999px;font-size:12px;font-weight:800}
+.club-partner-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(23px,4vw,48px);padding:clamp(22px,3vw,40px)}
+.club-gallery-col,.club-info-col{min-width:0}
+.club-gallery .clinic-gallery-frame{height:clamp(310px,33vw,470px);min-height:0;background:linear-gradient(135deg,#f4eff0,#e8dee0);border-radius:20px}
+.club-gallery .clinic-slide img{object-fit:cover}
+.club-gallery .clinic-slide{z-index:1}
+.club-gallery .clinic-slide.is-active{z-index:2}
+.club-gallery-fallback{position:absolute;inset:0;display:grid;place-content:center;gap:12px;text-align:center;color:#a16a73;font-size:13px;font-weight:700;z-index:0}
+.club-gallery-fallback .icon{margin:auto}
+.club-gallery .clinic-slide img.club-photo-failed{opacity:0}
+.club-photo-source{font-size:11px;color:#8a757c;line-height:1.7;margin:13px 0 0}
+.club-photo-source a{color:#9c1020;text-decoration:underline;text-underline-offset:3px}
+.club-summary{color:#5f525a;font-size:16px;line-height:1.8;margin:0 0 22px}
+.club-info-col h4{font:800 20px/1.2 var(--display);color:#27161e;margin:0 0 17px}
+.club-terms{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.club-terms li{display:flex;gap:11px;align-items:start;font-size:13px;color:#675a62;line-height:1.72}
+.club-terms li .icon{color:#b30b1b;flex:none;margin-top:3px}
+.club-hour-note{display:flex;gap:11px;align-items:flex-start;background:#fff7e6;border:1px solid #f0dfbc;color:#715228;border-radius:14px;margin-top:19px;padding:14px}
+.club-hour-note .icon{flex:none;margin-top:2px}
+.club-hour-note p{font-size:12px;line-height:1.65;margin:0}
+.club-contact-block{display:grid;gap:16px;padding:21px 0;margin-top:23px;border-top:1px solid #f0e3e6}
+.club-contact-detail{display:flex;gap:13px;align-items:flex-start}
+.club-contact-detail>.icon{color:#ac1120;flex:none;margin-top:2px}
+.club-contact-detail strong{display:block;font-size:12px;color:#2f1c23}
+.club-contact-detail p{font-size:13px;color:#685c63;line-height:1.6;margin:4px 0 0}
+.club-contact-detail a{color:#9e101c;text-decoration:underline;text-underline-offset:3px}
+.club-buttons{display:flex;flex-wrap:wrap;gap:9px}
+.club-buttons .btn{font-size:12px;min-height:43px;padding:11px 14px;white-space:normal}
+.club-map{border-top:1px solid #f0e3e6;padding:28px clamp(22px,3vw,40px) 34px;background:#fdfafa}
+.club-map-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 20px}
+.club-map-heading h4{font:800 24px/1.15 var(--display);margin:8px 0 0;letter-spacing:-.04em}
+.club-map-heading a{font-weight:800;font-size:12px;color:#a21220}
+.club-map iframe{width:100%;height:340px;display:block;border:0;border-radius:20px;background:#f4eded}
+.clubs-advisory{display:flex;align-items:flex-start;gap:15px;margin:42px 0 22px;background:#f9eef0;padding:23px 26px;border-radius:21px;color:#71202e}
+.clubs-advisory>.icon{flex:none;margin-top:3px}
+.clubs-advisory strong{font-size:15px}
+.clubs-advisory p{font-size:13px;line-height:1.7;margin:6px 0 0;color:#7a5d65}
+@media(max-width:1050px){.club-partner-body{grid-template-columns:1fr}.club-gallery .clinic-gallery-frame{height:clamp(300px,52vw,500px)}}
+@media(max-width:700px){.club-partners-section{padding:53px 0 70px}.clubs-intro h2{font-size:34px}.clubs-intro p{font-size:13px}.clubs-jump a{font-size:11px;padding:11px 14px}.club-partner{border-radius:22px}.club-partner-head{padding:22px;align-items:flex-start;gap:16px;flex-wrap:wrap}.club-logo-block{width:135px;max-width:100%;height:73px;padding:9px}.club-head-copy h3{font-size:27px}.club-partner-body{padding:16px}.club-gallery .clinic-gallery-frame{height:clamp(235px,65vw,360px);border-radius:14px}.club-summary{font-size:14px}.club-info-col h4{font-size:18px}.club-map{padding:20px 16px}.club-map-heading{align-items:flex-start;flex-direction:column}.club-map-heading h4{font-size:21px}.club-map iframe{height:285px;border-radius:13px}.club-buttons .btn{width:100%}.clubs-advisory{padding:20px}}
+@media(prefers-reduced-motion:reduce){.clubs-jump a{transition:none!important}.clubs-jump a:hover{transform:none!important}}
+
+/* Acessórios Rojo: logo enviada pela entidade, sem legenda sobre fotos. */
+.beauty-partner-picture--logo{background:#c61920;min-height:465px;padding:0;isolation:isolate}
+.beauty-partner-picture--logo .beauty-partner-logo{display:block;position:relative;inset:auto;z-index:2;width:100%;height:100%;max-height:600px;object-fit:contain;filter:none}
+/* As legendas sobrepostas não são utilizadas nos cards de Beleza. */
+.beauty-partner-image-credit{display:none!important}
+@media(max-width:1050px){.beauty-partner-picture--logo{min-height:400px}}
+@media(max-width:670px){.beauty-partner-picture--logo{min-height:300px}.beauty-partner-picture--logo .beauty-partner-logo{max-height:360px}}
