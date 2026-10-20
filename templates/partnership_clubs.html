@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Clubes parceiros e lazer | SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero partnership-detail-hero clubs-hero">
+ <div class="shell">
+  <nav class="benefit-breadcrumb" aria-label="Você está aqui"><a href="/">Início</a><span>/</span><a href="/servicos/parcerias">Parcerias</a><span>/</span><span>Clubes</span></nav>
+  <div class="benefit-detail-hero-row">
+   <div><span class="eyebrow eyebrow-light">LAZER PARA ASSOCIADOS E FAMÍLIAS</span><h1>Tempo para aproveitar.<br><em>Espaço para viver.</em></h1><p>Conheça os clubes parceiros do SUEESSOR e saiba como utilizar os benefícios com sua família.</p></div>
+   <span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-users"/></svg></span>
+  </div>
+ </div>
+</section>
+<section class="club-partners-section" aria-labelledby="clubs-heading">
+ <div class="shell">
+  <div class="clubs-intro"><span class="eyebrow">PARCERIAS DE LAZER</span><h2 id="clubs-heading">Dois destinos para <em>aproveitar mais.</em></h2><p>Confira as regras de acesso, as fotografias, os endereços e as orientações do sindicato antes de planejar o passeio.</p></div>
+  <nav class="clubs-jump" aria-label="Ir para clube">{% for club in clubs %}<a href="#{{ club.slug }}">{{ club.name }} <span aria-hidden="true">↗</span></a>{% endfor %}</nav>
+  <div class="clubs-list">
+   {% for club in clubs %}
+   <article class="club-partner" id="{{ club.slug }}" aria-labelledby="club-title-{{ loop.index }}">
+    <div class="club-partner-head">
+     <div class="club-logo-block">
+       <img src="{{ club.logo }}" alt="{{ club.logo_alt }}" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentElement.classList.add('image-unavailable')">
+       <span class="club-logo-fallback" aria-hidden="true">{{ club.name }}</span>
+     </div>
+     <div class="club-head-copy"><span class="eyebrow">{{ club.subtitle }}</span><h3 id="club-title-{{ loop.index }}">{{ club.name }}</h3><span class="club-offer">{{ club.tag }}</span></div>
+    </div>
+    <div class="club-partner-body">
+     <div class="club-gallery-col">
+      <section class="clinic-gallery club-gallery" data-clinic-carousel data-interval="5000" aria-label="Fotos de {{ club.name }}">
+       <div class="clinic-gallery-frame">
+        {% for image in club.gallery %}
+        <figure class="clinic-slide {% if loop.first %}is-active{% endif %}" data-clinic-slide aria-hidden="{{ 'false' if loop.first else 'true' }}">
+         <img src="{{ image.src }}" alt="{{ image.alt }}" {% if loop.first %}loading="eager"{% else %}loading="lazy"{% endif %} decoding="async" onerror="this.classList.add('club-photo-failed')">
+        </figure>
+        {% endfor %}
+        <div class="club-gallery-fallback" aria-hidden="true"><svg class="icon xl"><use href="#i-users"/></svg><span>Fotos do clube</span></div>
+       </div>
+       <div class="clinic-gallery-controls"><button type="button" class="clinic-gallery-btn" data-clinic-prev aria-label="Foto anterior">‹</button>
+        <div class="clinic-gallery-dots" role="group" aria-label="Selecionar imagem">{% for image in club.gallery %}<button type="button" class="clinic-gallery-dot {% if loop.first %}is-active{% endif %}" data-clinic-dot data-index="{{ loop.index0 }}" aria-label="Foto {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}"></button>{% endfor %}</div>
+        <button type="button" class="clinic-gallery-btn" data-clinic-next aria-label="Próxima foto">›</button>
+       </div>
+      </section>
+      <p class="club-photo-source">{{ club.photo_source }} <a href="{{ club.website }}" target="_blank" rel="noopener noreferrer">Ver imagens e informações no site do clube ↗</a></p>
+     </div>
+     <div class="club-info-col">
+      <p class="club-summary">{{ club.intro }}</p>
+      <h4>Como utilizar o benefício</h4>
+      <ul class="club-terms">{% for rule in club.terms %}<li><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg><span>{{ rule }}</span></li>{% endfor %}</ul>
+      {% if club.hour_note %}<div class="club-hour-note" role="note"><svg class="icon sm" aria-hidden="true"><use href="#i-clock"/></svg><p>{{ club.hour_note }}</p></div>{% endif %}
+      <div class="club-contact-block"><div class="club-contact-detail"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg><div><strong>Endereço</strong><p>{{ club.address }}</p></div></div>
+      <div class="club-contact-detail"><svg class="icon sm" aria-hidden="true"><use href="#i-clock"/></svg><div><strong>Funcionamento</strong><p>{{ club.hours }}</p></div></div>
+      <div class="club-contact-detail"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"/></svg><div><strong>Informações pelo SUEESSOR — {{ club.contact_name }}</strong><p><a href="{{ club.phone_href }}">{{ club.phone }}</a></p></div></div></div>
+      <div class="club-buttons"><a class="btn btn-primary" href="{{ club.phone_href }}"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"/></svg>Ligar para o SUEESSOR</a>
+      {% if club.whatsapp_href %}<a class="btn btn-soft" href="{{ club.whatsapp_href }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-message"/></svg>WhatsApp {{ club.whatsapp }}</a>{% endif %}
+      <a class="btn btn-soft" href="{{ club.maps_url }}" target="_blank" rel="noopener noreferrer"><svg class="icon sm" aria-hidden="true"><use href="#i-location"/></svg>Como chegar</a></div>
+     </div>
+    </div>
+    <div class="club-map" aria-label="Localização de {{ club.name }}"><div class="club-map-heading"><div><span class="eyebrow">LOCALIZAÇÃO</span><h4>Encontre o clube no mapa</h4></div><a href="{{ club.maps_url }}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a></div>
+      <iframe src="{{ club.map_embed }}" title="Google Maps: {{ club.name }} — {{ club.address }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+   </article>
+   {% endfor %}
+  </div>
+  <div class="clubs-advisory"><svg class="icon"><use href="#i-shield"/></svg><div><strong>Antes de visitar</strong><p>Confirme as condições do convênio, a idade dos dependentes, o exame médico e a necessidade de autorização. Os horários divulgados podem mudar conforme o clube.</p></div></div>
+  <div class="partnership-detail-links"><a class="text-link" href="https://sueessor.org.br/clubes/" target="_blank" rel="noopener noreferrer">Informações divulgadas pelo SUEESSOR ↗</a><a class="text-link" href="/servicos/parcerias">← Voltar às parcerias</a></div>
+ </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outras parcerias</h2><a class="text-link" href="/servicos/parcerias">Ver todas <svg class="icon sm"><use href="#i-arrow"/></svg></a></div><div class="benefit-more-list">{% for item in partnerships if item.slug != 'clubes' %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>{% endfor %}</div></div></section>
+{% endblock %}
+{% block scripts %}<script src="/static/benefits.js?v=clubs-20261020" defer></script>{% endblock %}
