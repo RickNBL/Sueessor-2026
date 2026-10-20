@@ -464,6 +464,65 @@ for park in PARK_PARTNERS:
     park['maps_url'] = 'https://www.google.com/maps/search/?api=1&query=' + quote(park['map_query'], safe='')
     park['map_embed'] = 'https://www.google.com/maps?q=' + quote(park['map_query'], safe='') + '&output=embed'
 
+# Parceiros de Produtos e Serviços. Imagens extraídas da identificação editorial
+# do portal oficial do SUEESSOR; a imagem do Disk Carreto é ilustrativa, não logotipo.
+PRODUCT_SERVICE_PARTNERS = [
+    {
+        'slug': 'cinemark',
+        'name': 'Cinemark',
+        'category': 'Cinema e entretenimento',
+        'offer': 'Preços especiais',
+        'summary': 'Viva a experiência de assistir a um filme na Cinemark. O SUEESSOR divulga preços especiais para os associados.',
+        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05153845/cinemark.jpg',
+        'image_alt': 'Arte de divulgação Cinemark publicada pelo SUEESSOR, com a marca em um ingresso vermelho',
+        'image_kind': 'marca divulgada',
+        'items': ['Experiência no cinema', 'Condições especiais para associados'],
+        'phone': '(11) 3652-3390',
+        'phone_href': 'tel:+551136523390',
+        'contact_name': 'Noêmia – SUEESSOR',
+        'website': 'https://www.cinemark.com.br/',
+        'website_label': 'Site da Cinemark',
+        'social': None,
+    },
+    {
+        'slug': 'disk-carreto',
+        'name': 'Disk Carreto',
+        'category': 'Transportes e mudanças',
+        'offer': 'Preços especiais',
+        'summary': 'Mudanças residenciais e comerciais, fretes e apoio para eventos em toda a Grande São Paulo, com condições especiais para associados SUEESSOR.',
+        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05153900/carreto.jpg',
+        'image_alt': 'Imagem ilustrativa de serviço de carreto publicada pelo SUEESSOR: caminhão e profissional carregando caixa',
+        'image_kind': 'imagem ilustrativa do serviço',
+        'items': ['Mudanças residenciais', 'Mudanças comerciais', 'Fretes', 'Eventos'],
+        'phone': '(11) 99775-2672',
+        'phone_href': 'tel:+5511997752672',
+        'contact_name': 'Marcos – Disk Carreto',
+        'website': None,
+        'website_label': None,
+        'social': None,
+    },
+    {
+        'slug': 'maria-chica',
+        'name': 'Maria Chica',
+        'category': 'Semijoias e acessórios',
+        'offer': 'Descontos especiais',
+        'summary': 'Semijoias e acessórios com brilho para todos os looks, descontos especiais e atendimento personalizado com Mariane.',
+        'image': 'https://sites.diretasistemas.com.br/sites/1955/wp-content/uploads/2025/11/05153910/download-3.png',
+        'image_alt': 'Logo Maria Chica Semijoias de Luxo, divulgado pelo SUEESSOR',
+        'image_kind': 'logo divulgada',
+        'items': ['Semijoias', 'Acessórios', 'Atendimento personalizado'],
+        'phone': '(11) 98569-9023',
+        'phone_href': 'tel:+5511985699023',
+        'contact_name': 'Mariane – Maria Chica',
+        'website': None,
+        'website_label': None,
+        'social': [
+            ('Instagram @mariachicauniverso', 'https://www.instagram.com/mariachicauniverso/'),
+            ('Facebook @mariachicauniverso', 'https://www.facebook.com/mariachicauniverso/'),
+        ],
+    },
+]
+
 PARTNERSHIP_DETAILS = {
     'beleza': {
         'intro':'Conheça opções de beleza e autocuidado divulgadas pelo sindicato para associados e seus familiares.',
@@ -498,17 +557,17 @@ PARTNERSHIP_DETAILS = {
             {'title':'Hopi Hari','description':'Parque de diversões com condições especiais para associados divulgadas pelo sindicato.','info':'Rodovia dos Bandeirantes, km 72 – Vinhedo/SP.'},
             {'title':'Parque Aquático Magic City','description':'Parque aquático com condições especiais divulgadas para a categoria.','info':'Estrada do Koyama, 1 – Suzano/SP.'},
             {'title':'Parque da Mônica','description':'Opção de lazer familiar com preços especiais anunciados pelo SUEESSOR.','info':'Av. das Nações Unidas, 22540 – Jurubatuba, São Paulo/SP.'},
-            {'title':'Wet’n Wild','description':'Parque aquático incluído nas opções divulgadas pelo sindicato.','info':'Rodovia dos Bandeirantes, km 72 – Itupeva/SP.'},
+            {'title':"Wet'n Wild",'description':'Parque aquático incluído nas opções divulgadas pelo sindicato.','info':'Rodovia dos Bandeirantes, km 72 – Itupeva/SP.'},
         ],
         'source':'https://sueessor.org.br/parques/',
         'internal_links':[],
     },
     'produtos-e-servicos': {
-        'intro':'Produtos, serviços e lazer com condições especiais anunciadas para associados.',
+        'intro':'Entretenimento, transportes e acessórios com condições especiais para associados SUEESSOR.',
         'features':[
-            {'title':'Acessórios Rojo','description':'Acessórios e semijoias com condição diferenciada divulgada pelo sindicato.','info':'Informações: (11) 4311-9233.'},
-            {'title':'Cinemark','description':'Ingressos de cinema em condições especiais para associados; consulte valores e aquisição junto ao sindicato.','info':'Informações no SUEESSOR: (11) 3652-3390.'},
-            {'title':'Disk Carreto','description':'Serviços de frete e mudanças para a região da Grande São Paulo, com condições divulgadas para associados.','info':'Contato anunciado: (11) 99775-2672.'},
+            {'title':'Cinemark','description':'Preços especiais para associados SUEESSOR em experiências de cinema.','info':'Informações: (11) 3652-3390 (Noêmia).'},
+            {'title':'Disk Carreto','description':'Mudanças residenciais, comerciais, fretes e eventos em toda a Grande São Paulo.','info':'Informações: (11) 99775-2672 (Marcos).'},
+            {'title':'Maria Chica','description':'Semijoias e acessórios com descontos especiais e atendimento personalizado.','info':'Informações: (11) 98569-9023 (Mariane).'},
         ],
         'source':'https://sueessor.org.br/produtos-e-servicos/',
         'internal_links':[],
@@ -996,6 +1055,9 @@ def partnership_detail(request:Request,slug:str):
     if slug == 'parques':
         return render(request,'partnership_parks.html',page='servicos',partnership=card,
                       parks=PARK_PARTNERS,partnerships=PARTNERSHIP_CARDS)
+    if slug == 'produtos-e-servicos':
+        return render(request,'partnership_products.html',page='servicos',partnership=card,
+                      products=PRODUCT_SERVICE_PARTNERS,partnerships=PARTNERSHIP_CARDS)
     return render(request, 'partnership_detail.html',page='servicos',
                   partnership=card,detail=PARTNERSHIP_DETAILS[slug],partnerships=PARTNERSHIP_CARDS)
 

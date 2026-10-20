@@ -35,15 +35,23 @@ def test_seven_partner_pages_with_real_content_and_no_missing_routes(partner_env
         assert resp.status_code == 200, card['href']
         html = resp.text
         assert card['title'] in html
-        assert ('beauty-partner-card' in html if card['slug'] == 'beleza' else ('club-partner' in html if card['slug'] == 'clubes' else ('course-partner' in html if card['slug'] == 'cursos' else '<article class="partnership-feature">' in html)))
-        assert ('Portal oficial do SUEESSOR' in html if card['slug'] == 'beleza' else ('Informações divulgadas pelo SUEESSOR' in html if card['slug'] in ('clubes','cursos') else 'Ver informações no portal oficial' in html))
-        assert 'Condições' in html or 'condições' in html or 'condições' in html.lower()
+        expected_classes = {
+            'beleza': 'beauty-partner-card',
+            'clubes': 'club-partner',
+            'cursos': 'course-partner',
+            'parques': 'park-card',
+            'produtos-e-servicos': 'product-partner',
+        }
+        assert expected_classes.get(card['slug'], '<article class="partnership-feature">') in html
+        source = PARTNERSHIP_DETAILS[card['slug']]['source']
+        assert source in html, card['slug']
+        assert 'condições' in html.lower() or 'preços especiais' in html.lower()
         details = PARTNERSHIP_DETAILS[card['slug']]
         assert len(details['features']) > 0
-        assert (details['source'] in html or card['slug']=='cursos' and 'https://sueessor.org.br/cursos/' in html)
-        if card['slug'] not in ('clubes','cursos'):
+        if card['slug'] not in ('clubes', 'cursos'):
+            from html import unescape
             for feature in details['features']:
-                assert feature['title'] in html
+                assert feature['title'] in unescape(html)
     assert client.get('/servicos/parcerias/nao-existe').status_code == 404
 
 

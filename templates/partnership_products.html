@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Produtos e Serviços | Parcerias SUEESSOR{% endblock %}
+{% block content %}
+<section class="benefit-detail-hero partnership-detail-hero products-hero">
+ <div class="shell">
+  <nav aria-label="Você está aqui" class="benefit-breadcrumb"><a href="/">Início</a><span>/</span><a href="/servicos/parcerias">Parcerias</a><span>/</span><span>Produtos e Serviços</span></nav>
+  <div class="benefit-detail-hero-row">
+   <div><span class="eyebrow eyebrow-light">PARCERIAS PARA ASSOCIADOS</span><h1>Mais possibilidades <em>para o seu dia a dia.</em></h1><p>Entretenimento, transporte, semijoias e acessórios com condições especiais para associados SUEESSOR.</p></div>
+   <span class="benefit-detail-emblem" aria-hidden="true"><svg class="icon"><use href="#i-shopping"></use></svg></span>
+  </div>
+ </div>
+</section>
+<section class="products-section" id="produtos-servicos-parceiros">
+ <div class="shell">
+  <div class="products-intro"><span class="eyebrow">PRODUTOS E SERVIÇOS</span><h2>Vantagens que acompanham <em>você.</em></h2><p>Confira os parceiros divulgados pelo sindicato, conheça os serviços e entre em contato para confirmar os descontos e as condições disponíveis.</p></div>
+  <nav class="products-jump" aria-label="Ir para um parceiro">{% for partner in products %}<a href="#{{ partner.slug }}">{{ partner.name }} <span aria-hidden="true">↗</span></a>{% endfor %}</nav>
+  <div class="products-list">
+   {% for partner in products %}
+   <article class="product-partner" id="{{ partner.slug }}" aria-labelledby="product-heading-{{ loop.index }}">
+    <div class="product-visual product-visual--{{ partner.slug }}">
+     <div class="product-visual-fallback"><strong>{{ partner.name }}</strong><span>{{ partner.category }}</span></div>
+     <img src="{{ partner.image }}" alt="{{ partner.image_alt }}" loading="lazy" decoding="async" onerror="this.hidden=true" />
+    </div>
+    <div class="product-info">
+     <div class="product-meta"><span class="eyebrow">{{ partner.category }}</span><span class="product-offer">{{ partner.offer }}</span></div>
+     <h3 id="product-heading-{{ loop.index }}">{{ partner.name }}</h3>
+     <p>{{ partner.summary }}</p>
+     <ul class="product-features" aria-label="Benefícios divulgados">{% for item in partner['items'] %}<li><svg class="icon sm" aria-hidden="true"><use href="#i-check"></use></svg><span>{{ item }}</span></li>{% endfor %}</ul>
+     <div class="product-contact">
+      <span>Informações e atendimento</span><strong>{{ partner.contact_name }}</strong>
+      <a href="{{ partner.phone_href }}" aria-label="Ligar para {{ partner.contact_name }} no número {{ partner.phone }}">{{ partner.phone }}</a>
+     </div>
+     <div class="product-actions">
+      <a class="btn btn-dark" href="{{ partner.phone_href }}"><svg class="icon sm" aria-hidden="true"><use href="#i-phone"></use></svg> Ligar agora</a>
+      {% if partner.website %}<a class="btn btn-soft" href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">{{ partner.website_label }} <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>{% endif %}
+      {% if partner.social %}{% for label,url in partner.social %}<a class="product-social-link" href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ label }} ↗</a>{% endfor %}{% endif %}
+     </div>
+    </div>
+   </article>
+   {% endfor %}
+  </div>
+  <aside class="products-note"><strong>Confirme antes de utilizar</strong><p>Preços e condições podem mudar. Consulte o parceiro ou o SUEESSOR antes de contratar serviços ou adquirir produtos. Não há endereços físicos confirmados nesta divulgação, por isso não foram incluídos mapas de unidades.</p><a href="https://sueessor.org.br/produtos-e-servicos/" target="_blank" rel="noopener noreferrer">Ver informações divulgadas pelo SUEESSOR ↗</a></aside>
+ </div>
+</section>
+<section class="benefit-more"><div class="shell"><div class="benefit-more-title"><h2>Outras parcerias</h2><a class="text-link" href="/servicos/parcerias">Ver todas <svg class="icon sm"><use href="#i-arrow"></use></svg></a></div><div class="benefit-more-list">{% for item in partnerships if item.slug != 'produtos-e-servicos' %}<a href="{{ item.href }}"><svg class="icon" aria-hidden="true"><use href="#i-{{ item.icon }}"></use></svg><span>{{ item.title }}</span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow"></use></svg></a>{% endfor %}</div></div></section>
+{% endblock %}
