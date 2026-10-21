@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Financeiro | Emissão de boletos SUEESSOR{% endblock %}
+{% block content %}
+<section class="editals-hero finance-hero">
+  <div class="shell">
+    <nav class="editals-breadcrumb" aria-label="Localização na página"><a href="/">Início</a><span>/</span><a href="/convencoes">Documentos</a><span>/</span>Financeiro</nav>
+    <span class="eyebrow eyebrow-light">SERVIÇOS FINANCEIROS</span>
+    <h1>Emissão de boletos <em>mais prática.</em></h1>
+    <p>Um acesso direto para empresas e escritórios de contabilidade consultarem o sistema de boletos das contribuições do SUEESSOR.</p>
+    <div class="editals-hero-stats">
+      <span><svg class="icon sm" aria-hidden="true"><use href="#i-file"/></svg> Boletos de contribuições</span>
+      <span><svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg> Acesso ao sistema de emissão</span>
+    </div>
+  </div>
+</section>
+<section class="finance-section" aria-labelledby="finance-title">
+  <div class="shell">
+    <div class="finance-layout">
+      <div class="finance-main-card">
+        <div class="finance-main-icon" aria-hidden="true"><svg class="icon"><use href="#i-file"/></svg></div>
+        <span class="eyebrow">FINANCEIRO SUEESSOR</span>
+        <h2 id="finance-title">Imprima os boletos das <em>contribuições.</em></h2>
+        <p class="finance-lead">Agora sua empresa ou contabilidade tem a facilidade de imprimir os boletos das contribuições através do site do SUEESSOR.</p>
+        <p class="finance-support">Utilize o botão abaixo para acessar o sistema ProsindWeb, consultar as opções disponíveis e realizar a emissão dos boletos.</p>
+        <a class="btn btn-dark finance-access-button" href="https://sweb.diretasistemas.com.br/prosindweb/index.php?sind=1955" target="_blank" rel="noopener noreferrer" aria-label="Acessar sistema de emissão de boletos do SUEESSOR em uma nova aba">
+          Acessar emissão de boletos <svg class="icon sm" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </a>
+        <p class="finance-external-note"><svg class="icon sm" aria-hidden="true"><use href="#i-shield"/></svg> Você será direcionado ao sistema externo de emissão de boletos, em uma nova aba.</p>
+      </div>
+      <aside class="finance-help-card" aria-label="Ajuda com boletos">
+        <span class="eyebrow eyebrow-light">PRECISA DE AJUDA?</span>
+        <h3>O sindicato está à disposição.</h3>
+        <p>Em caso de dúvidas sobre contribuições ou dificuldades para acessar a emissão, fale com o SUEESSOR.</p>
+        <a href="/contato">Entrar em contato <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="/convencoes">Consultar convenções coletivas <svg class="icon sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

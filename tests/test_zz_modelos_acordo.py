@@ -57,6 +57,6 @@ def test_css_sincronizado_e_menu_mobile_com_acesso():
     assert (BASE / 'static/style.css').read_bytes() == (BASE / 'public/static/style.css').read_bytes()
     app = importlib.import_module('app')
     html = TestClient(app.app).get('/documentos/acordos').text
-    assert 'v=modelos-acordo-20261020' in html
+    assert 'href="/static/style.css?v=financeiro-20261021"' in html
     assert html.count('href="/documentos/acordos"') >= 2
     assert '.agreement-card' in (BASE / 'static/style.css').read_text(encoding='utf-8')

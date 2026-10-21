@@ -1250,6 +1250,8 @@ def document(request:Request,kind:str):
                       names=EDITAL_NAMES)
     if kind == 'acordos':
         return render(request, 'agreements.html', page='convencoes', models=AGREEMENT_MODELS)
+    if kind == 'financeiro':
+        return render(request, 'finance.html', page='convencoes')
     return render(request,'documents.html',page='convencoes',kind=kind,doc=options[kind])
 
 @app.get('/associe-se', response_class=HTMLResponse)

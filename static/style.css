@@ -1176,3 +1176,27 @@ body{background:#fff;color:var(--ink)}
 .agreements-links a:hover{text-decoration:underline}
 @media(max-width:650px){.agreements-section{padding:47px 0 68px}.agreements-heading h2{font-size:34px}.agreements-heading p{font-size:14px}.agreement-card{border-radius:19px}.agreement-card-upper{padding:23px 19px}.agreement-card h3{font-size:26px}.agreement-subtitle,.agreement-description{font-size:13px}.agreement-actions{display:grid;grid-template-columns:1fr}.agreement-actions .btn{width:100%;justify-content:center}.agreement-details>summary{padding:18px 19px;font-size:13px}.agreement-details-content{padding:22px 16px}.agreement-pdf-viewer{min-height:330px;height:62vh}.agreements-alert{padding:20px 17px;gap:12px}.agreements-alert p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.agreement-details>summary>.icon{transition:none}}
+
+/* Financeiro — emissão de boletos */
+.finance-section{background:linear-gradient(180deg,#fcf6f7 0%,#fff 250px);padding:clamp(52px,6vw,88px) 0 105px}
+.finance-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(275px,.75fr);gap:25px;align-items:start}
+.finance-main-card{position:relative;min-width:0;overflow:hidden;padding:clamp(28px,4.2vw,58px);border-radius:30px;background:#fff;border:1px solid #eddee2;box-shadow:0 32px 90px -72px #500b1b}
+.finance-main-card:before{content:"";position:absolute;width:220px;height:220px;right:-110px;top:-110px;border-radius:50%;background:#f9edf0;pointer-events:none}
+.finance-main-icon{width:64px;height:64px;display:grid;place-items:center;margin-bottom:25px;border-radius:19px;background:#f8e9ed;color:#ac1022}
+.finance-main-icon .icon{width:31px;height:31px}
+.finance-main-card h2{font:800 clamp(33px,3.7vw,50px)/1.13 var(--display);letter-spacing:-.045em;color:#291820;margin:15px 0 17px}
+.finance-main-card h2 em{color:#a91020;font-style:normal}
+.finance-lead{font-size:clamp(16px,1.55vw,20px);line-height:1.75;color:#4f4049;margin:0 0 17px;max-width:720px}
+.finance-support{font-size:14px;line-height:1.8;color:#786670;margin:0 0 31px;max-width:650px}
+.finance-access-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;text-align:center;min-height:54px;padding:15px 26px}
+.finance-external-note{display:flex;align-items:flex-start;gap:9px;color:#806d77;font-size:12px;line-height:1.65;margin:20px 0 0}
+.finance-external-note .icon{flex:none;margin-top:1px;color:#a31829}
+.finance-help-card{padding:clamp(27px,3.1vw,40px);border-radius:28px;background:linear-gradient(145deg,#9d091a,#590815);color:#fff;box-shadow:0 29px 65px -55px #4f0c1c}
+.finance-help-card h3{font:800 clamp(25px,2.4vw,31px)/1.2 var(--display);letter-spacing:-.045em;margin:18px 0 15px}
+.finance-help-card p{font-size:14px;line-height:1.8;color:#f1dbe0;margin:0 0 24px}
+.finance-help-card a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;color:#fff;font-size:13px;font-weight:800;border-top:1px solid #ffffff3b;transition:color .18s}
+.finance-help-card a:hover{color:#ffd1d9}
+@media(max-width:840px){.finance-layout{grid-template-columns:1fr}.finance-main-card{padding:30px}.finance-help-card{padding:29px}}
+@media(max-width:580px){.finance-section{padding:45px 0 65px}.finance-main-card{border-radius:22px;padding:25px 20px}.finance-main-card h2{font-size:33px}.finance-main-icon{width:55px;height:55px}.finance-access-button{display:flex;width:100%;white-space:normal}.finance-help-card{border-radius:22px;padding:26px 22px}}
+@media(prefers-reduced-motion:reduce){.finance-help-card a{transition:none}}
+.finance-hero .eyebrow-light,.finance-help-card .eyebrow-light{color:#ffdae0}
