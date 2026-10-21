@@ -8,7 +8,38 @@
   const toast=msg=>{const el=$('#toast');if(!el)return;el.textContent=msg;el.classList.add('show');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove('show'),3700)};
   document.documentElement.classList.add('js-ready');
   if ('IntersectionObserver' in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target)}}),{threshold:.08});$$('.reveal').forEach(e=>obs.observe(e))}else{$$('.reveal').forEach(e=>e.classList.add('in-view'))}
-  const header=$('#header');if(header){window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});const toggle=$('.menu-toggle');const mobile=$('#mobile-nav');toggle?.addEventListener('click',()=>{const open=mobile.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');toggle.innerHTML=icon(open?'x':'menu')});$$('.nav-group>button').forEach(b=>b.addEventListener('click',()=>{const parent=b.parentElement;const open=parent.classList.toggle('open');b.setAttribute('aria-expanded',String(open))}));document.addEventListener('click',e=>{if(!e.target.closest('.nav-group'))$$('.nav-group.open').forEach(e=>e.classList.remove('open'))});}
+  const header=$('#header');
+  if(header){
+    window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+    const toggle=$('.menu-toggle'),mobile=$('#mobile-nav');
+    const setMenu=(open,restoreFocus=false)=>{
+      if(!toggle||!mobile)return;
+      mobile.classList.toggle('open',open);
+      document.body.classList.toggle('nav-open',open);
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+      toggle.innerHTML=icon(open?'x':'menu');
+      if(open)mobile.querySelector('a,summary')?.focus({preventScroll:true});
+      else if(restoreFocus)toggle.focus({preventScroll:true});
+    };
+    toggle?.addEventListener('click',()=>setMenu(!mobile?.classList.contains('open')));
+    mobile?.addEventListener('click',e=>{if(e.target.closest('a[href]')&& !e.target.closest('a[target="_blank"]'))setMenu(false)});
+    $$('.mobile-nav-group').forEach(group=>group.addEventListener('toggle',()=>{
+      if(group.open)$$('.mobile-nav-group').filter(g=>g!==group).forEach(g=>g.open=false);
+    }));
+    $$('.nav-group>button').forEach(b=>b.addEventListener('click',()=>{
+      const parent=b.parentElement;
+      const open=!parent.classList.contains('open');
+      $$('.nav-group.open').forEach(g=>{g.classList.remove('open');g.querySelector('button')?.setAttribute('aria-expanded','false')});
+      parent.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));
+    }));
+    document.addEventListener('click',e=>{
+      if(!e.target.closest('.nav-group'))$$('.nav-group.open').forEach(g=>{g.classList.remove('open');g.querySelector('button')?.setAttribute('aria-expanded','false')});
+      if(mobile?.classList.contains('open')&&!e.composedPath().includes(header))setMenu(false);
+    });
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobile?.classList.contains('open')){setMenu(false,true);e.preventDefault()}});
+    window.matchMedia('(min-width: 1141px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});
+  }
 
   // Vídeo da home: sem controles, reinicia toda vez que entra em cena.
   const heroVideo=$('[data-restart-video]');
@@ -34,11 +65,31 @@
 
   // Pesquisa universal com atalho Ctrl/Cmd+K.
   const overlay=$('#search-overlay'),search=$('#global-search'),results=$('#search-results');
-  const pages=[['Nossa história','/sobre'],['Abrangência territorial','/abrangencia'],['Diretoria','/diretoria'],['Convenções coletivas','/convencoes'],['Editais','/documentos/editais'],['Benefícios','/servicos/beneficios'],['Clínica Médica','/servicos/clinica-medica'],['Espaço para Eventos','/servicos/espaco-para-eventos'],['Espaço Gourmet','/servicos/espaco-gourmet'],['Excursões','/servicos/excursoes'],['Salão de Beleza','/servicos/salao-de-beleza'],['Tratamento Odontológico','/servicos/tratamento-odontologico'],['Fique sócio','/associe-se'],['Parcerias','/servicos/parcerias'],['Jurídico','/servicos/juridico'],['Modelos de acordo','/documentos/acordos'],['Modelo de oposição','/documentos/oposicao'],['Emissão de boleto','/documentos/financeiro'],['Notícias','/noticias'],['Contato','/contato'],['Denuncie','/denuncie']];
-  const openSearch=()=>{if(!overlay)return;overlay.classList.add('visible');overlay.setAttribute('aria-hidden','false');setTimeout(()=>search.focus(),100)};
-  const closeSearch=()=>{if(!overlay)return;overlay.classList.remove('visible');overlay.setAttribute('aria-hidden','true')};
+  const pages=[['Nossa história','/sobre'],['Abrangência territorial','/abrangencia'],['Diretoria','/diretoria'],['Convenções coletivas','/convencoes'],['Editais','/documentos/editais'],['Benefícios','/servicos/beneficios'],['Clínica Médica','/servicos/clinica-medica'],['Espaço para Eventos','/servicos/espaco-para-eventos'],['Espaço Gourmet','/servicos/espaco-gourmet'],['Excursões','/servicos/excursoes'],['Salão de Beleza','/servicos/salao-de-beleza'],['Tratamento Odontológico','/servicos/tratamento-odontologico'],['Fique sócio','/associe-se'],['Parcerias','/servicos/parcerias'],['Parcerias de beleza','/servicos/parcerias/beleza'],['Clubes parceiros','/servicos/parcerias/clubes'],['Cursos conveniados','/servicos/parcerias/cursos'],['Parques conveniados','/servicos/parcerias/parques'],['Produtos e serviços parceiros','/servicos/parcerias/produtos-e-servicos'],['Saúde e exames','/servicos/parcerias/saude'],['Viagens e turismo','/servicos/parcerias/viagens-e-turismo'],['Jurídico','/servicos/juridico'],['Modelos de acordo','/documentos/acordos'],['Modelo de oposição','/documentos/oposicao'],['Emissão de boleto','/documentos/financeiro'],['Notícias','/noticias'],['Contato','/contato'],['Denuncie','/denuncie']];
+  let searchOpener=null;
+  const openSearch=()=>{
+    if(!overlay||overlay.classList.contains('visible'))return;
+    searchOpener=document.activeElement;
+    overlay.classList.add('visible');overlay.setAttribute('aria-hidden','false');
+    search?.focus({preventScroll:true});
+  };
+  const closeSearch=()=>{
+    if(!overlay||!overlay.classList.contains('visible'))return;
+    overlay.classList.remove('visible');overlay.setAttribute('aria-hidden','true');
+    if(searchOpener?.isConnected)searchOpener.focus({preventScroll:true});
+  };
   $$('.search-trigger').forEach(x=>x.addEventListener('click',openSearch));$('#search-close')?.addEventListener('click',closeSearch);$('.search-backdrop')?.addEventListener('click',closeSearch);
-  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch()}
+    if(e.key==='Escape')closeSearch();
+    if(e.key==='Tab'&&overlay?.classList.contains('visible')){
+      const items=$$('input,button,a[href]',overlay).filter(el=>el.getClientRects().length&&!el.disabled);
+      if(items.length){const first=items[0],last=items[items.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+      }
+    }
+  });
   let searchTimer;
   search?.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(async()=>{const q=search.value.trim().toLowerCase();if(!q){results.innerHTML='<div class="search-tip">Busque por notícias, convenções, benefícios e serviços.</div>';return;}const matches=pages.filter(([label])=>label.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q.normalize('NFD').replace(/[\u0300-\u036f]/g,'')));let html=matches.map(([label,url])=>`<a href="${url}">${icon('arrow')}<span>${esc(label)}</span></a>`).join('');try{const response=await fetch('/api/noticias?q='+encodeURIComponent(q)+'&page=1');if(response.ok){const data=await response.json();html+=data.posts.slice(0,5).map(p=>`<a href="/noticias/${encodeURIComponent(p.slug)}">${icon('file')}<span>${esc(p.title)}</span></a>`).join('')}}catch(_e){}results.innerHTML=html||'<div class="search-tip">Não encontramos resultados. Experimente outro termo.</div>';},260)});
   // Feed social: filtro por assunto, busca, curtidas e posts salvos no dispositivo.
